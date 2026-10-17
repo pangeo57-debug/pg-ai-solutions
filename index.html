@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PG AI Solutions — Maison</title>
-<meta name="description" content="PG AI Solutions — web design, dashboards and optimization systems from Patras, Greece. Come and tell us what you want to build.">
-<meta name="theme-color" content="#4a1020">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%234a1020'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%23efd5d0' font-family='serif' font-style='italic'%3EPG%3C/text%3E%3C/svg%3E">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>PG AI Solutions — Quiet</title>
+<meta name="description" content="PG AI Solutions — web design, dashboards and optimization systems from Patras, Greece. Tell us the problem and we will build it properly.">
+<meta name="theme-color" content="#121212">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23121212'/%3E%3Ctext x='16' y='22' font-size='14' font-weight='800' text-anchor='middle' fill='%23d6e6ff' font-family='sans-serif'%3EPG%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@500;700;800&family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{--bg:#f6f1f0;--fg:#2a0e16;--mute:#6b5058;--dim:#a08a8f;--line:rgba(74,16,32,.16);--line2:rgba(74,16,32,.38);--panel:transparent;--field:transparent;--acc:#8d2640;--onacc:#f7f3f2;--r:0px;--rb:0px;--rf:0px;--wine:#4a1020;--wine2:#3a0f1a;--blush:#efd5d0;--rose:#e7b8a6;--disp:'Bodoni Moda','Didot','Bodoni 72',Georgia,serif;--body:'DM Sans','Segoe UI',sans-serif;--mono:'DM Sans',sans-serif;color-scheme:light;}
+  :root{--bg:#f1f1ee;--fg:#121212;--mute:#55564f;--dim:#8d8e86;--line:rgba(18,18,18,.12);--line2:rgba(18,18,18,.3);--panel:#fff;--field:#ffffff;--acc:#121212;--onacc:#ffffff;--r:32px;--rb:100px;--rf:16px;--sky:#d6e6ff;--butter:#d6e6ff;--mint:#d6e6ff;--lilac:#d6e6ff;--peach:#d6e6ff;--grey:#e9e9e5;--ink:#121212;--disp:'Gabarito','Segoe UI',sans-serif;--body:'Onest','Segoe UI',sans-serif;--mono:'Onest',sans-serif;color-scheme:light;}
   *{box-sizing:border-box;} html{scroll-behavior:smooth;}
   body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.62;
     padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));-webkit-font-smoothing:antialiased;}
@@ -68,118 +68,72 @@
   @media (max-width:520px){.steps{grid-template-columns:1fr;}}
   @media (prefers-reduced-motion:reduce){*{animation:none!important;} .btn:hover,.stack li:hover{transform:none;}}
 
-  html,body{overflow-x:clip;} body{letter-spacing:.01em;}
-  .nav{padding-block:26px;border-bottom:1px solid var(--line);}
-  .brand{font-family:var(--disp);font-weight:500;font-size:1.3rem;letter-spacing:.02em;font-style:italic;} .brand i{font-style:normal;width:34px;height:34px;border:1px solid var(--wine);display:flex;align-items:center;justify-content:center;font-size:.95rem;letter-spacing:0;outline:1px solid var(--rose);outline-offset:3px;}
-  .links{gap:30px;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;} .links a{color:var(--mute);} .links a:hover{color:var(--acc);}
-  .links .go{padding:12px 22px;letter-spacing:.24em;font-size:.7rem;background:var(--wine);border-color:var(--wine);color:#f7ece9;} .links .go:hover{background:var(--acc);border-color:var(--acc);}
-  .btn{font-family:var(--body);font-weight:400;font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;padding:18px 32px;border:1px solid var(--wine);color:var(--wine);background:transparent;transition:background .3s,color .3s;} .btn:hover{transform:none;background:var(--wine);color:#f7ece9;}
-  .btn-p{background:var(--wine);color:#f7ece9;} .btn-p:hover{background:var(--acc);border-color:var(--acc);}
-  .hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(28px,5vw,80px);align-items:center;padding-block:clamp(36px,6vw,88px) clamp(48px,7vw,96px);}
-  .issue{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--acc);display:flex;align-items:center;gap:14px;} .issue::after{content:"";flex:0 0 clamp(40px,8vw,110px);height:1px;background:var(--acc);}
-  h1{font-family:var(--disp);font-weight:400;font-size:clamp(2.3rem,5vw,4.6rem);line-height:1.04;letter-spacing:-.02em;margin:26px 0 0;text-wrap:balance;font-variation-settings:"opsz" 96;}
-  h1 em{font-style:italic;color:var(--acc);}
-  .sub{margin-top:30px;max-width:46ch;color:var(--mute);font-size:1.05rem;line-height:1.75;}
-  .arch{position:relative;max-width:440px;width:100%;margin-inline:auto;}
-  .win{position:relative;aspect-ratio:3/4.1;border-radius:999px 999px 0 0;overflow:hidden;background:radial-gradient(120% 70% at 50% 0%,#8a2a42 0%,#4a1020 55%,#2e0a14 100%);box-shadow:0 40px 70px -34px rgba(58,15,26,.6);transform:translate3d(var(--px,0px),var(--py,0px),0);transition:transform .4s ease-out;}
-  .win::before{content:"";position:absolute;inset:14px;border-radius:999px 999px 0 0;border:1px solid rgba(231,184,166,.55);pointer-events:none;z-index:3;}
-  .win .moon{position:absolute;left:50%;top:15%;width:34%;aspect-ratio:1;margin-left:-17%;border-radius:50%;background:radial-gradient(circle at 38% 34%,#fff2ee,#efd5d0 55%,#d9a89e);box-shadow:0 0 60px 10px rgba(239,213,208,.3);animation:moon 10s ease-in-out infinite alternate;}
-  @keyframes moon{to{transform:translateY(-10px);}}
-  .win svg{position:absolute;left:8%;right:8%;bottom:10%;width:84%;overflow:visible;}
-  .win .rt{stroke-dasharray:900;stroke-dashoffset:0;animation:dr 3.2s ease-out 1;} @keyframes dr{from{stroke-dashoffset:900;}}
-  .seal{position:absolute;left:-34px;bottom:34px;width:118px;height:118px;z-index:4;filter:drop-shadow(0 12px 18px rgba(58,15,26,.35));}
-  .seal .spin{transform-origin:60px 60px;animation:sp 28s linear infinite;} @keyframes sp{to{transform:rotate(360deg);}}
-  .seal text{font-family:'DM Sans',sans-serif;font-weight:600;font-size:9px;letter-spacing:.14em;fill:#4a1020;text-transform:uppercase;}
-  .sec{margin-top:18px;padding:clamp(32px,5.5vw,84px);background:var(--sb,transparent);color:var(--fg);outline:1px solid var(--line2);outline-offset:-14px;}
-  #services{--sb:#f6f1f0;}
-  #work{--sb:#4a1020;--fg:#f7ece9;--mute:#d3b6b3;--dim:#b08e90;--line:rgba(231,184,166,.22);--line2:rgba(231,184,166,.42);--acc:#e7b8a6;--onacc:#3a0f1a;}
-  #process{--sb:#efd5d0;--fg:#3a0f1a;--mute:#6e4a4f;--line:rgba(74,16,32,.2);--line2:rgba(74,16,32,.4);}
-  #stack{--sb:#f6f1f0;} #about{--sb:#3a0f1a;--fg:#f7ece9;--mute:#d3b6b3;--dim:#b08e90;--line:rgba(231,184,166,.22);--line2:rgba(231,184,166,.42);--acc:#e7b8a6;--onacc:#3a0f1a;}
-  #contact{--sb:#efd5d0;--fg:#3a0f1a;--mute:#6e4a4f;--line:rgba(74,16,32,.2);--line2:rgba(74,16,32,.4);}
-  .sh{max-width:760px;} .eyebrow{font-size:.7rem;letter-spacing:.34em;color:var(--acc);font-weight:400;display:flex;align-items:center;gap:14px;} .eyebrow::before{content:"";width:34px;height:1px;background:var(--acc);}
-  h2{font-family:var(--disp);font-weight:400;font-size:clamp(1.9rem,3.8vw,3.3rem);line-height:1.08;letter-spacing:-.02em;font-variation-settings:"opsz" 96;}
-  .lead{line-height:1.75;}
-  .item,.steps li,.stack li,.spec,.work,.contact{background:none;border:0;border-radius:0;box-shadow:none;}
-  .svc{gap:clamp(20px,3vw,44px);} .item{padding:26px 0 0;border-top:1px solid var(--line2);}
-  .item h3,.steps h3{font-family:var(--disp);font-style:italic;font-weight:400;font-size:1.65rem;line-height:1.15;letter-spacing:-.01em;}
-  .steps{gap:clamp(20px,3vw,44px);} .steps li{padding:26px 0 0;border-top:1px solid var(--line2);} .n{font-family:var(--disp);font-style:italic;font-size:1.5rem;color:var(--acc);letter-spacing:0;margin-bottom:10px;}
-  .work{padding:clamp(28px,4vw,52px) 0;border-top:1px solid var(--line2);margin:0;} .work.w1{border-top:0;padding-top:0;}
-  .work h3{font-family:var(--disp);font-weight:400;font-size:clamp(1.7rem,3.2vw,2.6rem);line-height:1.1;letter-spacing:-.015em;} .work .k{letter-spacing:.3em;font-size:.68rem;font-weight:400;}
-  .chips li{font-family:var(--body);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;border-color:var(--line2);padding:6px 14px;}
-  .metrics{padding-top:22px;border-top:1px solid var(--line);} .metrics b{font-family:var(--disp);font-weight:400;font-size:3rem;color:var(--acc);} .metrics span{letter-spacing:.14em;text-transform:uppercase;font-size:.66rem;}
-  .stack{gap:0 clamp(24px,4vw,64px);grid-template-columns:repeat(2,minmax(0,1fr));} .stack li{padding:20px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;gap:16px;} .stack li:nth-last-child(-n+2){border-bottom:1px solid var(--line);} .stack li:hover{transform:none;border-color:var(--line);padding-left:10px;transition:padding .25s;}
-  .stack b{font-family:var(--disp);font-style:italic;font-weight:400;font-size:1.3rem;} .stack span{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;text-align:right;}
-  .spec{padding:0;} .spec div{padding:17px 0;border-bottom:1px solid var(--line);} .spec dt{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;} .spec dd{font-family:var(--disp);font-style:italic;font-weight:400;font-size:1.1rem;}
-  .about h2{margin-top:14px;} .about .txt p:not(.eyebrow){line-height:1.8;}
-  .contact{padding:0;} input,textarea{border:0;border-bottom:1px solid var(--line2);padding-inline:0;background:transparent;font-family:var(--body);} input:focus,textarea:focus{border-bottom-color:var(--acc);}
-  #contact .btn{background:var(--wine);color:#f7ece9;} #contact .btn:hover{background:var(--acc);}
-  #work .btn-p,#about .btn-p{background:var(--rose);color:var(--wine2);border-color:var(--rose);}
-  footer{margin-top:44px;border-top:1px solid var(--line2);font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;}
-  @media (max-width:900px){.hero{grid-template-columns:1fr;} .seal{left:-8px;} .stack{grid-template-columns:1fr;} .stack li:nth-last-child(2){border-bottom:0;}}
-
-  /* clearer, tighter pass */
-  body{font-size:16px;line-height:1.55;letter-spacing:0;color:#2a0e16;}
-  :root{--mute:#4f3a41;}
-  #services,#stack,#process,#contact{--mute:#4a343b;} #work,#about{--mute:#ecd9d6;}
-  .nav{padding-block:16px;} .links{gap:24px;font-size:.74rem;letter-spacing:.1em;font-weight:500;} .links a{color:var(--fg);} .links .go{padding:10px 18px;letter-spacing:.12em;font-size:.72rem;font-weight:600;color:#f7ece9;}
-  .btn{font-size:.74rem;letter-spacing:.12em;font-weight:600;padding:14px 24px;}
-  .hero{padding-block:clamp(24px,4vw,52px) clamp(32px,5vw,60px);gap:clamp(24px,4vw,56px);}
-  .issue{font-size:.7rem;letter-spacing:.16em;font-weight:600;}
-  h1{font-weight:500;font-size:clamp(2rem,4.2vw,3.7rem);line-height:1.08;margin:18px 0 0;font-variation-settings:"opsz" 28;letter-spacing:-.015em;}
-  .sub{margin-top:20px;font-size:1rem;line-height:1.6;color:var(--mute);}
-  .actions{margin-top:24px;}
-  .arch{max-width:370px;} .seal{width:100px;height:100px;left:-26px;bottom:26px;}
-  .sec{margin-top:12px;padding:clamp(24px,4vw,52px);outline-offset:-10px;}
-  .sh{margin-bottom:22px;max-width:700px;} .eyebrow{font-size:.7rem;letter-spacing:.16em;font-weight:600;} .eyebrow::before{width:24px;}
-  h2{font-weight:500;font-size:clamp(1.6rem,3vw,2.5rem);line-height:1.1;font-variation-settings:"opsz" 28;margin-top:10px;}
-  .lead{line-height:1.6;margin-top:10px;color:var(--mute);}
-  .svc,.steps{gap:22px;} .item,.steps li{padding:16px 0 0;} .item h3,.steps h3{font-weight:500;font-size:1.35rem;margin-bottom:6px;}
-  .item p,.steps p,.work .wb p,.about .txt p:not(.eyebrow){font-size:.95rem;line-height:1.6;color:var(--mute);}
-  .n{font-size:1.25rem;margin-bottom:6px;font-weight:500;}
-  .work{padding:22px 0;gap:10px 36px;} .work h3{font-weight:500;font-size:clamp(1.45rem,2.5vw,2rem);font-variation-settings:"opsz" 28;} .work .k{letter-spacing:.16em;font-weight:600;font-size:.68rem;}
-  .chips{margin-top:14px;} .chips li{font-size:.68rem;letter-spacing:.08em;font-weight:500;padding:4px 11px;}
-  .metrics{padding-top:14px;margin-top:16px;gap:30px;} .metrics b{font-weight:500;font-size:2.3rem;} .metrics span{font-size:.68rem;letter-spacing:.08em;font-weight:500;}
-  .stack li{padding:13px 0;} .stack b{font-weight:500;font-size:1.15rem;} .stack span{font-size:.7rem;letter-spacing:.08em;font-weight:500;}
-  .spec div{padding:11px 0;} .spec dt{font-size:.7rem;letter-spacing:.1em;font-weight:600;} .spec dd{font-weight:500;font-size:1rem;}
-  .about{gap:clamp(20px,4vw,48px);} .contact{gap:clamp(20px,4vw,40px);}
-  input,textarea{padding:11px 0;font-size:.98rem;color:var(--fg);} textarea{min-height:90px;} .contact h2{font-size:clamp(1.5rem,2.6vw,2.1rem);}
-  footer{margin-top:26px;padding-block:18px 28px;font-size:.7rem;letter-spacing:.12em;font-weight:500;}
+  html,body{overflow-x:clip;} body{padding-bottom:110px;}
+  .page{padding-top:18px;}
+  .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;} .top .brand{font-family:var(--disp);font-weight:800;font-size:1.15rem;} .top .brand i{width:30px;height:30px;border-radius:10px;background:var(--ink);color:var(--butter);display:flex;align-items:center;justify-content:center;font-style:normal;font-size:.78rem;} .top span{font-size:.85rem;color:var(--mute);}
+  .bento{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px;}
+  .tile{border-radius:32px;padding:clamp(22px,3vw,36px);position:relative;overflow:hidden;min-width:0;transition:transform .3s cubic-bezier(.2,.8,.2,1);} .tile:hover{transform:translateY(-4px) scale(1.005);}
+  .hero{grid-column:1/9;grid-row:1;background:var(--ink);color:#fff;display:flex;flex-direction:column;justify-content:space-between;gap:20px;min-height:440px;}
+  .hero h1{font-family:var(--disp);font-weight:800;font-size:clamp(2rem,4.2vw,3.7rem);line-height:1.04;letter-spacing:-.035em;margin:12px 0 0;max-width:15ch;text-wrap:balance;} .hero h1 em{font-style:normal;color:#bcd5ff;}
+  .hero .sub{margin-top:18px;max-width:44ch;color:#c9cbc4;font-size:1.02rem;}
+  .tag{display:inline-flex;gap:8px;align-items:center;font-size:.78rem;font-weight:600;color:#c9cbc4;} .tag::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--mint);} @keyframes pg{70%{box-shadow:0 0 0 9px rgba(189,240,214,0);}100%{box-shadow:0 0 0 0 rgba(189,240,214,0);}}
+  .hero .btn,.btnx{font-family:var(--body);font-weight:700;font-size:.95rem;padding:14px 24px;border-radius:100px;text-decoration:none;display:inline-flex;gap:8px;border:2px solid #fff;color:#fff;background:transparent;cursor:pointer;transition:transform .2s,background .2s,color .2s;} .hero .btn:hover{background:#fff;color:var(--ink);transform:translateY(-2px);}
+  .hero .btn-p{background:#fff;border-color:#fff;color:var(--ink);} .hero .btn-p:hover{background:#fff;border-color:#fff;}
+  .hero .rt{position:absolute;right:-20px;bottom:-10px;width:min(60%,420px);opacity:.95;pointer-events:none;} .hero .rt svg{display:block;width:100%;height:auto;overflow:visible;}
+  .actions{margin-top:24px;position:relative;z-index:2;} .hero .txt{position:relative;z-index:2;}
+  .loc{grid-column:9/13;background:var(--sky);display:flex;flex-direction:column;justify-content:space-between;min-height:250px;}
+  .loc b{font-family:var(--disp);font-size:clamp(1.5rem,2.4vw,2.1rem);line-height:1.05;letter-spacing:-.03em;display:block;} .loc small{font-size:.8rem;font-weight:600;color:#2a4a66;letter-spacing:.06em;text-transform:uppercase;}
+  .radar{position:absolute;right:-30px;bottom:-30px;width:190px;aspect-ratio:1;} .radar i{position:absolute;inset:0;border-radius:50%;border:2px solid rgba(18,18,18,.35);animation:rd 3.6s ease-out infinite;} .radar i:nth-child(2){animation-delay:1.2s;} .radar i:nth-child(3){animation-delay:2.4s;} .radar::after{content:"";position:absolute;left:50%;top:50%;width:16px;height:16px;margin:-8px;border-radius:50%;background:var(--ink);}
+  @keyframes rd{from{transform:scale(.15);opacity:1;}to{transform:scale(1);opacity:0;}}
+  .inv{grid-column:9/13;grid-row:1;background:var(--sky);display:flex;flex-direction:column;justify-content:space-between;gap:18px;text-decoration:none;color:var(--ink);min-height:240px;}
+  .inv b{font-family:var(--disp);font-weight:800;font-size:clamp(1.3rem,2vw,1.7rem);line-height:1.12;letter-spacing:-.03em;} .inv .go{align-self:flex-end;width:64px;height:64px;border-radius:50%;background:var(--ink);color:var(--sky);display:flex;align-items:center;justify-content:center;font-size:1.6rem;transition:transform .3s;} .inv:hover .go{transform:rotate(-45deg) scale(1.08);}
+  .s{grid-column:span 4;min-height:300px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;} .s1,.s2,.s3{background:#fff;}
+  .s .ic{width:64px;height:64px;} .s h3{font-family:var(--disp);font-weight:800;font-size:1.45rem;line-height:1.1;letter-spacing:-.025em;margin:0 0 10px;} .s p{color:#2f302b;font-size:.97rem;}
+  .head{font-size:.76rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-bottom:10px;} .tile h2{font-family:var(--disp);font-weight:800;font-size:clamp(1.5rem,2.6vw,2.2rem);line-height:1.08;letter-spacing:-.03em;margin:0;text-wrap:balance;} .tile .lead{margin-top:10px;color:var(--mute);max-width:52ch;}
+  .proc{grid-column:1/9;background:#fff;} .stk{grid-column:9/13;background:var(--ink);color:#fff;} .stk .head{color:#a9aba3;} .stk .lead{color:#a9aba3;}
+  .steps2{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:26px;position:relative;} .steps2::before{content:"";position:absolute;left:5%;right:5%;top:22px;border-top:2px dashed var(--line2);} .st{position:relative;}
+  .st .n{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:800;font-size:.95rem;position:relative;z-index:1;} .st .n{background:var(--grey);}
+  .st h3{font-family:var(--disp);font-weight:800;font-size:1.08rem;margin:14px 0 6px;} .st p{font-size:.9rem;color:var(--mute);}
+  .chips2{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;} .chips2 li{padding:9px 14px;border-radius:100px;font-size:.84rem;font-weight:600;} .chips2 li{border:1px solid rgba(255,255,255,.28);color:#fff;} .chips2 span{display:block;font-size:.68rem;font-weight:500;opacity:.7;}
+  .about2{grid-column:1/8;background:#fff;} .about2 p{margin-top:14px;color:#2f3d4a;max-width:60ch;} .spec2{grid-column:8/13;background:var(--grey);padding-block:14px;} .spec2 div{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);font-size:.92rem;} .spec2 div:last-child{border-bottom:0;} .spec2 dt{color:var(--mute);} .spec2 dd{margin:0;font-weight:700;text-align:right;}
+  .cont{grid-column:1/-1;background:var(--sky);display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(20px,4vw,56px);align-items:center;}
+  .cont form{display:flex;flex-direction:column;gap:12px;} .cont .row{display:flex;gap:12px;flex-wrap:wrap;} .cont .row input{flex:1 1 170px;min-width:0;}
+  .cont input,.cont textarea{width:100%;background:#fff;border:2px solid transparent;border-radius:18px;padding:15px 18px;font-family:var(--body);font-size:1rem;color:var(--ink);} .cont textarea{resize:vertical;min-height:110px;} .cont input:focus,.cont textarea:focus{outline:none;border-color:var(--ink);}
+  .cont .btnx{background:var(--ink);border-color:var(--ink);color:#fff;justify-content:center;} .cont .btnx:hover{background:#fff;color:var(--ink);} #note{font-size:.84rem;font-weight:600;min-height:1.2em;}
+  .dock{position:fixed;left:50%;bottom:calc(14px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:30;display:flex;gap:4px;padding:7px;border-radius:100px;background:rgba(18,18,18,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 18px 40px -14px rgba(0,0,0,.6);max-width:calc(100vw - 24px);overflow-x:auto;}
+  .dock a{color:#e9eae4;text-decoration:none;font-size:.86rem;font-weight:600;padding:10px 16px;border-radius:100px;white-space:nowrap;transition:background .2s,transform .2s;} .dock a:hover{background:rgba(255,255,255,.14);transform:translateY(-2px);} a.p{background:var(--sky);color:var(--ink);}
+  footer{margin-top:28px;border-top:0;} .rv2{transform:translateY(16px);transition:transform .7s cubic-bezier(.19,1,.22,1);} .rv2.in{transform:none;}
+  @media (max-width:900px){.bento{grid-template-columns:1fr;} .tile{grid-column:1/-1!important;grid-row:auto!important;} .hero{min-height:0;} .hero .rt{position:relative;right:auto;bottom:auto;width:100%;margin-top:6px;} .s{min-height:0;} .steps2{grid-template-columns:1fr 1fr;} .steps2::before{display:none;} .cont{grid-template-columns:1fr;}}
+  @media (max-width:520px){.steps2{grid-template-columns:1fr;} .top span{display:none;}}
+  @media (prefers-reduced-motion:reduce){.tag::before,.radar i{animation:none;} .tile:hover{transform:none;}}
 .rv{transform:translateY(18px);transition:transform .7s cubic-bezier(.19,1,.22,1);} .rv.in{transform:none;} @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;} .rv{transform:none;transition:none;}}
 </style>
 </head>
 <body>
 
 <div class="page">
-<nav class="nav"><div class="brand"><i>PG</i>AI Solutions</div><div class="links"><a href="#services">Services</a><a href="#process">Process</a><a href="#stack">Stack</a><a href="#about">About</a><a class="go btn btn-p" href="#contact">Start a project</a></div></nav>
-<header class="hero"><div><div class="issue">Nº 01 — Patras, Greece · Web &amp; AI studio</div><h1>We build software the way a good route gets planned — <em>precisely, efficiently, built to last.</em></h1><p class="sub">PG AI Solutions designs and builds websites, internal tools, and optimization-driven applications for businesses and independent professionals who want software that actually fits how they work.</p><div class="actions"><a class="btn btn-p" href="#contact">Start a project →</a><a class="btn" href="#services">See what we do</a></div></div><div class="arch" aria-hidden="true"><div class="win"><div class="moon"></div>
-<svg viewBox="0 0 420 240"><path class="rt" d="M40,200 C90,90 130,230 175,130 C210,60 260,170 300,100 C325,60 355,80 385,40" fill="none" stroke="#e7b8a6" stroke-width="2.2" stroke-linecap="round"/><g fill="none" stroke="#e7b8a6" stroke-width="1.6"><circle cx="40" cy="200" r="7"/><circle cx="175" cy="130" r="6"/><circle cx="300" cy="100" r="6"/><circle cx="385" cy="40" r="7"/></g><circle r="5" fill="#fff2ee"><animateMotion dur="7s" repeatCount="indefinite" path="M40,200 C90,90 130,230 175,130 C210,60 260,170 300,100 C325,60 355,80 385,40"/></circle></svg></div>
-<svg class="seal" viewBox="0 0 120 120"><circle cx="60" cy="60" r="58" fill="#f6f1f0" stroke="#4a1020" stroke-width=".8"/><circle cx="60" cy="60" r="36" fill="none" stroke="#4a1020" stroke-width=".6"/><defs><path id="cp" d="M60,60 m-47,0 a47,47 0 1,1 94,0 a47,47 0 1,1 -94,0"/></defs><g class="spin"><text><textPath href="#cp">PG AI Solutions · Patras · Greece · </textPath></text></g><text x="60" y="68" text-anchor="middle" style="font-family:'Bodoni Moda',serif;font-style:italic;font-size:24px;letter-spacing:0;text-transform:none">PG</text></svg></div></header>
-
-<main>
-<section id="services" class="sec"><header class="sh"><p class="eyebrow">What we do</p><h2>Three ways we turn a hard problem into working software.</h2><p class="lead">Every engagement starts the same way — understanding the real constraints — then goes wherever the problem needs.</p></header>
-<div class="svc"><article class="item"><h3>Web Design &amp; Development</h3><p>Custom, fast, responsive sites — built from scratch in HTML/CSS/JS or React, not templates. From a single-page business site to a full web app.</p></article><article class="item"><h3>Dashboards &amp; Internal Tools</h3><p>Analytics dashboards and progressive web apps shaped around how a business actually runs — real data, live sync, and permissions built in from day one.</p></article><article class="item"><h3>AI &amp; Optimization Systems</h3><p>Route and schedule optimization, decision engines, and ML-backed tools built on rigorous mathematics — not just an API call to a model.</p></article></div></section>
-
-<section id="process" class="sec"><header class="sh"><p class="eyebrow">How we work</p><h2>A process built like an optimization loop.</h2><p class="lead">Each stage feeds the next, and every stage is checked against the real problem before we move on.</p></header>
-<ol class="steps"><li><span class="n">01</span><h3>Discover</h3><p>Map the users, constraints, data, and the actual goal — before any design or code.</p></li><li><span class="n">02</span><h3>Architect</h3><p>Design the data model, algorithm, and interface together, so the build doesn't fight itself later.</p></li><li><span class="n">03</span><h3>Build</h3><p>Ship in focused iterations, testing against real scenarios — not just happy paths — at every step.</p></li><li><span class="n">04</span><h3>Launch &amp; Tune</h3><p>Deploy, monitor real usage, and refine — software should keep improving after it ships.</p></li></ol></section>
-
-<section id="stack" class="sec"><header class="sh"><p class="eyebrow">Tools of the trade</p><h2>Built on a stack we actually ship with.</h2><p class="lead">No stack for the sake of a buzzword.</p></header>
-<ul class="stack"><li><b>React</b><span>Application interfaces</span></li><li><b>Supabase</b><span>Backend &amp; data</span></li><li><b>Python</b><span>Optimization &amp; data science</span></li><li><b>JS / HTML / CSS</b><span>Core web platform</span></li><li><b>ALNS · Simulated Annealing</b><span>Optimization algorithms</span></li><li><b>Netlify · GitHub Pages</b><span>Deployment</span></li></ul></section>
-
-<section id="about" class="sec"><div class="about"><div class="txt"><p class="eyebrow">About the studio</p><h2>Software built to be understood, not just to work.</h2>
-<p>PG AI Solutions is a small studio founded by Panagiotis, based in Patras, Greece. It runs on a simple idea: problems get modeled and understood properly before a single line of code gets written, and optimization work is held to the same rigor as any serious engineering — not shortcuts dressed up as "AI."</p>
-<p>The studio takes on web design and development, internal tools and dashboards, and optimization or data-driven systems — for local businesses and independent professionals who want software built around how they actually work, not the other way around.</p></div>
-<dl class="spec"><div><dt>Based in</dt><dd>Patras, Greece</dd></div><div><dt>Focus</dt><dd>Web development &amp; applied optimization</dd></div><div><dt>Focus areas</dt><dd>Web · Dashboards · Optimization</dd></div><div><dt>Works with</dt><dd>Local &amp; remote clients</dd></div><div><dt>Approach</dt><dd>Model first, then build</dd></div></dl></div></section>
-
-<section id="contact" class="sec"><div class="contact"><div><p class="eyebrow">Let's build something</p><h2>Have a website or tool that needs building — or rebuilding?</h2><p class="lead">Tell us the problem, not just the feature list. We'll figure out the right way to solve it — and build it properly the first time.</p></div>
-<form id="cf" action="https://formsubmit.co/pangeo57@yahoo.gr" method="POST"><input type="hidden" name="_subject" value="New inquiry — PG AI Solutions website"><input type="hidden" name="_template" value="table"><input type="hidden" name="_captcha" value="false"><input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true"><div class="row"><input id="f-name" type="text" name="Name" placeholder="Your name" required aria-label="Your name"><input id="f-mail" type="email" name="Email" placeholder="Your email" required aria-label="Your email"></div>
-<textarea id="f-msg" name="Message" placeholder="Tell us about your project..." rows="5" required aria-label="Your message"></textarea>
-<button type="submit" class="btn btn-p">Send message</button><div id="note" role="status"></div></form></div></section>
+<div class="top"><div class="brand"><i>PG</i>PG AI Solutions</div><span>Patras, Greece</span></div>
+<main class="bento">
+<section class="tile hero"><div class="txt"><span class="tag">Web &amp; AI studio</span><h1>We build software the way a good route gets planned — <em>precisely, efficiently, built to last.</em></h1><p class="sub">PG AI Solutions designs and builds websites, internal tools, and optimization-driven applications for businesses and independent professionals who want software that actually fits how they work.</p><div class="actions"><a class="btn btn-p" href="#contact">Start a project →</a> <a class="btn" href="#services">See what we do</a></div></div><div class="rt" aria-hidden="true"><svg viewBox="0 0 420 240"><path d="M40,200 C90,90 130,230 175,130 C210,60 260,170 300,100 C325,60 355,80 385,40" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-dasharray="2 11"><animate attributeName="stroke-dashoffset" from="0" to="-130" dur="5s" repeatCount="indefinite"/></path><circle cx="40" cy="200" r="9" fill="#fff"/><circle cx="385" cy="40" r="9" fill="#fff"/></svg></div></section>
+<a class="tile inv" href="#contact"><b>Tell us the problem, not just the feature list.</b><span class="go" aria-hidden="true">→</span></a>
+<section class="tile s s1" id="services"><div class="ic-wrap"><svg class="ic" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#121212"/><path d="M16 24h32M16 32h32M16 40h20" stroke="#d6e6ff" stroke-width="4" stroke-linecap="round"/></svg></div><div><h3>Web Design &amp; Development</h3><p>Custom, fast, responsive sites — built from scratch in HTML/CSS/JS or React, not templates. From a single-page business site to a full web app.</p></div></section>
+<section class="tile s s2"><div><svg class="ic" viewBox="0 0 64 64" aria-hidden="true"><rect x="2" y="2" width="60" height="60" rx="22" fill="#121212"/><path d="M18 46V30M30 46V18M42 46V26" stroke="#d6e6ff" stroke-width="6" stroke-linecap="round"/></svg></div><div><h3>Dashboards &amp; Internal Tools</h3><p>Analytics dashboards and progressive web apps shaped around how a business actually runs — real data, live sync, and permissions built in from day one.</p></div></section>
+<section class="tile s s3"><div><svg class="ic" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 3 L61 58 H3Z" fill="#121212" stroke="#121212" stroke-width="6" stroke-linejoin="round"/><circle cx="32" cy="40" r="5" fill="#d6e6ff"/><circle cx="22" cy="50" r="3.5" fill="#d6e6ff"/><circle cx="42" cy="50" r="3.5" fill="#d6e6ff"/><path d="M32 40 L22 50 M32 40 L42 50" stroke="#d6e6ff" stroke-width="2"/></svg></div><div><h3>AI &amp; Optimization Systems</h3><p>Route and schedule optimization, decision engines, and ML-backed tools built on rigorous mathematics — not just an API call to a model.</p></div></section>
+<section class="tile proc" id="process"><div class="head">How we work</div><h2>A process built like an optimization loop.</h2><p class="lead">Each stage feeds the next, and every stage is checked against the real problem before we move on.</p>
+<div class="steps2"><div class="st"><div class="n">1</div><h3>Discover</h3><p>Map the users, constraints, data, and the actual goal — before any design or code.</p></div><div class="st"><div class="n">2</div><h3>Architect</h3><p>Design the data model, algorithm, and interface together, so the build doesn't fight itself later.</p></div><div class="st"><div class="n">3</div><h3>Build</h3><p>Ship in focused iterations, testing against real scenarios — not just happy paths — at every step.</p></div><div class="st"><div class="n">4</div><h3>Launch &amp; Tune</h3><p>Deploy, monitor real usage, and refine — software should keep improving after it ships.</p></div></div></section>
+<section class="tile stk" id="stack"><div class="head">Tools of the trade</div><h2>Built on a stack we actually ship with.</h2><p class="lead">No stack for the sake of a buzzword.</p>
+<ul class="chips2" style="list-style:none;margin:20px 0 0;padding:0"><li>React<span>Application interfaces</span></li><li>Supabase<span>Backend &amp; data</span></li><li>Python<span>Optimization &amp; data science</span></li><li>JS / HTML / CSS<span>Core web platform</span></li><li>ALNS · Simulated Annealing<span>Optimization algorithms</span></li><li>Netlify · GitHub Pages<span>Deployment</span></li></ul></section>
+<section class="tile about2" id="about"><div class="head">About the studio</div><h2>Software built to be understood, not just to work.</h2><p>PG AI Solutions is a small studio founded by Panagiotis, based in Patras, Greece. It runs on a simple idea: problems get modeled and understood properly before a single line of code gets written, and optimization work is held to the same rigor as any serious engineering — not shortcuts dressed up as "AI."</p><p>The studio takes on web design and development, internal tools and dashboards, and optimization or data-driven systems — for local businesses and independent professionals who want software built around how they actually work, not the other way around.</p></section>
+<dl class="tile spec2" style="margin:0"><div><dt>Based in</dt><dd>Patras, Greece</dd></div><div><dt>Focus</dt><dd>Web development &amp; applied optimization</dd></div><div><dt>Focus areas</dt><dd>Web · Dashboards · Optimization</dd></div><div><dt>Works with</dt><dd>Local &amp; remote clients</dd></div><div><dt>Approach</dt><dd>Model first, then build</dd></div></dl>
+<section class="tile cont" id="contact"><div><div class="head" style="color:#5a4a10">Let's build something</div><h2>Have a website or tool that needs building — or rebuilding?</h2><p class="lead" style="color:#4a4012">Tell us the problem, not just the feature list. We'll figure out the right way to solve it — and build it properly the first time.</p></div>
+<form id="cf" action="https://formsubmit.co/pangeo57@yahoo.gr" method="POST"><input type="hidden" name="_subject" value="New inquiry — PG AI Solutions website"><input type="hidden" name="_template" value="table"><input type="hidden" name="_captcha" value="false"><input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true"><div class="row"><input id="f-name" type="text" name="Name" placeholder="Your name" required aria-label="Your name"><input id="f-mail" type="email" name="Email" placeholder="Your email" required aria-label="Your email"></div><textarea id="f-msg" name="Message" placeholder="Tell us about your project..." rows="5" required aria-label="Your message"></textarea><button type="submit" class="btnx">Send message</button><div id="note" role="status"></div></form></section>
 </main>
+<nav class="dock" aria-label="Sections"><a href="#services">Services</a><a href="#process">Process</a><a href="#stack">Stack</a><a href="#about">About</a><a class="p" href="#contact">Start a project</a></nav>
 <footer><div>PG AI Solutions · Patras, Greece</div><div><a href="#services">Services</a><a href="#about">About</a><a href="#contact">Contact</a></div></footer>
 </div>
 <script>
-(function(){var w=document.querySelector('.win');if(w&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){window.addEventListener('pointermove',function(e){var x=(e.clientX/window.innerWidth-.5)*14,y=(e.clientY/window.innerHeight-.5)*10;w.style.setProperty('--px',x+'px');w.style.setProperty('--py',y+'px');},{passive:true});}
-var R=['I','II','III','IV'];document.querySelectorAll('.steps .n').forEach(function(n,i){n.textContent=R[i]||n.textContent;});})();
+(function(){var t=document.querySelectorAll('.tile'),r=window.matchMedia('(prefers-reduced-motion: reduce)').matches;t.forEach(function(e,i){e.classList.add('rv2');e.style.transitionDelay=(i%4)*60+'ms';});
+if('IntersectionObserver' in window&&!r){var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.08});t.forEach(function(e){io.observe(e);});}else t.forEach(function(e){e.classList.add('in');});})();
 
 (function(){
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
