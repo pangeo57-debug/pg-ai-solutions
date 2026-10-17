@@ -117,14 +117,27 @@
   @media (prefers-reduced-motion:reduce){.sw{animation:none;opacity:1;transform:none;filter:none;}}
   .top .brand{gap:10px;} .top .brand .mark{display:block;flex:none;} .top .bn{font-family:var(--disp);font-weight:800;letter-spacing:-.02em;font-size:1.15rem;color:var(--ink);} .top .bn b{font-family:var(--body);font-weight:500;letter-spacing:0;font-size:.95rem;margin-left:2px;}
   @media (prefers-reduced-motion:reduce){.mk-dot{display:none;}}
+
+  /* Motion pass, following Emil Kowalski's animation principles: animate only what earns it, strong ease-out curves, short durations, press feedback, hover gated to real hover devices. */
+  :root{--ease-out:cubic-bezier(.23,1,.32,1);--ease-in-out:cubic-bezier(.77,0,.175,1);}
+  .tile,.tile:hover{transition:none;transform:none;} .tile::after{transition:opacity .2s ease-out;}
+  .btn,.btnx,.dock a,.links a{transition:background-color .16s ease,color .16s ease,border-color .16s ease,transform .16s var(--ease-out),box-shadow .16s ease;}
+  .btn:active,.btnx:active{transform:scale(.97);} .dock a:hover,.dock a:active{transform:none;} .dock a:active{transform:scale(.96);}
+  .inv .go{transition:transform .22s var(--ease-out);}
+  .stack li{transition:border-color .16s ease;} .stack li:hover{transform:none;}
+  .rv2,.rv{transform:translateY(12px);transition:transform .45s var(--ease-out);} .rv2.in,.rv.in{transform:none;}
+  .sw{animation:swin .6s var(--ease-out) forwards;animation-delay:calc(var(--i) * 40ms);filter:blur(4px);}
+  .btn:focus-visible,.btnx:focus-visible,.links a:focus-visible,.inv:focus-visible,.dock a:focus-visible{outline:2px solid #121212;outline-offset:3px;} .hero .btn:focus-visible,.dock a:focus-visible{outline-color:#d6e6ff;}
+  @media (hover:none){.btn:hover,.btnx:hover,.inv:hover .go{transform:none;}}
+  @media (prefers-reduced-motion:reduce){.rv2,.rv{transform:none;transition:none;} .btn:active,.btnx:active{transform:none;}}
 </style>
 </head>
 <body>
 
 <div class="page">
-<div class="top"><div class="brand"><svg class="mark" viewBox="0 0 80 80" width="34" height="34" aria-hidden="true"><rect x="2" y="2" width="76" height="76" rx="22" fill="#121212"/><path id="mk" d="M18 60 C26 26 40 68 50 40 S60 24 64 18" fill="none" stroke="#d6e6ff" stroke-width="6" stroke-linecap="round"/><circle cx="18" cy="60" r="5" fill="#fff"/><circle cx="64" cy="18" r="6" fill="#d6e6ff"/><circle class="mk-dot" r="3.5" fill="#fff"><animateMotion dur="3.2s" repeatCount="indefinite" path="M18 60 C26 26 40 68 50 40 S60 24 64 18"/></circle></svg><span class="bn">PG AI <b>Solutions</b></span></div><span>Patras, Greece</span></div>
+<div class="top"><div class="brand"><svg class="mark" viewBox="0 0 80 80" width="34" height="34" aria-hidden="true"><rect x="2" y="2" width="76" height="76" rx="22" fill="#121212"/><path id="mk" d="M18 60 C26 26 40 68 50 40 S60 24 64 18" fill="none" stroke="#d6e6ff" stroke-width="6" stroke-linecap="round"/><circle cx="18" cy="60" r="5" fill="#fff"/><circle cx="64" cy="18" r="6" fill="#d6e6ff"/><circle class="mk-dot" r="3.5" fill="#fff"><animateMotion id="mkm" dur="1.8s" begin="0.8s" repeatCount="1" fill="freeze" calcMode="spline" keyTimes="0;1" keySplines=".77 0 .175 1" path="M18 60 C26 26 40 68 50 40 S60 24 64 18"/></circle></svg><span class="bn">PG AI <b>Solutions</b></span></div><span>Patras, Greece</span></div>
 <main class="bento">
-<section class="tile hero"><div class="txt"><span class="tag">Web &amp; AI studio</span><h1>We build software the way a good route gets planned — <em>precisely, efficiently, built to last.</em></h1><p class="sub">PG AI Solutions designs and builds websites, internal tools, and optimization-driven applications for businesses and independent professionals who want software that actually fits how they work.</p><div class="actions"><a class="btn btn-p" href="#contact">Start a project →</a> <a class="btn" href="#services">See what we do</a></div></div><div class="rt" aria-hidden="true"><svg viewBox="0 0 420 240"><path d="M40,200 C90,90 130,230 175,130 C210,60 260,170 300,100 C325,60 355,80 385,40" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-dasharray="2 11"><animate attributeName="stroke-dashoffset" from="0" to="-130" dur="5s" repeatCount="indefinite"/></path><circle cx="40" cy="200" r="9" fill="#fff"/><circle cx="385" cy="40" r="9" fill="#fff"/></svg></div></section>
+<section class="tile hero"><div class="txt"><span class="tag">Web &amp; AI studio</span><h1>We build software the way a good route gets planned — <em>precisely, efficiently, built to last.</em></h1><p class="sub">PG AI Solutions designs and builds websites, internal tools, and optimization-driven applications for businesses and independent professionals who want software that actually fits how they work.</p><div class="actions"><a class="btn btn-p" href="#contact">Start a project →</a> <a class="btn" href="#services">See what we do</a></div></div><div class="rt" aria-hidden="true"><svg viewBox="0 0 420 240"><path d="M40,200 C90,90 130,230 175,130 C210,60 260,170 300,100 C325,60 355,80 385,40" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-dasharray="2 11"><animate attributeName="stroke-dashoffset" from="-130" to="0" dur="1.6s" begin="0.4s" repeatCount="1" fill="freeze" calcMode="spline" keyTimes="0;1" keySplines=".23 1 .32 1"/></path><circle cx="40" cy="200" r="9" fill="#fff"/><circle cx="385" cy="40" r="9" fill="#fff"/></svg></div></section>
 <a class="tile inv" href="#contact"><b>Tell us the problem, not just the feature list.</b><span class="go" aria-hidden="true">→</span></a>
 <section class="tile s s1" id="services"><div class="ic-wrap"><svg class="ic" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#121212"/><path d="M16 24h32M16 32h32M16 40h20" stroke="#d6e6ff" stroke-width="4" stroke-linecap="round"/></svg></div><div><h3>Web Design &amp; Development</h3><p>Custom, fast, responsive sites — built from scratch in HTML/CSS/JS or React, not templates. From a single-page business site to a full web app.</p></div></section>
 <section class="tile s s2"><div><svg class="ic" viewBox="0 0 64 64" aria-hidden="true"><rect x="2" y="2" width="60" height="60" rx="22" fill="#121212"/><path d="M18 46V30M30 46V18M42 46V26" stroke="#d6e6ff" stroke-width="6" stroke-linecap="round"/></svg></div><div><h3>Dashboards &amp; Internal Tools</h3><p>Analytics dashboards and progressive web apps shaped around how a business actually runs — real data, live sync, and permissions built in from day one.</p></div></section>
@@ -180,5 +193,13 @@ if('IntersectionObserver' in window&&!r){var io=new IntersectionObserver(functio
 })();
 </script>
 
+<script>
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce){document.querySelectorAll('svg animate,svg animateMotion').forEach(function(e){e.remove();});return;}
+  var b=document.querySelector('.top .brand'),m=document.getElementById('mkm');
+  if(b&&m&&m.beginElement)b.addEventListener('pointerenter',function(){try{m.beginElement();}catch(e){}});
+})();
+</script>
 </body>
 </html>
