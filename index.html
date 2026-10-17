@@ -172,6 +172,17 @@
   @media (max-width:520px){.dock a{padding:10px 12px;font-size:.82rem;} .dock a[href="#stack"]{display:none;} .dock{max-width:calc(100vw - 20px);}}
   @media (max-width:360px){.dock a{padding:10px 9px;font-size:.78rem;}}
   @media (max-width:900px){.steps2::after{display:none;}}
+
+  /* Two audiences: clients and collaborators */
+  .invs{grid-column:9/13;grid-row:1;display:flex;flex-direction:column;gap:16px;min-width:0;}
+  .invs .inv{grid-column:auto;grid-row:auto;flex:1;min-height:0;} .inv small{display:block;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.7;margin-bottom:8px;}
+  .inv-b{background:#e9e9e5;} .inv-b .go{background:#121212;color:#e9e9e5;}
+  .inv b{display:block;} .inv .go{flex:none;}
+  .who{border:0;margin:0;padding:0;display:flex;gap:8px;flex-wrap:wrap;} .who label{cursor:pointer;} .who input{position:absolute;opacity:0;width:1px;height:1px;}
+  .who span{display:inline-block;padding:9px 16px;border-radius:100px;border:2px solid transparent;background:#fff;font-size:.88rem;font-weight:600;transition:background-color .16s ease,color .16s ease,transform .16s var(--ease-out);} .who input:checked+span{background:#121212;color:#fff;} .who input:focus-visible+span{outline:2px solid #121212;outline-offset:3px;} .who label:active span{transform:scale(.97);}
+  .swp{transition:opacity .16s var(--ease-out),transform .16s var(--ease-out);} .swp.out{opacity:0;transform:translateY(6px);}
+  @media (max-width:900px){.invs{grid-column:1/-1!important;grid-row:auto!important;} .invs .inv{min-height:180px;}}
+  @media (prefers-reduced-motion:reduce){.swp,.who span{transition:none;} .swp.out{transform:none;}}
 </style>
 </head>
 <body>
@@ -180,7 +191,7 @@
 <div class="top"><div class="brand"><svg class="mark" viewBox="0 0 80 80" width="34" height="34" aria-hidden="true"><rect x="2" y="2" width="76" height="76" rx="22" fill="#121212"/><path id="mk" d="M18 60 C26 26 40 68 50 40 S60 24 64 18" fill="none" stroke="#d6e6ff" stroke-width="6" stroke-linecap="round"/><circle cx="18" cy="60" r="5" fill="#fff"/><circle cx="64" cy="18" r="6" fill="#d6e6ff"/><circle class="mk-dot" r="3.5" fill="#fff"><animateMotion id="mkm" dur="1.8s" begin="0.8s" repeatCount="1" fill="freeze" calcMode="spline" keyTimes="0;1" keySplines=".77 0 .175 1" path="M18 60 C26 26 40 68 50 40 S60 24 64 18"/></circle></svg><span class="bn">PG AI <b>Solutions</b></span></div><span>Patras, Greece</span></div>
 <main class="bento">
 <section class="tile hero"><div class="txt"><span class="tag">Web &amp; AI studio</span><h1>We build software the way a good route gets planned — <em>precisely, efficiently, built to last.</em></h1><p class="sub">PG AI Solutions designs and builds websites, internal tools, and optimization-driven applications for businesses and independent professionals who want software that actually fits how they work.</p><div class="actions"><a class="btn btn-p" href="#contact">Start a project →</a> <a class="btn" href="#services">See what we do</a></div></div><div class="rt"><div class="meter"><span class="km"><b id="km">26.2</b> km</span><span class="gain" id="gain">−48%</span><button type="button" class="again" id="again">↻ Re-optimize</button></div><svg viewBox="0 0 420 240" aria-hidden="true"><path id="route" d="M40 200 L105 120 L170 175 L250 90 L315 150 L385 40" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 11"/><circle cx="40" cy="200" r="9" fill="#fff"/><circle cx="105" cy="120" r="7" fill="#fff"/><circle cx="170" cy="175" r="7" fill="#fff"/><circle cx="250" cy="90" r="7" fill="#fff"/><circle cx="315" cy="150" r="7" fill="#fff"/><circle cx="385" cy="40" r="9" fill="#fff"/></svg></div></section>
-<a class="tile inv" href="#contact"><b>Tell us the problem, not just the feature list.</b><span class="go" aria-hidden="true">→</span></a>
+<div class="invs"><a class="tile inv inv-a" href="#contact" data-who="project"><small>For clients</small><b>Tell us the problem, not just the feature list.</b><span class="go" aria-hidden="true">→</span></a><a class="tile inv inv-b" href="#contact" data-who="collab"><small>For collaborators</small><b>Designer, developer or optimization specialist? Let's build together.</b><span class="go" aria-hidden="true">→</span></a></div>
 <section class="tile s s1" id="services"><div class="ic-wrap"><svg class="ic" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#121212"/><path d="M16 24h32M16 32h32M16 40h20" stroke="#d6e6ff" stroke-width="4" stroke-linecap="round"/></svg></div><div><h3>Web Design &amp; Development</h3><p>Custom, fast, responsive sites — built from scratch in HTML/CSS/JS or React, not templates. From a single-page business site to a full web app.</p></div></section>
 <section class="tile s s2"><div><svg class="ic" viewBox="0 0 64 64" aria-hidden="true"><rect x="2" y="2" width="60" height="60" rx="22" fill="#121212"/><path d="M18 46V30M30 46V18M42 46V26" stroke="#d6e6ff" stroke-width="6" stroke-linecap="round"/></svg></div><div><h3>Dashboards &amp; Internal Tools</h3><p>Analytics dashboards and progressive web apps shaped around how a business actually runs — real data, live sync, and permissions built in from day one.</p></div></section>
 <section class="tile s s3"><div><svg class="ic" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 3 L61 58 H3Z" fill="#121212" stroke="#121212" stroke-width="6" stroke-linejoin="round"/><circle cx="32" cy="40" r="5" fill="#d6e6ff"/><circle cx="22" cy="50" r="3.5" fill="#d6e6ff"/><circle cx="42" cy="50" r="3.5" fill="#d6e6ff"/><path d="M32 40 L22 50 M32 40 L42 50" stroke="#d6e6ff" stroke-width="2"/></svg></div><div><h3>AI &amp; Optimization Systems</h3><p>Route and schedule optimization, decision engines, and ML-backed tools built on rigorous mathematics — not just an API call to a model.</p></div></section>
@@ -190,8 +201,8 @@
 <ul class="chips2" style="list-style:none;margin:20px 0 0;padding:0"><li>React<span>Application interfaces</span></li><li>Supabase<span>Backend &amp; data</span></li><li>Python<span>Optimization &amp; data science</span></li><li>JS / HTML / CSS<span>Core web platform</span></li><li>ALNS · Simulated Annealing<span>Optimization algorithms</span></li><li>Netlify · GitHub Pages<span>Deployment</span></li></ul></section>
 <section class="tile about2" id="about"><div class="head">About the studio</div><h2>Software built to be understood, not just to work.</h2><p>PG AI Solutions is a small studio founded by Panagiotis, based in Patras, Greece. It runs on a simple idea: problems get modeled and understood properly before a single line of code gets written, and optimization work is held to the same rigor as any serious engineering — not shortcuts dressed up as "AI."</p><p>The studio takes on web design and development, internal tools and dashboards, and optimization or data-driven systems — for local businesses and independent professionals who want software built around how they actually work, not the other way around.</p></section>
 <dl class="tile spec2" style="margin:0"><div><dt>Based in</dt><dd>Patras, Greece</dd></div><div><dt>Focus</dt><dd>Web development &amp; applied optimization</dd></div><div><dt>Focus areas</dt><dd>Web · Dashboards · Optimization</dd></div><div><dt>Works with</dt><dd>Local &amp; remote clients</dd></div><div><dt>Approach</dt><dd>Model first, then build</dd></div></dl>
-<section class="tile cont" id="contact"><div><div class="head" style="color:#5a4a10">Let's build something</div><h2>Have a website or tool that needs building — or rebuilding?</h2><p class="lead" style="color:#4a4012">Tell us the problem, not just the feature list. We'll figure out the right way to solve it — and build it properly the first time.</p></div>
-<form id="cf" action="https://formsubmit.co/pangeo57@yahoo.gr" method="POST"><input type="hidden" name="_subject" value="New inquiry — PG AI Solutions website"><input type="hidden" name="_template" value="table"><input type="hidden" name="_captcha" value="false"><input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true"><div class="row"><input id="f-name" type="text" name="Name" placeholder="Your name" required aria-label="Your name"><input id="f-mail" type="email" name="Email" placeholder="Your email" required aria-label="Your email"></div><textarea id="f-msg" name="Message" placeholder="Tell us about your project..." rows="5" required aria-label="Your message"></textarea><button type="submit" class="btnx" id="send"><span class="lbl">Send message</span></button><div id="note" role="status"></div></form></section>
+<section class="tile cont" id="contact"><div><div class="head" style="color:#5a4a10">Let's build something</div><div class="swp" id="c-copy"><h2 id="c-h">Have a website or tool that needs building — or rebuilding?</h2><p class="lead" id="c-l" style="color:#4a4012">Tell us the problem, not just the feature list. We'll figure out the right way to solve it — and build it properly the first time.</p></div></div>
+<form id="cf" action="https://formsubmit.co/pangeo57@yahoo.gr" method="POST"><input type="hidden" id="subj" name="_subject" value="New inquiry — PG AI Solutions website"><fieldset class="who" aria-label="What brings you here"><label><input type="radio" name="Interest" value="Project" checked><span>I have a project</span></label><label><input type="radio" name="Interest" value="Collaboration"><span>I want to collaborate</span></label></fieldset><input type="hidden" name="_template" value="table"><input type="hidden" name="_captcha" value="false"><input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true"><div class="row"><input id="f-name" type="text" name="Name" placeholder="Your name" required aria-label="Your name"><input id="f-mail" type="email" name="Email" placeholder="Your email" required aria-label="Your email"></div><textarea id="f-msg" name="Message" placeholder="Tell us about your project..." rows="5" required aria-label="Your message"></textarea><button type="submit" class="btnx" id="send"><span class="lbl">Send message</span></button><div id="note" role="status"></div></form></section>
 </main>
 <nav class="dock" aria-label="Sections"><i class="ind" aria-hidden="true"></i><a href="#services">Services</a><a href="#process">Process</a><a href="#stack">Stack</a><a href="#about">About</a><a class="p" href="#contact">Start a project</a></nav>
 <footer><div>PG AI Solutions · Patras, Greece</div><div><a href="#services">Services</a><a href="#about">About</a><a href="#contact">Contact</a></div></footer>
@@ -279,9 +290,28 @@ if('IntersectionObserver' in window&&!r){var io=new IntersectionObserver(functio
     e.preventDefault();btn.disabled=true;label('Sending…');note.classList.remove('show');
     fetch('https://formsubmit.co/ajax/pangeo57@yahoo.gr',{method:'POST',headers:{'Accept':'application/json'},body:fd})
       .then(function(r){return r.json();})
-      .then(function(j){if(j&&(j.success===true||j.success==='true')){label('Sent ✓');btn.classList.add('done');say('Thank you. We will reply to your email soon.',true);form.reset();setTimeout(function(){btn.classList.remove('done');btn.disabled=false;label('Send message');},4000);}else{throw new Error('not sent');}})
+      .then(function(j){if(j&&(j.success===true||j.success==='true')){label('Sent ✓');btn.classList.add('done');say('Thank you. We will reply to your email soon.',true);['f-name','f-mail','f-msg'].forEach(function(id){document.getElementById(id).value='';});setTimeout(function(){btn.classList.remove('done');btn.disabled=false;label('Send message');},4000);}else{throw new Error('not sent');}})
       .catch(function(){btn.disabled=false;label('Send message');say('That did not go through. Please write to pangeo57@yahoo.gr.',false);});
   });}
+})();
+</script>
+<script>
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var COPY={
+    project:{h:'Have a website or tool that needs building — or rebuilding?',l:'Tell us the problem, not just the feature list. We\'ll figure out the right way to solve it — and build it properly the first time.',p:'Tell us about your project...',s:'New inquiry — PG AI Solutions website'},
+    collab:{h:'Want to build something with us?',l:'We work with designers, developers and optimization specialists. Tell us what you do and what you would like to build together.',p:'Tell us about yourself and what you would like to work on...',s:'Collaboration — PG AI Solutions website'}
+  };
+  var copy=document.getElementById('c-copy'),h=document.getElementById('c-h'),l=document.getElementById('c-l'),msg=document.getElementById('f-msg'),subj=document.getElementById('subj'),radios=document.querySelectorAll('.who input'),cur='project';
+  function apply(k){var c=COPY[k];h.textContent=c.h;l.textContent=c.l;msg.placeholder=c.p;subj.value=c.s;}
+  function setWho(k){
+    if(k===cur)return;cur=k;
+    radios.forEach(function(r){r.checked=(r.value==='Project')===(k==='project');});
+    if(reduce){apply(k);return;}
+    copy.classList.add('out');setTimeout(function(){apply(k);copy.classList.remove('out');},160);
+  }
+  radios.forEach(function(r){r.addEventListener('change',function(){setWho(r.value==='Project'?'project':'collab');});});
+  document.querySelectorAll('a[data-who]').forEach(function(a){a.addEventListener('click',function(){setWho(a.getAttribute('data-who'));});});
 })();
 </script>
 </body>
