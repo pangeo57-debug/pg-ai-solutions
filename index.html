@@ -107,6 +107,14 @@
   @media (max-width:520px){.steps2{grid-template-columns:1fr;} .top span{display:none;}}
   @media (prefers-reduced-motion:reduce){.tag::before,.radar i{animation:none;} .tile:hover{transform:none;}}
 .rv{transform:translateY(18px);transition:transform .7s cubic-bezier(.19,1,.22,1);} .rv.in{transform:none;} @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;} .rv{transform:none;transition:none;}}
+
+  /* smooth scroll (Lenis) and gentle effects inspired by open-source UI libraries */
+  html.lenis,html.lenis body{height:auto;} .lenis.lenis-smooth{scroll-behavior:auto!important;} .lenis.lenis-stopped{overflow:hidden;}
+  .sw{display:inline-block;opacity:.25;transform:translateY(10px);filter:blur(5px);animation:swin .8s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--i) * 55ms);}
+  @keyframes swin{to{opacity:1;transform:none;filter:none;}}
+  .tile::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .35s;background:radial-gradient(340px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.4),transparent 62%);border-radius:inherit;}
+  .tile:hover::after{opacity:1;} .hero::after,.stk::after{background:radial-gradient(340px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.08),transparent 62%);}
+  @media (prefers-reduced-motion:reduce){.sw{animation:none;opacity:1;transform:none;filter:none;}}
 </style>
 </head>
 <body>
@@ -131,6 +139,28 @@
 <nav class="dock" aria-label="Sections"><a href="#services">Services</a><a href="#process">Process</a><a href="#stack">Stack</a><a href="#about">About</a><a class="p" href="#contact">Start a project</a></nav>
 <footer><div>PG AI Solutions · Patras, Greece</div><div><a href="#services">Services</a><a href="#about">About</a><a href="#contact">Contact</a></div></footer>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+<script>
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches,lenis=null;
+  if(window.Lenis&&!reduce){
+    lenis=new Lenis({duration:1.1,smoothWheel:true});
+    (function raf(t){lenis.raf(t);requestAnimationFrame(raf);})(performance.now());
+    document.addEventListener('click',function(e){
+      var a=e.target.closest&&e.target.closest('a[href^="#"]');if(!a)return;
+      var id=a.getAttribute('href').slice(1),el=id&&document.getElementById(id);if(!el)return;
+      e.preventDefault();lenis.scrollTo(el,{offset:-24});
+    });
+  }
+  var h=document.querySelector('.hero h1');
+  if(h&&!reduce){var i=0;(function walk(n){Array.prototype.slice.call(n.childNodes).forEach(function(c){
+    if(c.nodeType===3){var parts=c.textContent.split(/(\s+)/),f=document.createDocumentFragment();
+      parts.forEach(function(p){if(!p)return;if(/^\s+$/.test(p)){f.appendChild(document.createTextNode(p));}else{var s=document.createElement('span');s.className='sw';s.style.setProperty('--i',i++);s.textContent=p;f.appendChild(s);}});
+      n.replaceChild(f,c);}
+    else if(c.nodeType===1)walk(c);});})(h);}
+  document.addEventListener('pointermove',function(e){var t=e.target.closest&&e.target.closest('.tile');if(!t)return;var b=t.getBoundingClientRect();t.style.setProperty('--mx',(e.clientX-b.left)+'px');t.style.setProperty('--my',(e.clientY-b.top)+'px');},{passive:true});
+})();
+</script>
 <script>
 (function(){var t=document.querySelectorAll('.tile'),r=window.matchMedia('(prefers-reduced-motion: reduce)').matches;t.forEach(function(e,i){e.classList.add('rv2');e.style.transitionDelay=(i%4)*60+'ms';});
 if('IntersectionObserver' in window&&!r){var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.08});t.forEach(function(e){io.observe(e);});}else t.forEach(function(e){e.classList.add('in');});})();
