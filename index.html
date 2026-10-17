@@ -130,6 +130,17 @@
   .btn:focus-visible,.btnx:focus-visible,.links a:focus-visible,.inv:focus-visible,.dock a:focus-visible{outline:2px solid #121212;outline-offset:3px;} .hero .btn:focus-visible,.dock a:focus-visible{outline-color:#d6e6ff;}
   @media (hover:none){.btn:hover,.btnx:hover,.inv:hover .go{transform:none;}}
   @media (prefers-reduced-motion:reduce){.rv2,.rv{transform:none;transition:none;} .btn:active,.btnx:active{transform:none;}}
+
+  /* Border beam, shimmer button and animated beam: re-implemented in plain CSS from ideas in Magic UI (https://github.com/magicuidesign/magicui, MIT, Copyright (c) Magic UI). */
+  @property --beam{syntax:'<angle>';initial-value:0deg;inherits:false;}
+  .cont::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:2px;pointer-events:none;background:conic-gradient(from var(--beam),transparent 0 72%,#121212 90%,#ffffff 100%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:beamrot 8s linear infinite;}
+  @keyframes beamrot{to{--beam:360deg;}}
+  .hero .btn-p{position:relative;overflow:hidden;} .hero .btn-p::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,transparent,rgba(18,18,18,.14),transparent);transform:skewX(-20deg);animation:sheen 5.5s var(--ease-in-out) infinite;}
+  @keyframes sheen{0%,60%{left:-60%;}100%{left:130%;}}
+  .steps2::after{content:"";position:absolute;left:5%;right:5%;top:21px;height:3px;border-radius:3px;pointer-events:none;background:linear-gradient(90deg,transparent 0 42%,#6f9bf0 50%,transparent 58% 100%);background-size:260% 100%;background-position:150% 0;opacity:0;}
+  .proc.in .steps2::after{animation:beamgo 2.4s var(--ease-out) .6s 1 forwards;}
+  @keyframes beamgo{0%{opacity:1;background-position:150% 0;}100%{opacity:1;background-position:-50% 0;}}
+  @media (prefers-reduced-motion:reduce){.cont::before,.hero .btn-p::after,.proc.in .steps2::after{animation:none;} .cont::before{opacity:0;}}
 </style>
 </head>
 <body>
