@@ -200,3 +200,23 @@ footer,footer a{color:var(--mute);} footer a:hover{color:var(--fg);}
 .sheet-in{background:#fff;color:var(--fg);} .sheet-x{background:#fff;color:var(--fg);} .sheet-bg{background:rgba(15,23,51,.45);}
 .sheet-cta a{color:var(--fg);} .sheet-cta a.p{background:#0f1733;border-color:#0f1733;color:#fff;}
 .sheet-dyn li::before,.sheet-txt li::before{background-color:#ecd28c;}
+/* slate + mint pass: soft graphite-blue, low contrast, muted mint accent */
+:root{--bg:#1e2632;--fg:#e9ece8;--mute:#a3adba;--dim:#7f8a98;--line:rgba(255,255,255,.08);--line2:rgba(255,255,255,.18);--panel:#273141;--amb:#8fd6c4;--amb2:#b4e6d9;color-scheme:dark;}
+body{background:var(--bg);color:var(--fg);}
+.nightbg{background:linear-gradient(180deg,#1f2834,#1b222d);} .nightbg i{opacity:.45;filter:hue-rotate(110deg) saturate(.6);} .nightbg::after{background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1.2px);}
+.s1,.s2,.s3,.proc,.about2,.pj,.spec2,.inv-b,.pj-feat{background:#273141;color:var(--fg);border:1px solid var(--line);box-shadow:none;}
+.pj-feat{border-color:rgba(143,214,196,.4);}
+.s .ic{background:#8fd6c4;} .st .n{background:#323d50;color:var(--fg);}
+.hero{background:linear-gradient(160deg,#2a3546,#222b39);} .hero h1 em{color:#8fd6c4;}
+.film-frame{background:radial-gradient(120% 90% at 72% 32%,#2e3a4f,#202836 70%);}
+.inv-a,.cont{background:linear-gradient(150deg,#a6dfd0,#86cbb9);color:#14202a;}
+.inv-a .go,.inv-b .go,.pj .more i{background:#14202a;color:#a6dfd0;} .inv-b .go{background:#8fd6c4;color:#14202a;}
+.hero .btn-p,a.p,.sheet-cta a.p,.pj-soon a{background:#8fd6c4;border-color:#8fd6c4;color:#14202a;}
+.pj-live{color:#8fd6c4;} .pj-live-b{background:rgba(143,214,196,.14);color:#a6dfd0;}
+.top .bn,.top .brand,.lang,.spec2 dd,.s .more,.pj .more{color:var(--fg);}
+.dock{background:rgba(26,33,44,.9);}
+.sheet-in{background:#273141;color:var(--fg);} .sheet-x{background:#273141;color:var(--fg);} .sheet-cta a{color:var(--fg);}
+.sheet-dyn li::before,.sheet-txt li::before{background-color:#8fd6c4;}
+.callus,.cont .head,#c-l{color:#2c3e48!important;} .cont .btnx{background:#14202a;border-color:#14202a;color:#fff;}
+.hero,.film-frame{--fg:#e9ece8;--mute:#a3adba;color:#e9ece8;}
+.cont input,.cont textarea,.who span{background:#eef8f5;color:#14202a;} .who input:checked+span{background:#14202a;color:#fff;} .tag::before{background:#8fd6c4;}
