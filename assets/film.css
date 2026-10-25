@@ -220,3 +220,7 @@ body{background:var(--bg);color:var(--fg);}
 .callus,.cont .head,#c-l{color:#2c3e48!important;} .cont .btnx{background:#14202a;border-color:#14202a;color:#fff;}
 .hero,.film-frame{--fg:#e9ece8;--mute:#a3adba;color:#e9ece8;}
 .cont input,.cont textarea,.who span{background:#eef8f5;color:#14202a;} .who input:checked+span{background:#14202a;color:#fff;} .tag::before{background:#8fd6c4;}
+/* simple project cards: phone, name, one word, buttons. Details live in the sheet. */
+.pj-row .pj-body>p{display:none;}
+.pj-row .pj-k{font-size:.7rem;letter-spacing:.06em;}
+.pj-row .pj h3{margin-top:2px;}
