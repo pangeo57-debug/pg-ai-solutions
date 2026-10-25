@@ -220,3 +220,66 @@ body{background:var(--bg);color:var(--fg);}
 .callus,.cont .head,#c-l{color:#2c3e48!important;} .cont .btnx{background:#14202a;border-color:#14202a;color:#fff;}
 .hero,.film-frame{--fg:#e9ece8;--mute:#a3adba;color:#e9ece8;}
 .cont input,.cont textarea,.who span{background:#eef8f5;color:#14202a;} .who input:checked+span{background:#14202a;color:#fff;} .tag::before{background:#8fd6c4;}
+/* simple project cards: phone, name, one word, buttons. Details live in the sheet. */
+.pj-row .pj-body>p{display:none;}
+.pj-row .pj-k{font-size:.7rem;letter-spacing:.06em;}
+.pj-row .pj h3{margin-top:2px;}
+
+/* Apple Watch style app honeycomb on a dark stage, zooming out of the film */
+.pj-row{display:none!important;}
+.work-head{padding-bottom:0;} .work-head h2{margin-top:0;}
+.hc-wrap{grid-column:1/-1;position:relative;overflow:hidden;border-radius:32px;border:1px solid var(--line);padding:clamp(28px,5vw,64px) 16px clamp(34px,5vw,70px);
+  background:radial-gradient(120% 120% at 50% 30%,#2e3a4f,#171e2b 72%);display:grid;place-items:center;}
+.hc-grid{--s:clamp(88px,13vw,164px);--g:clamp(10px,1.6vw,20px);display:flex;flex-direction:column;align-items:center;gap:calc(var(--g)*.15);}
+.hc-row{display:flex;gap:var(--g);justify-content:center;}
+.hc-row+.hc-row{margin-top:calc(var(--s)*-.08);}
+.hc{--k:1;position:relative;flex:none;width:var(--s);height:var(--s);padding:0;border:0;border-radius:50%;background:#fff;cursor:pointer;
+  box-shadow:0 14px 30px -12px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.14);transform:scale(var(--k));
+  transition:transform .28s var(--ease-out),box-shadow .2s ease,opacity .5s ease,filter .5s ease;}
+.hc img{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;pointer-events:none;}
+.hc:active{transform:scale(calc(var(--k)*.94));}
+.hc:focus-visible{outline:3px solid var(--amb);outline-offset:4px;}
+.hc-n{position:absolute;left:50%;bottom:-30px;transform:translate(-50%,4px);white-space:nowrap;padding:4px 10px;border-radius:100px;background:rgba(255,255,255,.95);color:#14202a;font:700 .74rem var(--body);opacity:0;pointer-events:none;transition:opacity .16s ease,transform .2s var(--ease-out);z-index:3;}
+@media (hover:hover) and (pointer:fine){.hc:hover .hc-n,.hc:focus-visible .hc-n{opacity:1;transform:translate(-50%,0);} .hc:hover{box-shadow:0 20px 40px -12px rgba(0,0,0,.7),0 0 0 2px var(--amb);}}
+/* entry: icons zoom out of the film's screen */
+.hc{opacity:0;filter:blur(10px);transform:scale(2.6);}
+.hc-wrap.in .hc{opacity:1;filter:none;transform:scale(var(--k));transition:transform .9s cubic-bezier(.16,1,.3,1) calc(var(--n)*90ms),opacity .6s ease calc(var(--n)*90ms),filter .7s ease calc(var(--n)*90ms),box-shadow .2s ease;}
+.hc-wrap.in .hc:hover,.hc-wrap.in .hc:active{transition-delay:0s;}
+.hc-wrap.in .hc{animation:hcfloat 7s ease-in-out calc(1.4s + var(--n)*.4s) infinite alternate;}
+@keyframes hcfloat{to{translate:0 -7px;}}
+@media (prefers-reduced-motion:reduce){.hc{opacity:1;filter:none;transform:scale(var(--k));} .hc-wrap.in .hc{animation:none;}}
+@media (max-width:520px){.hc-grid{--s:clamp(80px,26vw,104px);}}
+.sheet-dyn.is-pj .pj-scr.scrolls.run img{animation:pjscroll var(--t,20s) cubic-bezier(.45,0,.55,1) 1.2s infinite alternate;}
+
+/* apps on the left, websites on the right; smaller icons; compact sheet */
+.hc-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;padding:clamp(22px,3.5vw,44px) clamp(12px,3vw,40px) clamp(30px,4vw,52px);align-items:start;place-items:initial;}
+.hc-col{display:flex;flex-direction:column;align-items:center;gap:clamp(16px,2.4vw,28px);min-width:0;padding-inline:clamp(8px,2vw,24px);}
+.hc-col+.hc-col{border-left:1px solid rgba(255,255,255,.14);}
+.hc-t{font:700 .76rem var(--body);letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72);}
+.hc-grid{--s:clamp(66px,8.6vw,112px);--g:clamp(8px,1.4vw,16px);}
+.hc-n{font-size:.68rem;padding:3px 8px;bottom:-26px;}
+@media (max-width:620px){.hc-wrap{grid-template-columns:1fr;padding-inline:12px;} .hc-col+.hc-col{border-left:0;border-top:1px solid rgba(255,255,255,.14);padding-top:22px;margin-top:22px;} .hc-grid{--s:clamp(70px,22vw,92px);}}
+.sheet-in{width:min(600px,100%);padding:clamp(20px,3.4vw,32px);border-radius:28px;}
+.sheet-dyn.is-pj{grid-template-columns:auto minmax(0,1fr);gap:clamp(16px,2.6vw,24px);}
+.sheet-dyn.is-pj .pj-dev{width:126px;border-radius:24px;padding:5px;}
+.sheet-txt .head{font-size:.68rem;letter-spacing:.1em;margin:0;}
+.sheet-txt h3{font-size:clamp(1.25rem,2.4vw,1.6rem);margin:4px 0 8px;padding-right:44px;}
+.sheet-txt>p{font-size:.9rem;line-height:1.5;}
+.sheet-txt ul{gap:8px;margin-top:14px;} .sheet-txt li{font-size:.86rem;line-height:1.4;gap:9px;} .sheet-txt li::before{width:15px;height:15px;margin-top:3px;background-size:15px;}
+.sheet-cta{margin-top:20px;gap:10px;} .sheet-cta a{padding:11px 18px;font-size:.88rem;}
+.sheet-x{width:38px;height:38px;top:12px;right:12px;font-size:1.1rem;}
+@media (max-width:620px){.sheet-dyn.is-pj{grid-template-columns:1fr;} .sheet-dyn.is-pj .pj-dev{width:118px;justify-self:center;} .sheet-txt h3{padding-right:0;}}
+.hc:hover,.hc:focus-visible{z-index:5;} .hc-n{z-index:6;}
+/* hero: light streaks stay on the right, clear of the headline; route clear of the buttons */
+.hero .flow{-webkit-mask-image:linear-gradient(90deg,transparent 0,transparent 62%,#000 78%);mask-image:linear-gradient(90deg,transparent 0,transparent 62%,#000 78%);}
+.hero .flow i:nth-child(1){left:80%;} .hero .flow i:nth-child(2){left:86%;} .hero .flow i:nth-child(3){left:91%;} .hero .flow i:nth-child(4){left:96%;}
+@media (min-width:901px){.hero .rt{width:min(38%,300px);right:22px;bottom:20px;}}
+@media (max-width:900px){.hero .flow i:nth-child(1){left:84%;} .hero .flow i:nth-child(2){left:94%;}}
+/* denser overall */
+body{font-size:16px;line-height:1.55;}
+.hero{min-height:360px;} .hero h1{font-size:clamp(1.8rem,3.2vw,2.9rem);} html[lang="el"] .hero h1{font-size:clamp(1.7rem,2.8vw,2.5rem);}
+.hero .sub{font-size:.96rem;margin-top:14px;} .actions{margin-top:18px;}
+.tile{padding:clamp(16px,2vw,24px);} .inv b{font-size:clamp(1.15rem,1.6vw,1.4rem);}
+.s h3{font-size:1.1rem;} .s p{font-size:.88rem;} .film.js{height:260vh;}
+.work-head h2,.proc h2,.about2 h2,.cont h2{font-size:clamp(1.4rem,2.3vw,2rem);}
+.rt .again{white-space:nowrap;}
