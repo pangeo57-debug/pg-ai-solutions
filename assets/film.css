@@ -121,3 +121,16 @@ dialog.sheet::backdrop{background:transparent;}
 @media (max-width:1100px){.pj{grid-column:1/-1;}}
 @media (max-width:620px){.pj{grid-template-columns:1fr;justify-items:center;text-align:left;} .pj-dev{width:min(62vw,230px);} .pj-body{width:100%;}}
 @media (prefers-reduced-motion:reduce){.pj-live-b::before{animation:none;}}
+/* trimmed layout: general services, process across the row, featured flagship project */
+.s{cursor:default;} .proc{grid-column:1/-1;}
+.pj-feat{grid-column:1/-1;grid-template-columns:auto minmax(0,1fr);background:linear-gradient(150deg,rgba(28,40,84,.75),rgba(14,21,46,.75));border-color:rgba(242,169,59,.35);}
+.pj-feat .pj-dev{width:clamp(170px,17vw,220px);}
+.pj-feat h3{font-size:clamp(1.7rem,3vw,2.4rem);}
+.pj-feat .pj-body>p{max-width:62ch;font-size:1rem;}
+.pj-stats{display:flex;flex-wrap:wrap;gap:10px 28px;margin:6px 0 2px;}
+.pj-stats div{display:flex;flex-direction:column;}
+.pj-stats dt{font-family:var(--disp);font-weight:800;font-size:clamp(1.6rem,2.6vw,2.1rem);line-height:1;color:var(--amb);font-variant-numeric:tabular-nums;}
+.pj-stats dd{margin:4px 0 0;font-size:.8rem;color:var(--mute);}
+@media (max-width:620px){.pj-feat{grid-template-columns:1fr;}}
+@media (max-width:520px){.dock a[href="#process"]{display:none;}}
+@media (max-width:380px){html[lang="el"] .dock a{padding:10px 7px;font-size:.72rem;}}
