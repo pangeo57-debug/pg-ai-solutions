@@ -250,3 +250,23 @@ body{background:var(--bg);color:var(--fg);}
 @media (prefers-reduced-motion:reduce){.hc{opacity:1;filter:none;transform:scale(var(--k));} .hc-wrap.in .hc{animation:none;}}
 @media (max-width:520px){.hc-grid{--s:clamp(80px,26vw,104px);}}
 .sheet-dyn.is-pj .pj-scr.scrolls.run img{animation:pjscroll var(--t,20s) cubic-bezier(.45,0,.55,1) 1.2s infinite alternate;}
+
+/* apps on the left, websites on the right; smaller icons; compact sheet */
+.hc-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;padding:clamp(22px,3.5vw,44px) clamp(12px,3vw,40px) clamp(30px,4vw,52px);align-items:start;place-items:initial;}
+.hc-col{display:flex;flex-direction:column;align-items:center;gap:clamp(16px,2.4vw,28px);min-width:0;padding-inline:clamp(8px,2vw,24px);}
+.hc-col+.hc-col{border-left:1px solid rgba(255,255,255,.14);}
+.hc-t{font:700 .76rem var(--body);letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72);}
+.hc-grid{--s:clamp(66px,8.6vw,112px);--g:clamp(8px,1.4vw,16px);}
+.hc-n{font-size:.68rem;padding:3px 8px;bottom:-26px;}
+@media (max-width:620px){.hc-wrap{grid-template-columns:1fr;padding-inline:12px;} .hc-col+.hc-col{border-left:0;border-top:1px solid rgba(255,255,255,.14);padding-top:22px;margin-top:22px;} .hc-grid{--s:clamp(70px,22vw,92px);}}
+.sheet-in{width:min(600px,100%);padding:clamp(20px,3.4vw,32px);border-radius:28px;}
+.sheet-dyn.is-pj{grid-template-columns:auto minmax(0,1fr);gap:clamp(16px,2.6vw,24px);}
+.sheet-dyn.is-pj .pj-dev{width:126px;border-radius:24px;padding:5px;}
+.sheet-txt .head{font-size:.68rem;letter-spacing:.1em;margin:0;}
+.sheet-txt h3{font-size:clamp(1.25rem,2.4vw,1.6rem);margin:4px 0 8px;padding-right:44px;}
+.sheet-txt>p{font-size:.9rem;line-height:1.5;}
+.sheet-txt ul{gap:8px;margin-top:14px;} .sheet-txt li{font-size:.86rem;line-height:1.4;gap:9px;} .sheet-txt li::before{width:15px;height:15px;margin-top:3px;background-size:15px;}
+.sheet-cta{margin-top:20px;gap:10px;} .sheet-cta a{padding:11px 18px;font-size:.88rem;}
+.sheet-x{width:38px;height:38px;top:12px;right:12px;font-size:1.1rem;}
+@media (max-width:620px){.sheet-dyn.is-pj{grid-template-columns:1fr;} .sheet-dyn.is-pj .pj-dev{width:118px;justify-self:center;} .sheet-txt h3{padding-right:0;}}
+.hc:hover,.hc:focus-visible{z-index:5;} .hc-n{z-index:6;}

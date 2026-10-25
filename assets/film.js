@@ -262,7 +262,8 @@
     dyn.classList.toggle('is-pj',pj);
     if(pj&&dev){dyn.appendChild(dev.cloneNode(true));box=document.createElement('div');box.className='sheet-txt';dyn.appendChild(box);}
     else if(ic)dyn.appendChild(ic.cloneNode(true));
-    var hd=document.createElement('div');hd.className='head';hd.textContent=(pj&&tile.getAttribute('data-kind'))||sheet.getAttribute('data-label')||'';box.appendChild(hd);
+    var hd=document.createElement('div');hd.className='head';var kd=pj&&tile.querySelector('.pj-k');if(kd){kd=kd.cloneNode(true);var lb=kd.querySelector('.pj-live-b');if(lb)lb.remove();}
+    hd.textContent=(kd&&kd.textContent.trim())||sheet.getAttribute('data-label')||'';box.appendChild(hd);
     var h=tile.querySelector('h3'),p=tile.querySelector('h3+p'),m=tile.querySelector('.sv-more ul');
     var h2=document.createElement('h3');h2.id='sheet-t';h2.textContent=h?h.textContent:'';box.appendChild(h2);
     if(p)box.appendChild(p.cloneNode(true));
