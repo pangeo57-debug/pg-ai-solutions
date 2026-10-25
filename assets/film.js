@@ -222,22 +222,38 @@
     }else{visible=true;running=true;requestAnimationFrame(frame);}
   })();}
 
+  /* ---------------- live project screens ---------------- */
+  (function(){
+    var scr=[].slice.call(document.querySelectorAll('.pj-scr'));
+    if(!scr.length||reduce)return;
+    function measure(el){var img=el.querySelector('img');if(!img)return;var d=img.getBoundingClientRect().height-el.getBoundingClientRect().height;
+      if(d>4){el.style.setProperty('--d',(-d)+'px');el.style.setProperty('--t',Math.max(6,d/38).toFixed(1)+'s');el.classList.add('scrolls');}}
+    scr.forEach(function(el){var img=el.querySelector('img');if(img.complete)measure(el);else img.addEventListener('load',function(){measure(el);});});
+    window.addEventListener('resize',function(){scr.forEach(measure);});
+    if('IntersectionObserver' in window){var io=new IntersectionObserver(function(en){en.forEach(function(x){x.target.classList.toggle('run',x.isIntersecting);});},{threshold:.2});scr.forEach(function(el){io.observe(el);});}
+    else scr.forEach(function(el){el.classList.add('run');});
+  })();
+
   /* ---------------- service sheets ---------------- */
   var sheet=document.getElementById('sheet');
   if(!sheet||typeof sheet.showModal!=='function')return;
-  var panel=sheet.querySelector('.sheet-in'),bg=sheet.querySelector('.sheet-bg'),dyn=sheet.querySelector('.sheet-dyn'),cta=sheet.querySelector('.sheet-cta'),seeIt=sheet.querySelector('[data-film]');
+  var panel=sheet.querySelector('.sheet-in'),bg=sheet.querySelector('.sheet-bg'),dyn=sheet.querySelector('.sheet-dyn'),cta=sheet.querySelector('.sheet-cta'),seeIt=sheet.querySelector('[data-film]'),live=sheet.querySelector('.sheet-cta .live');
   var from=null,busy=false,ES='cubic-bezier(.32,.72,0,1)';
 
   function flip(a,b){return 'translate('+(a.left-b.left)+'px,'+(a.top-b.top)+'px) scale('+(a.width/b.width)+','+(a.height/b.height)+')';}
   function fill(tile){
     dyn.innerHTML='';
-    var ic=tile.querySelector('.ic');if(ic)dyn.appendChild(ic.cloneNode(true));
-    var hd=document.createElement('div');hd.className='head';hd.textContent=sheet.getAttribute('data-label')||'';dyn.appendChild(hd);
+    var pj=tile.classList.contains('pj'),ic=tile.querySelector('.ic'),dev=tile.querySelector('.pj-dev'),box=dyn;
+    dyn.classList.toggle('is-pj',pj);
+    if(pj&&dev){dyn.appendChild(dev.cloneNode(true));box=document.createElement('div');box.className='sheet-txt';dyn.appendChild(box);}
+    else if(ic)dyn.appendChild(ic.cloneNode(true));
+    var hd=document.createElement('div');hd.className='head';hd.textContent=(pj&&tile.getAttribute('data-kind'))||sheet.getAttribute('data-label')||'';box.appendChild(hd);
     var h=tile.querySelector('h3'),p=tile.querySelector('h3+p'),m=tile.querySelector('.sv-more ul');
-    var h2=document.createElement('h3');h2.id='sheet-t';h2.textContent=h?h.textContent:'';dyn.appendChild(h2);
-    if(p)dyn.appendChild(p.cloneNode(true));
-    if(m)dyn.appendChild(m.cloneNode(true));
-    if(seeIt)seeIt.setAttribute('data-ch',tile.getAttribute('data-ch')||'0');
+    var h2=document.createElement('h3');h2.id='sheet-t';h2.textContent=h?h.textContent:'';box.appendChild(h2);
+    if(p)box.appendChild(p.cloneNode(true));
+    if(m)box.appendChild(m.cloneNode(true));
+    if(seeIt){seeIt.hidden=pj;seeIt.setAttribute('data-ch',tile.getAttribute('data-ch')||'0');}
+    if(live){var u=pj&&tile.getAttribute('data-live');live.hidden=!u;if(u)live.href=u;}
   }
   function stagger(){
     var els=[].slice.call(dyn.children).concat([cta]);
@@ -285,7 +301,7 @@
   }
 
   document.addEventListener('click',function(e){
-    var t=e.target.closest&&e.target.closest('.s');
+    var t=e.target.closest&&e.target.closest('.s,.pj');
     if(!t||!t.querySelector('.more'))return;
     if(e.target.closest('a'))return;
     open(t);
@@ -294,7 +310,7 @@
   sheet.addEventListener('click',function(e){
     if(e.target===sheet||e.target===bg||(e.target.closest&&e.target.closest('.sheet-x'))){close();return;}
     var go=e.target.closest&&e.target.closest('.sheet-cta a');
-    if(!go)return;
+    if(!go||go.classList.contains('live'))return;
     e.preventDefault();e.stopPropagation();
     var ch=go.getAttribute('data-film'),href=go.getAttribute('href');
     close(function(){
