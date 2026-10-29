@@ -283,3 +283,9 @@ body{font-size:16px;line-height:1.55;}
 .s h3{font-size:1.1rem;} .s p{font-size:.88rem;} .film.js{height:260vh;}
 .work-head h2,.proc h2,.about2 h2,.cont h2{font-size:clamp(1.4rem,2.3vw,2rem);}
 .rt .again{white-space:nowrap;}
+/* dark mode toggle, next to the language switch */
+.mode{display:inline-flex;align-items:center;justify-content:center;width:40px;height:34px;border-radius:100px;border:1px solid var(--line2);background:transparent;color:var(--fg);cursor:pointer;transition:background-color .16s ease,transform .16s var(--ease-out);}
+.mode:active{transform:scale(.94);} .mode:focus-visible{outline:2px solid var(--amb);outline-offset:3px;}
+@media (hover:hover) and (pointer:fine){.mode:hover{background:rgba(127,127,127,.14);}}
+.mode .i-sun{display:none;} .is-dark .mode .i-sun{display:block;} .is-dark .mode .i-moon{display:none;}
+.topr{gap:10px;}
