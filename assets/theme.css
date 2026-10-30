@@ -60,7 +60,7 @@ body{background:#fcffff!important;color:#0b2a3a!important;}
 /* hero: sky blue with a soft pink/blue blur, white text */
 .hero{background:radial-gradient(60% 80% at 78% 55%,rgba(216,57,149,.55),transparent 60%),radial-gradient(50% 70% at 62% 30%,rgba(255,255,255,.35),transparent 60%),linear-gradient(135deg,#0593c6,#0478a3)!important;border:0!important;--fg:#fcffff;--mute:rgba(252,255,255,.85);}
 .hero h1,.hero .tag,.hero .rt .meter,.hero .rt .meter b{color:#fcffff!important;} .hero .sub{color:rgba(252,255,255,.88)!important;}
-.hero h1 em{color:#fcffff!important;text-decoration:underline;text-decoration-color:#d83995;text-decoration-thickness:.12em;text-underline-offset:.12em;}
+.hero h1 em{color:#fcffff!important;text-decoration:none;}
 .tag::before{background:#fcffff!important;}
 #route{stroke:#fcffff!important;} .hero .rt circle{fill:#fcffff!important;} .rt .again{color:#fcffff!important;border-color:rgba(252,255,255,.55)!important;}
 .rt .gain{background:#fcffff!important;color:#d83995!important;}
