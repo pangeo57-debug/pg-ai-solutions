@@ -4,7 +4,7 @@
 import json, os, html
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE = "https://pangeo57-debug.github.io/pg-ai-solutions"
-V = "4"
+V = "5"
 LOGO = open(os.path.join(ROOT, "logo/pg-mark.svg"), encoding="utf-8").read().replace(' role="img" aria-label="PG"', ' aria-hidden="true"').replace('id="pgr"', 'id="pgr-h"').replace("url(#pgr)", "url(#pgr-h)")
 PAGES = ["index", "services", "work", "studio"]
 
@@ -178,7 +178,7 @@ def strip(L, pre):
     out = []
     for pj in PROJECTS:
         d = pj[L]
-        out.append(f'<a class="wcard" href="work.html#{pj["id"]}"><span class="shot"><img src="{pre}assets/work/{pj["img"]}.webp" width="480" height="1038" alt="" loading="lazy" decoding="async"></span><small>{d["kind"]}</small><b>{d["name"]}</b></a>')
+        out.append(f'<a class="wcard" href="work.html#{pj["id"]}"><span class="shot"><img src="{pre}assets/work/{pj["img"]}.webp?v={V}" width="480" height="1038" alt="" loading="lazy" decoding="async"></span><small>{d["kind"]}</small><b>{d["name"]}</b></a>')
     return '<div class="strip">' + "".join(out) + "</div>"
 
 def steps(L):
@@ -211,7 +211,7 @@ def page_work(L, pre):
         st = ('<div class="stats">' + "".join(f'<div><b>{a}</b><span>{b}</span></div>' for a,b in d["stats"]) + '</div>') if d["stats"] else ""
         li = "".join(f"<li>{x}</li>" for x in d["pts"]); tg = "".join(f"<span>{x}</span>" for x in d["tags"])
         cls = "status live" if d["status"] == "Live" else "status"
-        out.append(f'''<article class="proj" id="{pj["id"]}"><div class="pshot"><img src="{pre}assets/work/{pj["img"]}.webp" width="480" height="1038" alt="{d["name"]}" loading="lazy" decoding="async"></div>
+        out.append(f'''<article class="proj" id="{pj["id"]}"><div class="pshot"><img src="{pre}assets/work/{pj["img"]}.webp?v={V}" width="480" height="1038" alt="{d["name"]}" loading="lazy" decoding="async"></div>
 <div class="pbody"><span class="eyebrow">{d["kind"]}</span><h2 class="h2">{d["name"]}</h2><span class="{cls}">{d["status"]}</span><p class="lead">{d["desc"]}</p>{st}<ul class="plist">{li}</ul><div class="tags">{tg}</div>{live}</div></article>''')
     return intro(t["work_intro"]) + f'<section><div class="wrap">{"".join(out)}</div></section>'
 
