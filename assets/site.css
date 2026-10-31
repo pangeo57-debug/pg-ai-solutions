@@ -233,4 +233,52 @@ form.cf{display:grid;gap:14px;align-content:start}
   .f2{grid-template-columns:1fr}
 }
 @media (max-width:560px){.logo span{display:none}.steps,.steps3{grid-template-columns:1fr}.step+.step{padding-left:0;border-left:0;border-top:1px solid var(--line)}}
+
+/* ---- premium pass: spacing, banners, proof ---- */
+:root{--max:1280px}
+.sec{padding-block:clamp(88px,11vw,160px)}
+.sec-head{margin-bottom:clamp(48px,6vw,88px);gap:28px 64px}
+.sec-head .lead{padding-bottom:6px}
+.eyebrow{margin-bottom:4px}
+/* proof: number above label, generous air */
+.proof .wrap{grid-template-columns:repeat(4,minmax(0,1fr))}
+.proof div div{flex-direction:column;align-items:flex-start;gap:10px;padding:36px 28px 36px 0}
+.proof div div+div{padding-left:32px}
+.proof b{font-size:clamp(2.8rem,4vw,3.6rem)}
+.proof span{font:400 11px/1.5 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+/* service rows */
+.row{padding:34px 0;grid-template-columns:72px minmax(0,1fr) minmax(0,1fr) 40px;transition:background-color .3s ease}
+@media (hover:hover) and (pointer:fine){a.row:hover{background:linear-gradient(90deg,color-mix(in srgb,var(--sky) 5%,transparent),transparent 60%)}}
+.row .h3{font-size:clamp(1.8rem,2.8vw,2.4rem)}
+/* work cards as framed panels */
+.strip{gap:20px}
+.wcard{background:var(--bg);border:1px solid var(--line);padding:14px 14px 18px;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.wcard .shot{border-color:transparent}
+.wcard small{margin-top:6px}
+@media (hover:hover) and (pointer:fine){.wcard:hover{transform:translateY(-4px);box-shadow:0 30px 60px -36px rgba(11,26,38,.35)}}
+/* chips & code card: softer, more refined */
+.chip,.codecard{border-color:color-mix(in srgb,var(--line) 70%,transparent);box-shadow:0 1px 0 rgba(11,26,38,.04),0 24px 48px -28px rgba(11,26,38,.30)}
+.chip{padding:14px 18px;gap:4px}
+/* CTA banner */
+.cta-band{background:var(--ink);color:#fff;position:relative;overflow:hidden}
+.cta-band::before{content:"";position:absolute;inset:0;background:radial-gradient(40% 80% at 85% 20%,rgba(216,57,149,.35),transparent 70%),radial-gradient(40% 90% at 10% 100%,rgba(5,147,198,.35),transparent 70%)}
+.cta-band .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1.4fr) auto;gap:40px;align-items:end;padding-block:clamp(72px,9vw,128px)}
+.cta-band .h2{color:#fff}
+.cta-band .lead{color:rgba(255,255,255,.72);margin-top:20px}
+.cta-band .eyebrow{color:#7FD0EE}
+.cta-band .btn{background:#fff;color:var(--ink);border-color:#fff}
+@media (hover:hover) and (pointer:fine){.cta-band .btn:hover{background:transparent;color:#fff}}
+/* contact: roomier form */
+.contact .wrap{padding-block:clamp(88px,10vw,144px)}
+form.cf{gap:18px}
+.fld input,.fld textarea,.fld select{padding:15px 16px}
+@media (max-width:820px){
+  .row{grid-template-columns:40px minmax(0,1fr);padding:26px 0}
+  .proof .wrap{grid-template-columns:1fr 1fr}
+  .proof div div{padding:24px 16px 24px 0}.proof div div+div{padding-left:16px}.proof div div:nth-child(3){padding-left:0;border-left:0}
+  .proof b{font-size:2.4rem}
+  .cta-band .wrap{grid-template-columns:1fr;align-items:start}
+  .wcard{padding:10px 10px 14px}
+}
+
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}

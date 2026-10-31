@@ -4,7 +4,7 @@
 import json, os, html
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE = "https://pangeo57-debug.github.io/pg-ai-solutions"
-V = "7"
+V = "8"
 LOGO = open(os.path.join(ROOT, "logo/pg-mark.svg"), encoding="utf-8").read().replace(' role="img" aria-label="PG"', ' aria-hidden="true"').replace('id="pgr"', 'id="pgr-h"').replace("url(#pgr)", "url(#pgr-h)")
 PAGES = ["index", "services", "work", "studio"]
 
@@ -88,6 +88,7 @@ T = {
     who1="I have a project", who2="Let's collaborate", subj1="New project inquiry · PG AI Solutions", subj2="Collaboration inquiry · PG AI Solutions",
     name="Name", mail="Email", msg="Message", ph_msg="What are you trying to solve?", send="Send message",
     t=dict(sending="Sending…", sent="Sent ✓", send="Send message", thanks="Thank you. We will reply to your email soon.", fail="That did not go through. Please write to pangeo57@yahoo.gr.")),
+  band=("Limited availability","We take on a few projects <em>at a time.</em>","Each one gets senior attention from the first conversation to launch. Tell us about yours.","Book a conversation"),
   start_head=("How we start", "From first call <em>to proposal.</em>", "Every engagement begins with understanding the business. Pricing follows the scope, never the other way around."),
   start=[("Conversation","A call or meeting to understand your goals, your users and what success looks like."),("Proposal","A written proposal with clear scope, timeline and investment. No surprises later."),("Delivery","Design and build in focused stages, with a working version in your hands early.")],
   budget=dict(label="Investment range", opts=["Not sure yet","€2,000 – €5,000","€5,000 – €15,000","€15,000+"]),
@@ -122,6 +123,7 @@ T = {
     who1="Έχω ένα έργο", who2="Θέλω να συνεργαστούμε", subj1="Νέο αίτημα έργου · PG AI Solutions", subj2="Πρόταση συνεργασίας · PG AI Solutions",
     name="Όνομα", mail="Email", msg="Μήνυμα", ph_msg="Τι θέλετε να λύσουμε;", send="Αποστολή μηνύματος",
     t=dict(sending="Αποστολή…", sent="Εστάλη ✓", send="Αποστολή μηνύματος", thanks="Ευχαριστούμε. Θα σας απαντήσουμε σύντομα στο email σας.", fail="Η αποστολή δεν ολοκληρώθηκε. Γράψτε μας στο pangeo57@yahoo.gr.")),
+  band=("Περιορισμένη διαθεσιμότητα","Αναλαμβάνουμε λίγα έργα <em>κάθε φορά.</em>","Το καθένα έχει πλήρη προσοχή από την πρώτη συζήτηση μέχρι την παράδοση. Πείτε μας για το δικό σας.","Κλείστε μια συζήτηση"),
   start_head=("Πώς ξεκινάμε", "Από την πρώτη κουβέντα <em>στην πρόταση.</em>", "Κάθε συνεργασία ξεκινά από την κατανόηση της επιχείρησης. Η τιμή ακολουθεί το εύρος του έργου, ποτέ το αντίστροφο."),
   start=[("Γνωριμία","Συζήτηση ή συνάντηση για να καταλάβουμε τους στόχους σας, τους χρήστες σας και τι σημαίνει επιτυχία."),("Πρόταση","Γραπτή πρόταση με σαφές εύρος, χρονοδιάγραμμα και επένδυση. Χωρίς εκπλήξεις αργότερα."),("Υλοποίηση","Σχεδιασμός και ανάπτυξη σε εστιασμένα στάδια, με λειτουργική έκδοση στα χέρια σας από νωρίς.")],
   budget=dict(label="Εύρος επένδυσης", opts=["Δεν ξέρω ακόμα","2.000 – 5.000 €","5.000 – 15.000 €","15.000 € +"]),
@@ -217,6 +219,7 @@ def page_index(L, pre):
 <section class="sec"><div class="wrap">{sec_head(t["svc_head"])}<div class="rows">{rows}</div></div></section>
 <section class="sec alt"><div class="wrap">{sec_head(t["work_head"])}{strip(L, pre)}<p style="margin-top:32px"><a class="btn line" href="work.html">{t["all_work"]} <i aria-hidden="true">→</i></a></p></div></section>
 <section class="sec"><div class="wrap">{sec_head(t["proc_head"])}{steps(L)}</div></section>
+<section class="cta-band"><div class="wrap"><div><span class="eyebrow">{t["band"][0]}</span><h2 class="h2">{t["band"][1]}</h2><p class="lead">{t["band"][2]}</p></div><a class="btn" href="#contact">{t["band"][3]} <i aria-hidden="true">→</i></a></div></section>
 '''
 
 def start_sec(L, cls="sec"):
