@@ -4,7 +4,7 @@
 import json, os, html
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE = "https://pangeo57-debug.github.io/pg-ai-solutions"
-V = "6"
+V = "7"
 LOGO = open(os.path.join(ROOT, "logo/pg-mark.svg"), encoding="utf-8").read().replace(' role="img" aria-label="PG"', ' aria-hidden="true"').replace('id="pgr"', 'id="pgr-h"').replace("url(#pgr)", "url(#pgr-h)")
 PAGES = ["index", "services", "work", "studio"]
 
@@ -65,7 +65,7 @@ T = {
   titles=dict(index="Premium Websites, SEO, Mini Apps & Optimization Software in Patras | PG AI Solutions", services="Services | PG AI Solutions", work="Work | PG AI Solutions", studio="Studio & Process | PG AI Solutions"),
   descs=dict(index="Premium websites, SEO, premium mini apps and optimization software from a studio in Patras, Greece.", services="Bespoke websites, business applications and optimization software, built around how your business actually works.", work="RoutePal, Surplo, Cash Flow, Cooking Made with Love and MathDecoded: what we built and why.", studio="A studio in Patras that models the problem before writing code. How we work, in four steps."),
   skip="Skip to content",
-  hero=dict(tag="Software studio · Patras", h1="It starts<br>as <em>code.</em>", sub="Premium websites, SEO, mini apps, branding and optimization software, designed and engineered for companies that expect the best.", cta="Start a project", link="See our work", km="km", saved="shorter", aria="Animated example: code runs and draws the shortest route between stops"),
+  hero=dict(tag="Software studio · Patras", h1="It starts<br>as <em>code.</em>", sub="Premium websites, SEO, mini apps, branding and optimization software, designed and engineered for companies that expect the best.", cta="Start a project", link="See our work", km="km", saved="shorter", aria="Animated example: code runs and draws the shortest route between stops", chips=["appointments placed","Route this week","net profit, October"], proof=[("6","disciplines, one standard"),("5","products in production"),("584","automated tests on RoutePal"),("4","languages supported")]),
   svc_head=("What we do", "Premium work. <em>One standard.</em>", "Every project is designed and engineered from first principles. No templates, no shortcuts."),
   svcs=[("Premium websites","Bespoke websites that position your business at the top of its market."),("SEO","Technical and local SEO, so the right customers find you on Google."),("Premium mini apps","Focused applications shaped around how your business works, from bookings to internal tools."),("Software & optimization","Scheduling, routing and decision systems built on proven algorithms."),("Branding","Logo, colours and typography that make the business recognisable everywhere."),("Hosting & care","Hosting, security, backups and updates, handled for you every month.")],
   work_head=("Selected work", "Five projects. <em>One method.</em>", "Apps and websites in production and in development."),
@@ -99,7 +99,7 @@ T = {
   titles=dict(index="Premium Websites, SEO, Mini Apps & Λογισμικό Βελτιστοποίησης στην Πάτρα | PG AI Solutions", services="Υπηρεσίες | PG AI Solutions", work="Έργα | PG AI Solutions", studio="Studio & Διαδικασία | PG AI Solutions"),
   descs=dict(index="Ιστοσελίδες κατά παραγγελία, premium mini apps, SEO και λογισμικό βελτιστοποίησης από studio στην Πάτρα.", services="Ιστοσελίδες κατά παραγγελία, επιχειρησιακές εφαρμογές και λογισμικό βελτιστοποίησης, φτιαγμένα γύρω από την επιχείρησή σας.", work="RoutePal, Surplo, Cash Flow, Cooking Made with Love και MathDecoded: τι φτιάξαμε και γιατί.", studio="Studio στην Πάτρα που μοντελοποιεί το πρόβλημα πριν γράψει κώδικα. Πώς δουλεύουμε, σε τέσσερα βήματα."),
   skip="Μετάβαση στο περιεχόμενο",
-  hero=dict(tag="Studio λογισμικού · Πάτρα", h1="Ξεκινά<br>σαν <em>κώδικας.</em>", sub="Premium websites, SEO, mini apps, branding και λογισμικό βελτιστοποίησης, σχεδιασμένα για επιχειρήσεις που απαιτούν το καλύτερο.", cta="Ξεκινάμε", link="Δες τα έργα", km="km", saved="συντομότερη", aria="Κινούμενο παράδειγμα: ο κώδικας τρέχει και σχεδιάζει τη συντομότερη διαδρομή ανάμεσα σε στάσεις"),
+  hero=dict(tag="Studio λογισμικού · Πάτρα", h1="Ξεκινά<br>σαν <em>κώδικας.</em>", sub="Premium websites, SEO, mini apps, branding και λογισμικό βελτιστοποίησης, σχεδιασμένα για επιχειρήσεις που απαιτούν το καλύτερο.", cta="Ξεκινάμε", link="Δες τα έργα", km="km", saved="συντομότερη", aria="Κινούμενο παράδειγμα: ο κώδικας τρέχει και σχεδιάζει τη συντομότερη διαδρομή ανάμεσα σε στάσεις", chips=["ραντεβού στη θέση τους","Διαδρομή εβδομάδας","καθαρό κέρδος Οκτωβρίου"], proof=[("6","ειδικότητες, ένα επίπεδο"),("5","προϊόντα σε λειτουργία"),("584","αυτόματα τεστ στο RoutePal"),("4","γλώσσες")]),
   svc_head=("Τι κάνουμε", "Premium δουλειά. <em>Ένα επίπεδο.</em>", "Κάθε έργο σχεδιάζεται και χτίζεται από την αρχή. Χωρίς templates, χωρίς εκπτώσεις στην ποιότητα."),
   svcs=[("Premium websites","Ιστοσελίδες κατά παραγγελία, που τοποθετούν την επιχείρησή σας στην κορυφή της αγοράς της."),("SEO","Τεχνικό και τοπικό SEO, ώστε να σας βρίσκουν στο Google οι σωστοί πελάτες."),("Premium mini apps","Στοχευμένες εφαρμογές φτιαγμένες γύρω από την επιχείρησή σας, από κρατήσεις μέχρι εσωτερικά εργαλεία."),("Λογισμικό & βελτιστοποίηση","Συστήματα προγραμματισμού, δρομολόγησης και αποφάσεων, με αποδεδειγμένους αλγορίθμους."),("Branding","Λογότυπο, χρώματα και τυπογραφία που κάνουν την επιχείρηση αναγνωρίσιμη παντού."),("Hosting & συντήρηση","Φιλοξενία, ασφάλεια, αντίγραφα και ενημερώσεις, κάθε μήνα, χωρίς να ασχολείστε εσείς.")],
   work_head=("Επιλεγμένα έργα", "Πέντε έργα. <em>Μία μέθοδος.</em>", "Εφαρμογές και ιστοσελίδες σε λειτουργία και σε ανάπτυξη."),
@@ -199,10 +199,21 @@ def steps(L):
 def page_index(L, pre):
     t = T[L]; h = t["hero"]
     rows = "".join(f'<a class="row" href="services.html#s{i+1}"><span class="n">0{i+1}</span><h3 class="h3">{a}</h3><p>{b}</p><span class="go" aria-hidden="true">→</span></a>' for i,(a,b) in enumerate(t["svcs"]))
+    hs = h
+    chips = h["chips"]
+    proof = "".join(f'<div><b>{a}</b><span>{b}</span></div>' for a,b in h["proof"])
     return f'''<section class="hero" aria-labelledby="hero-h"><canvas role="img" aria-label="{h["aria"]}"></canvas>
-<div class="wrap"><pre aria-hidden="true"></pre><div class="hero-txt"><span class="eyebrow">{h["tag"]}</span><h1 class="h1" id="hero-h">{h["h1"]}</h1><p class="lead">{h["sub"]}</p>
-<div class="hero-act"><a class="txtlink" href="work.html">{h["link"]}</a><a class="btn line" href="#contact">{h["cta"]} <i aria-hidden="true">→</i></a></div>
-<div class="meta" aria-hidden="true"><span><b data-km>0.0</b> {h["km"]}</span><span><b data-gain>…</b> {h["saved"]}</span></div></div></div></section>
+<div class="wrap"><div class="hero-txt"><span class="eyebrow">{h["tag"]}</span><h1 class="h1" id="hero-h">{h["h1"]}</h1><p class="lead">{h["sub"]}</p>
+<div class="hero-act"><a class="btn" href="#contact">{h["cta"]} <i aria-hidden="true">→</i></a><a class="txtlink" href="work.html">{h["link"]}</a></div></div>
+<div class="stage" aria-hidden="true">
+<div class="codecard"><div class="bar"><i></i><i></i><i></i><span>route.js</span></div><pre></pre></div>
+<figure class="phone p1"><img src="{pre}assets/work/routepal.webp?v={V}" width="480" height="1039" alt=""></figure>
+<figure class="phone p2"><img src="{pre}assets/work/cashflow.webp?v={V}" width="480" height="1039" alt=""></figure>
+<div class="chip c1"><small>RoutePal</small><b>15/15</b><span>{chips[0]}</span></div>
+<div class="chip c2"><small>{chips[1]}</small><b><span data-gain>…</span></b><span><b data-km>0.0</b> km</span></div>
+<div class="chip c3"><small>Cash Flow</small><b>+276 €</b><span>{chips[2]}</span></div>
+</div></div>
+<div class="proof"><div class="wrap">{proof}</div></div></section>
 <section class="sec"><div class="wrap">{sec_head(t["svc_head"])}<div class="rows">{rows}</div></div></section>
 <section class="sec alt"><div class="wrap">{sec_head(t["work_head"])}{strip(L, pre)}<p style="margin-top:32px"><a class="btn line" href="work.html">{t["all_work"]} <i aria-hidden="true">→</i></a></p></div></section>
 <section class="sec"><div class="wrap">{sec_head(t["proc_head"])}{steps(L)}</div></section>
