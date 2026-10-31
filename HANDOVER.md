@@ -1,12 +1,13 @@
 # PG AI Solutions — Οδηγός παράδοσης
 
 ## Τι περιέχει
-- `index.html` (EN), `el/index.html` (ΕΛ), `privacy.html`, `el/privacy.html`, `404.html`
-- `robots.txt`, `sitemap.xml`, `assets/` (γραμματοσειρές OFL, Lenis MIT, εικόνες κοινοποίησης)
+- Πολυσέλιδο site: `index`, `services`, `work`, `studio` (EN στη ρίζα, ΕΛ στο `el/`), `privacy.html`, `el/privacy.html`, `404.html`
+- Κοινά αρχεία: `assets/site.css`, `assets/site.js`, `logo/pg-mark.svg` (έμβλημα PG), `logo/pg-icon.svg` (favicon)
+- `robots.txt`, `sitemap.xml`, `assets/` (γραμματοσειρές OFL, εικόνες έργων και κοινοποίησης)
 - Δεν φορτώνεται τίποτα από τρίτους στη φόρτωση σελίδας (χωρίς cookies/analytics). Μόνο η αποστολή φόρμας πηγαίνει στο formsubmit.co.
 
 ## Αλλαγή κειμένων
-Επεξεργασία των `index.html` / `el/index.html` (απλό HTML). Τα μηνύματα φόρμας είναι στο `window.T` κάθε σελίδας.
+Όλα τα κείμενα (και στις δύο γλώσσες) και τα έργα είναι στο `scripts/build.py`. Αλλάζεις εκεί και τρέχεις `python3 scripts/build.py`· ξαναγράφει όλες τις σελίδες και το `sitemap.xml`. Μην αλλάζεις τα .html με το χέρι.
 
 ## Domain (ΠΡΟΣΟΧΗ: τα robots/sitemap δουλεύουν σωστά μόνο σε domain root)
 1. Αγορά domain (π.χ. .gr). 2. `scripts/set-domain.sh https://www.to-domain.gr` 3. Αρχείο `CNAME` με το domain στη ρίζα και ρύθμιση DNS όπως ζητά το hosting.

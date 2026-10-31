@@ -2,30 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://pangeo57-debug.github.io/pg-ai-solutions/</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://pangeo57-debug.github.io/pg-ai-solutions/"/>
     <xhtml:link rel="alternate" hreflang="el" href="https://pangeo57-debug.github.io/pg-ai-solutions/el/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pangeo57-debug.github.io/pg-ai-solutions/"/>
   </url>
   <url>
     <loc>https://pangeo57-debug.github.io/pg-ai-solutions/el/</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://pangeo57-debug.github.io/pg-ai-solutions/"/>
     <xhtml:link rel="alternate" hreflang="el" href="https://pangeo57-debug.github.io/pg-ai-solutions/el/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pangeo57-debug.github.io/pg-ai-solutions/"/>
+  </url>
+  <url>
+    <loc>https://pangeo57-debug.github.io/pg-ai-solutions/services.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pangeo57-debug.github.io/pg-ai-solutions/services.html"/>
+    <xhtml:link rel="alternate" hreflang="el" href="https://pangeo57-debug.github.io/pg-ai-solutions/el/services.html"/>
+  </url>
+  <url>
+    <loc>https://pangeo57-debug.github.io/pg-ai-solutions/el/services.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pangeo57-debug.github.io/pg-ai-solutions/services.html"/>
+    <xhtml:link rel="alternate" hreflang="el" href="https://pangeo57-debug.github.io/pg-ai-solutions/el/services.html"/>
+  </url>
+  <url>
+    <loc>https://pangeo57-debug.github.io/pg-ai-solutions/work.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pangeo57-debug.github.io/pg-ai-solutions/work.html"/>
+    <xhtml:link rel="alternate" hreflang="el" href="https://pangeo57-debug.github.io/pg-ai-solutions/el/work.html"/>
+  </url>
+  <url>
+    <loc>https://pangeo57-debug.github.io/pg-ai-solutions/el/work.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pangeo57-debug.github.io/pg-ai-solutions/work.html"/>
+    <xhtml:link rel="alternate" hreflang="el" href="https://pangeo57-debug.github.io/pg-ai-solutions/el/work.html"/>
+  </url>
+  <url>
+    <loc>https://pangeo57-debug.github.io/pg-ai-solutions/studio.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pangeo57-debug.github.io/pg-ai-solutions/studio.html"/>
+    <xhtml:link rel="alternate" hreflang="el" href="https://pangeo57-debug.github.io/pg-ai-solutions/el/studio.html"/>
+  </url>
+  <url>
+    <loc>https://pangeo57-debug.github.io/pg-ai-solutions/el/studio.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pangeo57-debug.github.io/pg-ai-solutions/studio.html"/>
+    <xhtml:link rel="alternate" hreflang="el" href="https://pangeo57-debug.github.io/pg-ai-solutions/el/studio.html"/>
   </url>
   <url>
     <loc>https://pangeo57-debug.github.io/pg-ai-solutions/privacy.html</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://pangeo57-debug.github.io/pg-ai-solutions/privacy.html"/>
     <xhtml:link rel="alternate" hreflang="el" href="https://pangeo57-debug.github.io/pg-ai-solutions/el/privacy.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pangeo57-debug.github.io/pg-ai-solutions/privacy.html"/>
   </url>
   <url>
     <loc>https://pangeo57-debug.github.io/pg-ai-solutions/el/privacy.html</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://pangeo57-debug.github.io/pg-ai-solutions/privacy.html"/>
     <xhtml:link rel="alternate" hreflang="el" href="https://pangeo57-debug.github.io/pg-ai-solutions/el/privacy.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://pangeo57-debug.github.io/pg-ai-solutions/privacy.html"/>
   </url>
 </urlset>
