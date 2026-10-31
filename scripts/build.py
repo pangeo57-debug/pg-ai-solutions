@@ -71,8 +71,8 @@ T = {
  "en": dict(
   lang="en", locale="en_GB", other="el", other_label="ΕΛ",
   nav=dict(index="Home", services="Services", work="Work", studio="Studio", contact="Contact"),
-  titles=dict(index="Premium Websites, SEO, Mini Apps & Optimization Software in Patras | PG AI Solutions", services="Services | PG AI Solutions", work="Work | PG AI Solutions", studio="Studio & Process | PG AI Solutions"),
-  descs=dict(index="Premium websites, SEO, premium mini apps and optimization software from a studio in Patras, Greece.", services="Bespoke websites, business applications and optimization software, built around how your business actually works.", work="RoutePal, Surplo, Cash Flow, Cooking Made with Love and MathDecoded: what we built and why.", studio="A studio in Patras that models the problem before writing code. How we work, in four steps."),
+  titles=dict(index="Premium Websites, SEO, Mini Apps & Optimization Software in Patras | PG AI Solutions", services="Services | PG AI Solutions", work="Work | PG AI Solutions", studio="Studio & Process | PG AI Solutions", privacy="Privacy Policy | PG AI Solutions"),
+  descs=dict(index="Premium websites, SEO, premium mini apps and optimization software from a studio in Patras, Greece.", services="Bespoke websites, business applications and optimization software, built around how your business actually works.", work="RoutePal, Surplo, Cash Flow, Cooking Made with Love and MathDecoded: what we built and why.", studio="A studio in Patras that models the problem before writing code. How we work, in four steps.", privacy="How the PG AI Solutions website handles personal data: what we collect, why, who receives it, how long we keep it and your rights."),
   skip="Skip to content",
   hero=dict(tag="Software studio · Patras", h1="It starts<br>as <em>code.</em>", sub="We design and engineer premium websites, business applications and optimization software for organisations that expect the highest standard.", cta="Request a consultation", link="View our work", km="km", saved="shorter", aria="Animated example: code runs and draws the shortest route between stops", chips=["appointments scheduled","Weekly route","net result, October"], proof=[("6","areas of expertise"),("1","working day response time"),("584","automated quality checks"),("4","supported languages")]),
   svc_head=("What we do", "Premium work. <em>One standard.</em>", "Every project is designed and engineered from first principles. No templates, no shortcuts."),
@@ -106,8 +106,8 @@ T = {
  "el": dict(
   lang="el", locale="el_GR", other="en", other_label="EN",
   nav=dict(index="Αρχική", services="Υπηρεσίες", work="Έργα", studio="Studio", contact="Επικοινωνία"),
-  titles=dict(index="Premium Websites, SEO, Mini Apps & Λογισμικό Βελτιστοποίησης στην Πάτρα | PG AI Solutions", services="Υπηρεσίες | PG AI Solutions", work="Έργα | PG AI Solutions", studio="Studio & Διαδικασία | PG AI Solutions"),
-  descs=dict(index="Ιστοσελίδες κατά παραγγελία, premium mini apps, SEO και λογισμικό βελτιστοποίησης από studio στην Πάτρα.", services="Ιστοσελίδες κατά παραγγελία, επιχειρησιακές εφαρμογές και λογισμικό βελτιστοποίησης, φτιαγμένα γύρω από την επιχείρησή σας.", work="RoutePal, Surplo, Cash Flow, Cooking Made with Love και MathDecoded: τι φτιάξαμε και γιατί.", studio="Studio στην Πάτρα που μοντελοποιεί το πρόβλημα πριν γράψει κώδικα. Πώς δουλεύουμε, σε τέσσερα βήματα."),
+  titles=dict(index="Premium Websites, SEO, Mini Apps & Λογισμικό Βελτιστοποίησης στην Πάτρα | PG AI Solutions", services="Υπηρεσίες | PG AI Solutions", work="Έργα | PG AI Solutions", studio="Studio & Διαδικασία | PG AI Solutions", privacy="Πολιτική Απορρήτου | PG AI Solutions"),
+  descs=dict(index="Ιστοσελίδες κατά παραγγελία, premium mini apps, SEO και λογισμικό βελτιστοποίησης από studio στην Πάτρα.", services="Ιστοσελίδες κατά παραγγελία, επιχειρησιακές εφαρμογές και λογισμικό βελτιστοποίησης, φτιαγμένα γύρω από την επιχείρησή σας.", work="RoutePal, Surplo, Cash Flow, Cooking Made with Love και MathDecoded: τι φτιάξαμε και γιατί.", studio="Studio στην Πάτρα που μοντελοποιεί το πρόβλημα πριν γράψει κώδικα. Πώς δουλεύουμε, σε τέσσερα βήματα.", privacy="Πώς ο ιστότοπος της PG AI Solutions διαχειρίζεται προσωπικά δεδομένα: τι συλλέγουμε, γιατί, ποιος τα λαμβάνει, για πόσο τα κρατάμε και τα δικαιώματά σας."),
   skip="Μετάβαση στο περιεχόμενο",
   hero=dict(tag="Studio λογισμικού · Πάτρα", h1="Ξεκινά<br>σαν <em>κώδικας.</em>", sub="Σχεδιάζουμε και αναπτύσσουμε premium ιστοσελίδες, επιχειρησιακές εφαρμογές και λογισμικό βελτιστοποίησης για επιχειρήσεις που απαιτούν το υψηλότερο επίπεδο.", cta="Ζητήστε συνάντηση", link="Δείτε τα έργα μας", km="km", saved="συντομότερη", aria="Κινούμενο παράδειγμα: ο κώδικας τρέχει και σχεδιάζει τη συντομότερη διαδρομή ανάμεσα σε στάσεις", chips=["ραντεβού προγραμματισμένα","Διαδρομή εβδομάδας","καθαρό αποτέλεσμα Οκτωβρίου"], proof=[("6","τομείς εξειδίκευσης"),("1","εργάσιμη χρόνος απόκρισης"),("584","αυτοματοποιημένοι έλεγχοι ποιότητας"),("4","υποστηριζόμενες γλώσσες")]),
   svc_head=("Τι κάνουμε", "Premium δουλειά. <em>Ένα επίπεδο.</em>", "Κάθε έργο σχεδιάζεται και χτίζεται από την αρχή. Χωρίς templates, χωρίς εκπτώσεις στην ποιότητα."),
@@ -286,14 +286,28 @@ def footer(L, pre):
 </html>
 '''
 
-BUILD = dict(index=page_index, services=page_services, work=page_work, studio=page_studio)
+def page_privacy(L, pre):
+    body = open(os.path.join(ROOT, f"scripts/content/privacy.{L}.html"), encoding="utf-8").read()
+    h = ("Privacy","Privacy <em>policy.</em>","What this website collects, why, and your rights.") if L=="en" else ("Απόρρητο","Πολιτική <em>απορρήτου.</em>","Τι συλλέγει αυτός ο ιστότοπος, γιατί, και ποια είναι τα δικαιώματά σας.")
+    return intro(h) + f'<section class="sec" style="padding-top:clamp(48px,6vw,80px)"><div class="wrap"><article class="prose">{body}</article></div></section>'
+
+BUILD = dict(index=page_index, services=page_services, work=page_work, studio=page_studio, privacy=page_privacy)
 for L in ("en", "el"):
     pre = "../" if L == "el" else ""
-    for p in PAGES:
-        body = head(L, p, pre) + header(L, p, pre) + '<main id="main">\n' + BUILD[p](L, pre) + '\n</main>\n' + contact(L) + footer(L, pre)
+    for p in PAGES + ["privacy"]:
+        body = head(L, p, pre) + header(L, p, pre) + '<main id="main">\n' + BUILD[p](L, pre) + '\n</main>\n' + (contact(L) if p != "privacy" else "") + footer(L, pre)
         path = os.path.join(ROOT, "el" if L == "el" else "", "index.html" if p == "index" else f"{p}.html")
         open(path, "w", encoding="utf-8").write(body)
         print("wrote", os.path.relpath(path, ROOT))
+
+# 404 (served from any path, so every link is absolute)
+nf = head("en", "index", BASE + "/").replace(T["en"]["titles"]["index"], "Page not found | PG AI Solutions").replace('content="index,follow,max-image-preview:large"', 'content="noindex"')
+nf += f'''<main id="main"><section class="intro" style="border:0"><div class="wrap"><span class="eyebrow">404</span><h1 class="h1">Page <em>not found.</em></h1><p class="lead">This page does not exist or has moved. Η σελίδα δεν υπάρχει ή έχει μετακινηθεί.</p><div class="hero-act"><a class="btn" href="{BASE}/">Home <i aria-hidden="true">→</i></a><a class="btn line" href="{BASE}/el/" lang="el">Αρχική <i aria-hidden="true">→</i></a></div></div></section></main>
+</body>
+</html>
+'''
+open(os.path.join(ROOT, "404.html"), "w", encoding="utf-8").write(nf)
+print("wrote 404.html")
 
 # sitemap
 urls = []
