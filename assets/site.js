@@ -17,7 +17,7 @@
     var rng=function(x){return function(){x=(x*16807)%2147483647;return x/2147483647;};};
     var d=function(a,b){return Math.hypot(a.x-b.x,a.y-b.y);};
     var build=function(){
-      var narrow=W<820,r=rng(23),p=[],n=narrow?9:14,b=narrow?[.05,.5,.95,.78]:[.52,.12,.97,.8],i,k;
+      var narrow=W<820,r=rng(23),p=[],n=narrow?9:14,b=narrow?[.05,.5,.95,.78]:[.52,.14,.9,.7],i,k;
       for(i=0;i<n;i++)p.push({x:(b[0]+r()*(b[2]-b[0]))*W,y:(b[1]+r()*(b[3]-b[1]))*H});
       var raw=0;for(i=1;i<p.length;i++)raw+=d(p[i-1],p[i]);
       var left=p.slice(1),o=[p[0]];
