@@ -136,6 +136,8 @@ p{margin:0}
 .step .n{font:400 12px var(--mono);color:var(--sky-ink)}
 .step p{color:var(--mute);font-size:15.5px}
 
+.steps3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.fld select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--mute) 50%),linear-gradient(135deg,var(--mute) 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 15px) 50%;background-size:5px 5px;background-repeat:no-repeat}
 /* spec list */
 .spec{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));border-top:1px solid var(--line)}
 .spec div{padding:20px 20px 20px 0;border-bottom:1px solid var(--line)}
@@ -169,8 +171,8 @@ form.cf{display:grid;gap:14px;align-content:start}
 .f2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .fld{display:grid;gap:6px}
 .fld label{font:400 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
-.fld input,.fld textarea{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line2);border-radius:var(--r);padding:13px 14px;transition:border-color .2s ease}
-.fld input:focus,.fld textarea:focus{outline:0;border-color:var(--sky)}
+.fld input,.fld textarea,.fld select{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line2);border-radius:var(--r);padding:13px 14px;transition:border-color .2s ease}
+.fld input:focus,.fld textarea:focus,.fld select:focus{outline:0;border-color:var(--sky)}
 .fld textarea{min-height:140px;resize:vertical}
 .cf .btn{width:100%}
 .note{font-size:14px;color:var(--mute);min-height:1.4em}
@@ -202,5 +204,5 @@ form.cf{display:grid;gap:14px;align-content:start}
   .contact .wrap{grid-template-columns:1fr}
   .f2{grid-template-columns:1fr}
 }
-@media (max-width:560px){.logo span{display:none}.steps{grid-template-columns:1fr}.step+.step{padding-left:0;border-left:0;border-top:1px solid var(--line)}}
+@media (max-width:560px){.logo span{display:none}.steps,.steps3{grid-template-columns:1fr}.step+.step{padding-left:0;border-left:0;border-top:1px solid var(--line)}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
