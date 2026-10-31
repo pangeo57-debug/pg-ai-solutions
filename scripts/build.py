@@ -4,7 +4,7 @@
 import json, os, html
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE = "https://pangeo57-debug.github.io/pg-ai-solutions"
-V = "10"
+V = "11"
 LOGO = open(os.path.join(ROOT, "logo/pg-mark.svg"), encoding="utf-8").read().replace(' role="img" aria-label="PG"', ' aria-hidden="true"').replace('id="pgr"', 'id="pgr-h"').replace("url(#pgr)", "url(#pgr-h)")
 PAGES = ["index", "services", "work", "studio"]
 
@@ -209,7 +209,8 @@ def steps(L):
 
 def page_index(L, pre):
     t = T[L]; h = t["hero"]
-    rows = "".join(f'<a class="row" href="services.html#s{i+1}"><span class="n">0{i+1}</span><h3 class="h3">{a}</h3><p>{b}</p><span class="go" aria-hidden="true">→</span></a>' for i,(a,b) in enumerate(t["svcs"]))
+    more = "Περισσότερα" if L=="el" else "Learn more"
+    rows = "".join(f'<a class="scard" href="services.html#s{i+1}"><span class="sn">0{i+1}</span><svg class="smark" viewBox="0 0 48 16" aria-hidden="true"><path d="M2 12 L14 4 L26 10 L40 3" fill="none" stroke="url(#sg)" stroke-width="1.5"/><rect x="0" y="10" width="4" height="4" fill="#0593C6"/><rect x="38" y="1" width="4" height="4" fill="#D83995"/></svg><h3 class="h3">{a}</h3><p>{b}</p><span class="smore">{more} <i aria-hidden="true">→</i></span></a>' for i,(a,b) in enumerate(t["svcs"]))
     hs = h
     chips = h["chips"]
     proof = "".join(f'<div><b>{a}</b><span>{b}</span></div>' for a,b in h["proof"])
@@ -225,7 +226,7 @@ def page_index(L, pre):
 <div class="chip c3"><small>Cash Flow</small><b>+276 €</b><span>{chips[2]}</span></div>
 </div></div>
 <div class="proof"><div class="wrap">{proof}</div></div></section>
-<section class="sec"><div class="wrap">{sec_head(t["svc_head"])}<div class="rows">{rows}</div></div></section>
+<section class="sec dark"><svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="sg" x1="0" x2="1"><stop offset="0" stop-color="#3FB4E0"/><stop offset="1" stop-color="#F06BB4"/></linearGradient></defs></svg><div class="wrap">{sec_head(t["svc_head"])}<div class="sgrid">{rows}</div></div></section>
 <section class="sec alt"><div class="wrap">{sec_head(t["work_head"])}{strip(L, pre)}<p style="margin-top:32px"><a class="btn line" href="work.html">{t["all_work"]} <i aria-hidden="true">→</i></a></p></div></section>
 <section class="sec"><div class="wrap">{sec_head(t["proc_head"])}{steps(L)}</div></section>
 <section class="cta-band"><div class="wrap"><div><span class="eyebrow">{t["band"][0]}</span><h2 class="h2">{t["band"][1]}</h2><p class="lead">{t["band"][2]}</p></div><a class="btn" href="#contact">{t["band"][3]} <i aria-hidden="true">→</i></a></div></section>
