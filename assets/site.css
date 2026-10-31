@@ -288,4 +288,24 @@ form.cf{gap:18px}
   .wcard{padding:10px 10px 14px}
 }
 
+/* ---- compact mobile: services and spacing ---- */
+@media (max-width:820px){
+  .sec{padding-block:64px}
+  .sec-head{margin-bottom:32px;gap:14px}
+  .sec-head .h2{font-size:clamp(2.1rem,9vw,2.8rem)}
+  .rows{display:grid;grid-template-columns:1fr 1fr;gap:10px;border-top:0}
+  .row{display:flex;flex-direction:column;gap:6px;padding:14px;border:1px solid var(--line);background:var(--bg)}
+  .row::before{display:none}
+  .row .n{font-size:10px}
+  .row .h3{font-size:1.35rem;line-height:1.05}
+  .row p{font-size:13px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .svc{padding-block:28px;gap:12px}
+  .svc .h2{font-size:2rem}
+  .plist li{padding:8px 0 8px 20px;font-size:14px}
+  .plist li::before{top:17px}
+  .steps .step{padding-block:18px;gap:6px}
+  .step p{font-size:14px}
+  .contact .wrap{padding-block:64px}
+}
+
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
