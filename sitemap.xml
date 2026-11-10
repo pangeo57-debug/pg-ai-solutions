@@ -60,4 +60,16 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://pangeo57-debug.github.io/pg-ai-solutions/privacy.html"/>
     <xhtml:link rel="alternate" hreflang="el" href="https://pangeo57-debug.github.io/pg-ai-solutions/el/privacy.html"/>
   </url>
+  <url>
+    <loc>https://pangeo57-debug.github.io/pg-ai-solutions/terms.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pangeo57-debug.github.io/pg-ai-solutions/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="el" href="https://pangeo57-debug.github.io/pg-ai-solutions/el/terms.html"/>
+  </url>
+  <url>
+    <loc>https://pangeo57-debug.github.io/pg-ai-solutions/el/terms.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pangeo57-debug.github.io/pg-ai-solutions/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="el" href="https://pangeo57-debug.github.io/pg-ai-solutions/el/terms.html"/>
+  </url>
 </urlset>

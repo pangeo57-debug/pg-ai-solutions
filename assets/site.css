@@ -205,6 +205,7 @@ form.cf{display:grid;gap:14px;align-content:start}
 .fld input:focus,.fld textarea:focus,.fld select:focus{outline:0;border-color:var(--sky)}
 .fld textarea{min-height:140px;resize:vertical}
 .cf .btn{width:100%}
+.fnote{font-size:13px;color:var(--mute);margin:0}.fnote a{color:var(--sky-ink)}
 .note{font-size:14px;color:var(--mute);min-height:1.4em}
 .note.ok{color:var(--sky-ink)} .note.err{color:var(--pink-ink)}
 .hp{position:absolute;left:-5000px}
@@ -338,3 +339,5 @@ form.cf{gap:18px}
 }
 
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+
+.hero .h1{font-size:clamp(3rem,6.4vw,6.2rem)}
