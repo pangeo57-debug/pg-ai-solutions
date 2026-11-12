@@ -4,7 +4,7 @@
 import json, os, html
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE = "https://pangeo57-debug.github.io/pg-ai-solutions"
-V = "13"
+V = "14"
 LOGO = open(os.path.join(ROOT, "logo/pg-mark.svg"), encoding="utf-8").read().replace(' role="img" aria-label="PG"', ' aria-hidden="true"').replace('id="pgr"', 'id="pgr-h"').replace("url(#pgr)", "url(#pgr-h)")
 PAGES = ["index", "services", "work", "studio"]
 
@@ -93,7 +93,7 @@ T = {
   contact=dict(eyebrow="Contact", h="Discuss <em>your project</em> with us.", lead="Tell us what you want to achieve. We reply within one working day with clear next steps and, when it fits, a proposal.", phone="Phone", email="Email", where="Studio", where_v="Patras, Greece", reply="Reply", reply_v="Within one working day",
     consent='By sending this form you agree to our <a href="privacy.html">privacy policy</a>.', who1="New project", who2="Partnership", subj1="New project inquiry · PG AI Solutions", subj2="Collaboration inquiry · PG AI Solutions",
     name="Name", mail="Email", msg="Message", ph_msg="Briefly describe your project", send="Send message",
-    t=dict(sending="Sending…", sent="Sent ✓", send="Send message", thanks="Thank you. We will reply to your email soon.", fail="That did not go through. Please write to pangeo57@yahoo.gr.")),
+    t=dict(sending="Sending…", sent="Sent ✓", send="Send message", thanks="Thank you. We will reply to your email soon.", fail="The message could not be sent. Please email pangeo57@yahoo.gr or call +30 697 191 9078.")),
   band=("Limited availability","We accept a limited number of <em>engagements.</em>","Each project receives senior attention from the initial consultation through to delivery. We welcome the opportunity to discuss yours.","Schedule a consultation"),
   start_head=("How we start", "From first call <em>to proposal.</em>", "Every engagement begins with understanding the business. Pricing follows the scope, never the other way around."),
   start=[("Conversation","A call or meeting to understand your goals, your users and what success looks like."),("Proposal","A written proposal with clear scope, timeline and investment. No surprises later."),("Delivery","Design and build in focused stages, with a working version in your hands early.")],
@@ -125,7 +125,7 @@ T = {
   contact=dict(eyebrow="Επικοινωνία", h="Συζητήστε μαζί μας <em>το έργο σας.</em>", lead="Περιγράψτε μας τους στόχους σας. Θα σας απαντήσουμε εντός μίας εργάσιμης με σαφή επόμενα βήματα και, όπου ενδείκνυται, πρόταση συνεργασίας.", phone="Τηλέφωνο", email="Email", where="Studio", where_v="Πάτρα, Ελλάδα", reply="Απάντηση", reply_v="Μέσα σε μία εργάσιμη",
     consent='Με την αποστολή συμφωνείτε με την <a href="privacy.html">πολιτική απορρήτου</a>.', who1="Νέο έργο", who2="Συνεργασία", subj1="Νέο αίτημα έργου · PG AI Solutions", subj2="Πρόταση συνεργασίας · PG AI Solutions",
     name="Όνομα", mail="Email", msg="Μήνυμα", ph_msg="Περιγράψτε σύντομα το έργο σας", send="Αποστολή μηνύματος",
-    t=dict(sending="Αποστολή…", sent="Εστάλη ✓", send="Αποστολή μηνύματος", thanks="Ευχαριστούμε. Θα σας απαντήσουμε σύντομα στο email σας.", fail="Η αποστολή δεν ολοκληρώθηκε. Γράψτε μας στο pangeo57@yahoo.gr.")),
+    t=dict(sending="Αποστολή…", sent="Εστάλη ✓", send="Αποστολή μηνύματος", thanks="Ευχαριστούμε. Θα σας απαντήσουμε σύντομα στο email σας.", fail="Το μήνυμα δεν στάλθηκε. Γράψτε μας στο pangeo57@yahoo.gr ή καλέστε στο +30 697 191 9078.")),
   band=("Περιορισμένη διαθεσιμότητα","Αναλαμβάνουμε περιορισμένο αριθμό <em>συνεργασιών.</em>","Κάθε έργο έχει την πλήρη προσοχή μας, από την αρχική συνάντηση έως την παράδοση. Θα χαρούμε να συζητήσουμε το δικό σας.","Προγραμματίστε συνάντηση"),
   start_head=("Πώς ξεκινάμε", "Από την πρώτη κουβέντα <em>στην πρόταση.</em>", "Κάθε συνεργασία ξεκινά από την κατανόηση της επιχείρησης. Η τιμή ακολουθεί το εύρος του έργου, ποτέ το αντίστροφο."),
   start=[("Γνωριμία","Συζήτηση ή συνάντηση για να καταλάβουμε τους στόχους σας, τους χρήστες σας και τι σημαίνει επιτυχία."),("Πρόταση","Γραπτή πρόταση με σαφές εύρος, χρονοδιάγραμμα και επένδυση. Χωρίς εκπλήξεις αργότερα."),("Υλοποίηση","Σχεδιασμός και ανάπτυξη σε εστιασμένα στάδια, με λειτουργική έκδοση στα χέρια σας από νωρίς.")],

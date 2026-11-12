@@ -68,7 +68,9 @@
       btn.disabled=true;lbl.textContent=T.sending;note.className='note';note.textContent='';
       fetch(f.action.replace('formsubmit.co/','formsubmit.co/ajax/'),{method:'POST',headers:{Accept:'application/json'},body:fd})
         .then(function(r){if(!r.ok)throw 0;return r.json();})
-        .then(function(){lbl.textContent=T.sent;note.className='note ok';note.textContent=T.thanks;f.reset();setTimeout(function(){btn.disabled=false;lbl.textContent=T.send;},4000);})
+        // FormSubmit answers 200 even when it did NOT deliver (e.g. the form is
+        // not activated yet): only {success:"true"} means the email went out.
+        .then(function(j){if(!j||String(j.success)!=='true')throw 0;lbl.textContent=T.sent;note.className='note ok';note.textContent=T.thanks;f.reset();setTimeout(function(){btn.disabled=false;lbl.textContent=T.send;},4000);})
         .catch(function(){btn.disabled=false;lbl.textContent=T.send;note.className='note err';note.textContent=T.fail;});
     });
   }
