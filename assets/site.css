@@ -341,3 +341,30 @@ form.cf{gap:18px}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 
 .hero .h1{font-size:clamp(3rem,6.4vw,6.2rem)}
+
+/* ---- glass pass ---- */
+:root{--glass:rgba(255,255,255,.55);--glass-b:rgba(255,255,255,.75);--glass-blur:saturate(1.6) blur(18px)}
+.hd{background:rgba(255,255,255,.62);border-bottom-color:rgba(11,26,38,.06)}
+/* soft colour behind the hero so the glass has something to refract */
+.hero{background:
+  radial-gradient(38% 50% at 78% 22%,rgba(216,57,149,.20),transparent 70%),
+  radial-gradient(40% 55% at 60% 95%,rgba(5,147,198,.22),transparent 70%),
+  radial-gradient(30% 40% at 8% 10%,rgba(63,180,224,.14),transparent 70%),var(--bg)}
+.codecard,.chip{background:var(--glass);border:1px solid var(--glass-b);-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 24px 48px -28px rgba(11,26,38,.30)}
+.codecard .bar{border-bottom-color:rgba(11,26,38,.06)}
+/* proof strip as a frosted band */
+.proof{background:rgba(255,255,255,.5);-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);border-top-color:rgba(255,255,255,.8)}
+/* services: glass cards on the dark section */
+.sgrid{background:transparent;border:0;gap:16px}
+.scard{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.10);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+@media (hover:hover) and (pointer:fine){.scard:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.18)}}
+.sec.dark::before{background:radial-gradient(45% 60% at 90% 0%,rgba(216,57,149,.35),transparent 70%),radial-gradient(40% 60% at 0% 100%,rgba(5,147,198,.38),transparent 70%),radial-gradient(30% 40% at 50% 50%,rgba(63,180,224,.10),transparent 70%)}
+/* work + contact on a tinted ground with frosted panels */
+.sec.alt,.contact{background:linear-gradient(160deg,#EEF7FC 0%,#F7F1F8 100%)}
+.wcard{background:var(--glass);border:1px solid var(--glass-b);-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);box-shadow:inset 0 1px 0 rgba(255,255,255,.9)}
+form.cf{background:var(--glass);border:1px solid var(--glass-b);-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);padding:28px;box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 30px 60px -40px rgba(11,26,38,.35)}
+.fld input,.fld textarea,.fld select{background:rgba(255,255,255,.7)}
+.cta-band .btn{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.35);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+@media (hover:hover) and (pointer:fine){.cta-band .btn:hover{background:rgba(255,255,255,.22)}}
+@media (max-width:820px){form.cf{padding:18px}.sgrid{gap:10px}}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.codecard,.chip,.wcard,form.cf{background:rgba(255,255,255,.92)}.scard{background:#0B1B28}}
