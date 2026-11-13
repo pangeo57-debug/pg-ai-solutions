@@ -4,7 +4,7 @@
 import json, os, html
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE = "https://pangeo57-debug.github.io/pg-ai-solutions"
-V = "15"
+V = "16"
 LOGO = open(os.path.join(ROOT, "logo/pg-mark.svg"), encoding="utf-8").read().replace(' role="img" aria-label="PG"', ' aria-hidden="true"').replace('id="pgr"', 'id="pgr-h"').replace("url(#pgr)", "url(#pgr-h)")
 PAGES = ["index", "services", "work", "studio"]
 
@@ -74,7 +74,8 @@ T = {
   titles=dict(index="Premium Websites, SEO, Mini Apps & Optimization Software in Patras | PG AI Solutions", services="Services | PG AI Solutions", work="Work | PG AI Solutions", studio="Studio & Process | PG AI Solutions", privacy="Privacy Policy | PG AI Solutions", terms="Terms of Use | PG AI Solutions"),
   descs=dict(index="Premium websites, SEO, premium mini apps and optimization software from a studio in Patras, Greece.", services="Bespoke websites, business applications and optimization software, built around how your business actually works.", work="RoutePal, Surplo, Cash Flow, Cooking Made with Love and MathDecoded: what we built and why.", studio="A studio in Patras that models the problem before writing code. How we work, in four steps.", privacy="How the PG AI Solutions website handles personal data: what we collect, why, who receives it, how long we keep it and your rights.", terms="Terms of use for the PG AI Solutions website."),
   skip="Skip to content",
-  hero=dict(tag="Software studio · Patras", h1="Software that<br><em>works for you.</em>", sub="We design and engineer premium websites, business applications and optimization software for organisations that expect the highest standard.", cta="Request a consultation", link="View our work", km="km", saved="shorter", aria="Animated example: code runs and draws the shortest route between stops", chips=["appointments scheduled","Route","net result, October"], proof=[("3","core disciplines"),("1","working day response time"),("584","automated quality checks"),("4","supported languages")]),
+  hero=dict(tag="Software studio · Patras", h1=[("From chaos,",0),("the optimal",1),("solution.",1)], sub="Websites, apps and optimization software, built with AI and algorithms from day one.", cta="Start a conversation", link="View our work", aria="Animation: a real route optimizer arranges scattered stops into the PG monogram, then into the shortest route of a working day", hud=("stops","iterations","route"), proof=[("3","core disciplines"),("1","working day response time"),("584","automated quality checks"),("4","supported languages")]),
+  ask=dict(eyebrow="Tell us what you need", h="One sentence. <em>A clear plan.</em>", lead="Describe it the way you would to a colleague. We reply within one working day with the plan and the cost.", q="I need a booking app that also builds the week's schedule by itself", chips=["Booking app","Bilingual website","Shift scheduling","Delivery routes"], plan=[("Week 1","understand the problem, data model"),("Weeks 2–4","app + scheduling algorithm"),("Week 5","tests on real data, handover")], cta="Describe your project"),
   svc_head=("What we do", "Three disciplines. <em>One standard.</em>", "Every project is designed and engineered from first principles. No templates, no shortcuts."),
   svcs=[("Premium websites","Bespoke websites with SEO, branding, hosting and care included, built to put your business at the top of its market."),("Business applications","Focused applications shaped around how your business works, from bookings to internal tools."),("Optimization software","Scheduling, routing and decision systems built on proven algorithms, measured against real benchmarks.")],
   work_head=("Selected work", "A selection of <em>our work.</em>", "Applications and websites we have designed and engineered, in production and in development."),
@@ -106,7 +107,8 @@ T = {
   titles=dict(index="Premium Websites, SEO, Mini Apps & Λογισμικό Βελτιστοποίησης στην Πάτρα | PG AI Solutions", services="Υπηρεσίες | PG AI Solutions", work="Έργα | PG AI Solutions", studio="Studio & Διαδικασία | PG AI Solutions", privacy="Πολιτική Απορρήτου | PG AI Solutions", terms="Όροι Χρήσης | PG AI Solutions"),
   descs=dict(index="Ιστοσελίδες κατά παραγγελία, premium mini apps, SEO και λογισμικό βελτιστοποίησης από studio στην Πάτρα.", services="Ιστοσελίδες κατά παραγγελία, επιχειρησιακές εφαρμογές και λογισμικό βελτιστοποίησης, φτιαγμένα γύρω από την επιχείρησή σας.", work="RoutePal, Surplo, Cash Flow, Cooking Made with Love και MathDecoded: τι φτιάξαμε και γιατί.", studio="Studio στην Πάτρα που μοντελοποιεί το πρόβλημα πριν γράψει κώδικα. Πώς δουλεύουμε, σε τέσσερα βήματα.", privacy="Πώς ο ιστότοπος της PG AI Solutions διαχειρίζεται προσωπικά δεδομένα: τι συλλέγουμε, γιατί, ποιος τα λαμβάνει, για πόσο τα κρατάμε και τα δικαιώματά σας.", terms="Όροι χρήσης του ιστότοπου της PG AI Solutions."),
   skip="Μετάβαση στο περιεχόμενο",
-  hero=dict(tag="Studio λογισμικού · Πάτρα", h1="Λογισμικό που<br><em>δουλεύει για εσάς.</em>", sub="Σχεδιάζουμε και αναπτύσσουμε premium ιστοσελίδες, επιχειρησιακές εφαρμογές και λογισμικό βελτιστοποίησης για επιχειρήσεις που απαιτούν το υψηλότερο επίπεδο.", cta="Ζητήστε συνάντηση", link="Δείτε τα έργα μας", km="km", saved="συντομότερη", aria="Κινούμενο παράδειγμα: ο κώδικας τρέχει και σχεδιάζει τη συντομότερη διαδρομή ανάμεσα σε στάσεις", chips=["ραντεβού προγραμματισμένα","Διαδρομή","καθαρό αποτέλεσμα Οκτωβρίου"], proof=[("3","κύριες ειδικότητες"),("1","εργάσιμη χρόνος απόκρισης"),("584","αυτοματοποιημένοι έλεγχοι ποιότητας"),("4","υποστηριζόμενες γλώσσες")]),
+  hero=dict(tag="Studio λογισμικού · Πάτρα", h1=[("Από το χάος,",0),("η βέλτιστη",1),("λύση.",1)], sub="Ιστοσελίδες, εφαρμογές και λογισμικό βελτιστοποίησης, χτισμένα με AI και αλγορίθμους από την πρώτη μέρα.", cta="Ξεκινήστε μια συζήτηση", link="Δείτε τα έργα μας", aria="Κινούμενη εικόνα: ένας πραγματικός αλγόριθμος βελτιστοποίησης τακτοποιεί σκόρπιες στάσεις στο μονόγραμμα PG και μετά στη συντομότερη διαδρομή μιας εργάσιμης μέρας", hud=("στάσεις","επαναλήψεις","διαδρομή"), proof=[("3","κύριες ειδικότητες"),("1","εργάσιμη χρόνος απόκρισης"),("584","αυτοματοποιημένοι έλεγχοι ποιότητας"),("4","υποστηριζόμενες γλώσσες")]),
+  ask=dict(eyebrow="Πείτε μας τι χρειάζεστε", h="Μια πρόταση. <em>Ένα καθαρό πλάνο.</em>", lead="Περιγράψτε το όπως θα το λέγατε σε συνεργάτη. Απαντάμε σε μία εργάσιμη με το πλάνο και το κόστος.", q="Θέλω εφαρμογή για ραντεβού που βγάζει μόνη της το πρόγραμμα της εβδομάδας", chips=["Εφαρμογή κρατήσεων","Δίγλωσση ιστοσελίδα","Πρόγραμμα βαρδιών","Δρομολόγια"], plan=[("Εβδ. 1","κατανόηση προβλήματος, μοντέλο δεδομένων"),("Εβδ. 2–4","εφαρμογή + αλγόριθμος προγράμματος"),("Εβδ. 5","δοκιμές σε πραγματικά δεδομένα, παράδοση")], cta="Περιγράψτε το έργο σας"),
   svc_head=("Τι κάνουμε", "Τρεις ειδικότητες. <em>Ένα επίπεδο.</em>", "Κάθε έργο σχεδιάζεται και χτίζεται από την αρχή. Χωρίς templates, χωρίς εκπτώσεις στην ποιότητα."),
   svcs=[("Ιστοσελίδες","Ιστοσελίδες κατά παραγγελία, με SEO, branding, φιλοξενία και συντήρηση, που τοποθετούν την επιχείρησή σας στην κορυφή της αγοράς της."),("Εφαρμογές","Στοχευμένες εφαρμογές φτιαγμένες γύρω από την επιχείρησή σας, από κρατήσεις μέχρι εσωτερικά εργαλεία."),("Λογισμικό βελτιστοποίησης","Συστήματα προγραμματισμού, δρομολόγησης και αποφάσεων, με αποδεδειγμένους αλγορίθμους και μετρήσιμα αποτελέσματα.")],
   work_head=("Επιλεγμένα έργα", "Δείτε κάποια από <em>τα έργα μας.</em>", "Εφαρμογές και ιστοσελίδες που έχουμε σχεδιάσει και αναπτύξει, σε λειτουργία και σε εξέλιξη."),
@@ -152,7 +154,7 @@ def head(L, p, pre):
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>{title}</title>
 <meta name="description" content="{desc}">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#06080F">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="canonical" href="{url(L,p)}">
 {alts}<meta property="og:type" content="website">
@@ -165,8 +167,9 @@ def head(L, p, pre):
 <meta name="twitter:card" content="summary_large_image">
 {ld}<link rel="icon" type="image/svg+xml" href="{pre}logo/pg-icon.svg">
 <link rel="apple-touch-icon" href="{pre}assets/apple-touch-icon.png">
-<link rel="preload" href="{pre}assets/fonts/notodisplay-{"greek" if L=="el" else "latin"}-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{pre}assets/fonts/manrope-{"greek" if L=="el" else "latin"}-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{pre}assets/site.css?v={V}">
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 <a class="skip" href="#main">{t["skip"]}</a>
@@ -204,23 +207,27 @@ def steps(L):
 def page_index(L, pre):
     t = T[L]; h = t["hero"]
     more = "Περισσότερα" if L=="el" else "Learn more"
-    rows = "".join(f'<a class="scard" href="services.html#s{i+1}"><span class="sn">0{i+1}</span><svg class="smark" viewBox="0 0 48 16" aria-hidden="true"><path d="M2 12 L14 4 L26 10 L40 3" fill="none" stroke="url(#sg)" stroke-width="1.5"/><rect x="0" y="10" width="4" height="4" fill="#0593C6"/><rect x="38" y="1" width="4" height="4" fill="#D83995"/></svg><h3 class="h3">{a}</h3><p>{b}</p><span class="smore">{more} <i aria-hidden="true">→</i></span></a>' for i,(a,b) in enumerate(t["svcs"]))
-    hs = h
-    chips = h["chips"]
-    proof = "".join(f'<div><b>{a}</b><span>{b}</span></div>' for a,b in h["proof"])
+    rows = "".join(f'<a class="scard rv" href="services.html#s{i+1}"><span class="sn">0{i+1}</span><svg class="smark" viewBox="0 0 48 16" aria-hidden="true"><path d="M2 12 L14 4 L26 10 L40 3" fill="none" stroke="url(#sg)" stroke-width="1.5"/><rect x="0" y="10" width="4" height="4" fill="#0593C6"/><rect x="38" y="1" width="4" height="4" fill="#D83995"/></svg><h3 class="h3">{a}</h3><p>{b}</p><span class="smore">{more} <i aria-hidden="true">→</i></span></a>' for i,(a,b) in enumerate(t["svcs"]))
+    proof = "".join(f'<div class="rv"><b>{a}</b><span>{b}</span></div>' for a,b in h["proof"])
+    k = 0; lines = []
+    for txt, acc in h["h1"]:
+        ws = []
+        for w in txt.split():
+            ws.append(f'<span class="wd{" g" if acc else ""}" style="--d:{200+70*k}ms">{w}</span>'); k += 1
+        lines.append(" ".join(ws))
+    h1 = lines[0] + "<br>" + " ".join(lines[1:])
+    a = t["ask"]
+    chips = "".join(f"<span>{c}</span>" for c in a["chips"])
+    plan = "".join(f"<div><b>{x}</b> · {y}</div>" for x, y in a["plan"])
     return f'''<section class="hero" aria-labelledby="hero-h"><canvas role="img" aria-label="{h["aria"]}"></canvas>
-<div class="wrap"><div class="hero-txt"><span class="eyebrow">{h["tag"]}</span><h1 class="h1" id="hero-h">{h["h1"]}</h1><p class="lead">{h["sub"]}</p>
-<div class="hero-act"><a class="btn" href="#contact">{h["cta"]} <i aria-hidden="true">→</i></a><a class="txtlink" href="work.html">{h["link"]}</a></div></div>
-<div class="stage" aria-hidden="true">
-<div class="codecard"><div class="bar"><i></i><i></i><i></i><span>route.js</span></div><pre></pre></div>
-<figure class="phone p1"><img src="{pre}assets/work/routepal.webp?v={V}" width="480" height="1039" alt=""></figure>
-<figure class="phone p2"><img src="{pre}assets/work/cashflow.webp?v={V}" width="480" height="1039" alt=""></figure>
-<div class="chip c1"><small>Demo · RoutePal</small><b>15/15</b><span>{chips[0]}</span></div>
-<div class="chip c2"><small>Demo · {chips[1]}</small><b><span data-gain>…</span></b><span><b data-km>0.0</b> km</span></div>
-<div class="chip c3"><small>Demo · Cash Flow</small><b>+276 €</b><span>{chips[2]}</span></div>
-</div></div>
-<div class="proof"><div class="wrap">{proof}</div></div></section>
-<section class="sec dark"><svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="sg" x1="0" x2="1"><stop offset="0" stop-color="#3FB4E0"/><stop offset="1" stop-color="#F06BB4"/></linearGradient></defs></svg><div class="wrap">{sec_head(t["svc_head"])}<div class="sgrid">{rows}</div></div></section>
+<div class="wrap"><div class="hero-txt"><span class="eyebrow live fade" style="--d:100ms">{h["tag"]}</span><h1 class="h1" id="hero-h">{h1}</h1><p class="lead fade" style="--d:700ms">{h["sub"]}</p>
+<div class="hero-act fade" style="--d:850ms"><a class="btn" href="#contact">{h["cta"]} <i aria-hidden="true">→</i></a><a class="txtlink" href="work.html">{h["link"]}</a></div></div></div>
+<div class="hud fade" style="--d:1100ms" aria-hidden="true"><div><span>{h["hud"][0]}</span><b data-n>0</b></div><div><span>{h["hud"][1]}</span><b data-it>0</b></div><div><span>{h["hud"][2]}</span><b data-km>…</b></div><i class="bar"><i data-bar></i></i></div>
+</section>
+<div class="proof"><div class="wrap">{proof}</div></div>
+<section class="sec ask"><div class="wrap"><div class="sec-head"><span class="eyebrow">{a["eyebrow"]}</span><h2 class="h2">{a["h"]}</h2><p class="lead">{a["lead"]}</p></div>
+<div class="prompt" data-q="{html.escape(a["q"], quote=True)}"><p class="pin" aria-label="{html.escape(a["q"], quote=True)}"></p><div class="chips">{chips}</div><div class="plan">{plan}</div><a class="btn" href="#contact">{a["cta"]} <i aria-hidden="true">→</i></a></div></div></section>
+<section class="sec"><svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="sg" x1="0" x2="1"><stop offset="0" stop-color="#3FB4E0"/><stop offset="1" stop-color="#F06BB4"/></linearGradient></defs></svg><div class="wrap">{sec_head(t["svc_head"])}<div class="sgrid">{rows}</div></div></section>
 <section class="sec alt"><div class="wrap">{sec_head(t["work_head"])}{strip(L, pre)}<p style="margin-top:32px"><a class="btn line" href="work.html">{t["all_work"]} <i aria-hidden="true">→</i></a></p></div></section>
 <section class="sec"><div class="wrap">{sec_head(t["proc_head"])}{steps(L)}</div></section>
 <section class="cta-band"><div class="wrap"><div><span class="eyebrow">{t["band"][0]}</span><h2 class="h2">{t["band"][1]}</h2><p class="lead">{t["band"][2]}</p></div><a class="btn" href="#contact">{t["band"][3]} <i aria-hidden="true">→</i></a></div></section>
