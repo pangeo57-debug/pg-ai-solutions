@@ -7,6 +7,7 @@
   if(s){
     var c=s.querySelector('canvas'),x=c.getContext('2d'),hud=s.querySelector('.hud');
     var $=function(k){return hud.querySelector('[data-'+k+']');},nEl=$('n'),itEl=$('it'),kmEl=$('km'),barEl=$('bar');
+    var css=function(k,d){return getComputedStyle(document.documentElement).getPropertyValue(k).trim()||d;};
     var fmt=new Intl.NumberFormat(document.documentElement.lang||'en');
     var PATH='M12 54 V10 H30 A11 11 0 0 1 30 32 H12 M48 32 C48 44 54 54 66 54 C75 54 82 47 84 36 H68 M48 32 C48 20 54 10 66 10 C74 10 80 14 83 20';
     var W,H,dpr,mob,N,box,sc,GAP,PG,P,ord=[],mode,state,tS,tM,first,it=0,sweepI,improved,pulse=0,lineA=0,km0=1,stops=0,raf=0,vis=true,seed;
@@ -19,7 +20,7 @@
       c.width=Math.round(W*dpr);c.height=Math.round(H*dpr);x.setTransform(dpr,0,0,dpr,0,0);
       mob=W<820;N=mob?70:110;
       var tx=s.querySelector('.hero-txt').getBoundingClientRect(),bx=Math.max(W*.5,tx.right-rc.left+48);
-      box=mob?{x:W*.1,y:H*.05,w:W*.8,h:Math.min(H*.3,W*.6)}:{x:bx,y:H*.16,w:Math.max(W*.3,W*.95-bx),h:H*.66};
+      box=mob?{x:W*.1,y:H*.04,w:W*.8,h:Math.min(H*.17,W*.6)}:{x:bx,y:H*.07,w:Math.max(W*.3,W*.95-bx),h:H*.42};
       sc=Math.min(box.w/76,box.h/48);
       var ox=box.x+(box.w-76*sc)/2-8*sc,oy=box.y+(box.h-48*sc)/2-8*sc;
       var ns='http://www.w3.org/2000/svg',sv=document.createElementNS(ns,'svg'),pa=document.createElementNS(ns,'path');
@@ -56,10 +57,10 @@
         x.strokeStyle=g;x.lineWidth=1.4+1.6*hk;
         for(i=1;i<N;i++){var a=P[ord[i-1]],b=P[ord[i]],f=far(a,b);x.globalAlpha=lineA*(f?(hold?.12:.35):(.7+.3*hk));x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.stroke();}
         x.globalAlpha=1;}
-      P.forEach(function(p,i){x.globalAlpha=p.a;var dep=mode==='route'&&ord[0]===i&&lineA>.5;x.fillStyle=dep?'#0593C6':'#E9EEF8';x.beginPath();x.arc(p.x,p.y,dep?5:(mode==='route'?2.6:1.8),0,7);x.fill();});
+      P.forEach(function(p,i){x.globalAlpha=p.a;var dep=mode==='route'&&ord[0]===i&&lineA>.5;x.fillStyle=dep?'#0593C6':css('--dot','#E9EEF8');x.beginPath();x.arc(p.x,p.y,dep?5:(mode==='route'?2.6:1.8),0,7);x.fill();});
       x.globalAlpha=1;
       if(hold&&!reduce){pulse=(pulse+.0024)%1;var ff=pulse*(N-1),k=Math.floor(ff),u=ff-k,A=P[ord[k]],B=P[ord[k+1]],px=A.x+(B.x-A.x)*u,py=A.y+(B.y-A.y)*u;
-        var rg=x.createRadialGradient(px,py,0,px,py,22);rg.addColorStop(0,'rgba(255,255,255,.85)');rg.addColorStop(1,'rgba(255,255,255,0)');x.fillStyle=rg;x.beginPath();x.arc(px,py,22,0,7);x.fill();}
+        var rg=x.createRadialGradient(px,py,0,px,py,22);rg.addColorStop(0,css('--glow','rgba(255,255,255,.85)'));rg.addColorStop(1,'rgba(255,255,255,0)');x.fillStyle=rg;x.beginPath();x.arc(px,py,22,0,7);x.fill();}
       var cur=ord.length&&state!=='move'?len():km0*2.4;stops=Math.min(N,stops+2);
       nEl.textContent=stops;itEl.textContent=fmt.format(it);kmEl.textContent=(cur/(14*W/1280)).toFixed(1)+' km';
       barEl.style.transform='scaleX('+(hold?1:state==='solve'?Math.min(.97,.3+.67*Math.max(0,(km0-cur)/(km0*.3))):.15)+')';
@@ -70,6 +71,12 @@
     var rt;addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){var w=s.getBoundingClientRect().width;if(Math.abs(w-W)<2)return;cancelAnimationFrame(raf);start(performance.now());if(reduce)draw(performance.now());else raf=requestAnimationFrame(frame);},200);});
     if('IntersectionObserver' in window)new IntersectionObserver(function(en){vis=en[0].isIntersecting;cancelAnimationFrame(raf);if(vis&&!reduce)raf=requestAnimationFrame(frame);}).observe(s);
   }
+
+  /* ---- theme toggle: light / dark, remembered per visitor ---- */
+  var tb=document.querySelector('.theme');
+  if(tb){var root=document.documentElement,cur=function(){return root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');};
+    var sync=function(){tb.setAttribute('aria-pressed',cur()==='light'?'true':'false');};sync();
+    tb.addEventListener('click',function(){var n=cur()==='light'?'dark':'light';root.setAttribute('data-theme',n);try{localStorage.setItem('pg-theme',n)}catch(e){}sync();});}
 
   /* ---- headline: one gradient across the accent phrase, sliced per word ---- */
   var paint=function(){document.querySelectorAll('.h1').forEach(function(h){var g=h.querySelectorAll('.g');if(!g.length)return;

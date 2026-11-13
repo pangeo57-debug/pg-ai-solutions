@@ -16,9 +16,13 @@ Code tokens live in `assets/site.css` `:root`. Pages use the names, never raw va
 
 ---
 
-## Color (dark only)
+## Color (dark + light)
 
-There is one theme on purpose: the route glow only works on a dark ground. `theme-color` is `#06080F`.
+Dark is the default design. Light follows the device (`prefers-color-scheme: light`) or the header toggle (`.theme`, stored in `localStorage` as `pg-theme`, applied before paint by an inline script in `<head>`). `theme-color` is `#06080F` in dark and `#FFFFFF` in light.
+
+**Light values** (same names, set on `:root[data-theme="light"]`): `--bg #FFFFFF`, `--bg2 #F4F7FB`, `--bg3 #EAF0F6`, `--line #DCE6EE`, `--line2 #B9CAD7`, `--ink #0B1A26`, `--mute #4E6476`, `--sky-ink #046E95`, `--pink-ink #A82470`, `--ok #12A15A`. In light mode the solver dots are `--ink` and the travelling light is a sky glow. The canvas reads `--dot` and `--glow` so that it follows the theme.
+
+**Dark values:**
 
 | Token | Value | Role |
 |---|---|---|
@@ -114,6 +118,7 @@ Only `transform`, `opacity`, `filter` (on the headline only) and `clip-path` are
 ## Imagery and icons
 
 - **No stock photography.** The visuals are the live solver and real screenshots of our own projects (`assets/work/*.webp`), shown in `--bg2` frames.
+- **Hero phones**: two real app screens (RoutePal, Cash Flow) in phone frames sit **just below the route drawing** on desktop, staggered and running off the bottom of the hero. On phones they sit under the buttons. Their frame colour is `--phone-b`.
 - Icons are text arrows (→, ↗) only. No emoji and no icon font.
 - The PG monogram (`logo/pg-mark.svg`) is the only logo artwork. Its path is also the hero's target shape.
 
