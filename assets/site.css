@@ -301,3 +301,14 @@ form.cf{display:grid;gap:16px;align-content:start;background:var(--bg2);border:1
   .eyebrow.live::before,.pin::after{animation:none}
   .intro::after{animation:none}
 }
+
+/* FAQ (services page) */
+.faq{border-top:1px solid var(--line);max-width:860px}
+.qa{border-bottom:1px solid var(--line)}
+.qa summary{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 0;cursor:pointer;list-style:none}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary i{flex:none;width:12px;height:12px;border-right:2px solid var(--mute);border-bottom:2px solid var(--mute);transform:rotate(45deg);transition:transform .2s var(--ease-out);margin-right:6px}
+.qa[open] summary i{transform:rotate(-135deg)}
+.qa p{color:var(--mute);max-width:64ch;padding:0 0 22px}
+@media (prefers-reduced-motion:reduce){.qa summary i{transition:none}}
+#faq{scroll-margin-top:68px}
