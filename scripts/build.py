@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Χτίζει τις σελίδες του site (EN στη ρίζα, EL στο /el/) από ένα κοινό template.
 Χρήση: python3 scripts/build.py   — αλλάζεις κείμενα εδώ, όχι στα .html."""
-import json, os, html
+import json, os, html, re, datetime
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE = "https://pangeo57-debug.github.io/pg-ai-solutions"
-V = "17"
+V = "19"
+TODAY = datetime.date.today().isoformat()
 LOGO = open(os.path.join(ROOT, "logo/pg-mark.svg"), encoding="utf-8").read().replace(' role="img" aria-label="PG"', ' aria-hidden="true"').replace('id="pgr"', 'id="pgr-h"').replace("url(#pgr)", "url(#pgr-h)")
 PAGES = ["index", "services", "work", "studio"]
 
@@ -71,67 +72,83 @@ T = {
  "en": dict(
   lang="en", locale="en_GB", theme="Switch light / dark theme", other="el", other_label="ΕΛ",
   nav=dict(index="Home", services="Services", work="Work", studio="Studio", contact="Contact"),
-  titles=dict(index="Premium Websites, SEO, Mini Apps & Optimization Software in Patras | PG AI Solutions", services="Services | PG AI Solutions", work="Work | PG AI Solutions", studio="Studio & Process | PG AI Solutions", privacy="Privacy Policy | PG AI Solutions", terms="Terms of Use | PG AI Solutions"),
-  descs=dict(index="Premium websites, SEO, premium mini apps and optimization software from a studio in Patras, Greece.", services="Bespoke websites, business applications and optimization software, built around how your business actually works.", work="RoutePal, Surplo, Cash Flow, Cooking Made with Love and MathDecoded: what we built and why.", studio="A studio in Patras that models the problem before writing code. How we work, in four steps.", privacy="How the PG AI Solutions website handles personal data: what we collect, why, who receives it, how long we keep it and your rights.", terms="Terms of use for the PG AI Solutions website."),
+  titles=dict(index="Web Design & App Development in Patras, Greece | PG AI Solutions", services="Websites, Business Apps & Optimization Software | PG AI Solutions", work="Our Work: Websites, Apps & Route Optimization | PG AI Solutions", studio="Software Studio in Patras, Greece | PG AI Solutions", privacy="Privacy Policy | PG AI Solutions", terms="Terms of Use | PG AI Solutions"),
+  descs=dict(index="Software studio in Patras, Greece. We design and build websites, business apps and optimization software for small businesses. Reply within one working day.", services="Website design with SEO, booking and ordering apps, and scheduling and route optimization software, built around how your business actually works.", work="Websites and apps we have built: RoutePal route optimization, the Surplo B2B marketplace, Cash Flow, Cooking Made with Love and MathDecoded.", studio="PG AI Solutions is a software studio in Patras, Greece. We model the problem before writing code. How we work, in four steps.", privacy="How the PG AI Solutions website handles personal data: what we collect, why, who receives it, how long we keep it and your rights.", terms="Terms of use for the PG AI Solutions website."),
+  crumb="Home", og_alt="PG AI Solutions: websites, apps and optimization software from Patras, Greece",
+  faq_head=("Questions", "Common <em>questions.</em>", "Short answers to what businesses ask us first."),
+  faq=[("How much does a website or an app cost?","The price comes from what the project needs, not the other way around. After a first conversation we send a written proposal with clear scope, timeline and cost, so there are no surprises later."),
+       ("How quickly do you reply?","Within one working day, with clear next steps and, when it fits, a proposal."),
+       ("Do you work with businesses outside Patras?","Yes. We are based in Patras, Greece, and work with both local and remote clients, in Greek and English."),
+       ("Who owns the website, the domain and the data?","You do. The domain and the accounts are yours, and your data stays yours, with export and backup."),
+       ("Can the app be installed on a phone?","Yes. Our apps install on the phone like a native app (PWA) and work offline where it matters."),
+       ("Do you handle SEO, hosting and maintenance?","Yes. Websites include a technical SEO audit, Google Business Profile, structured data and Search Console, plus hosting, backups, updates and monthly reporting.")],
   skip="Skip to content",
-  hero=dict(tag="Software studio · Patras", h1=[("From chaos,",0),("the optimal",1),("solution.",1)], sub="Websites, apps and optimization software, built with AI and algorithms from day one.", cta="Start a conversation", link="View our work", aria="Animation: a real route optimizer arranges scattered stops into the PG monogram, then into the shortest route of a working day", hud=("stops","iterations","route"), proof=[("3","core disciplines"),("1","working day response time"),("584","automated quality checks"),("4","supported languages")]),
-  ask=dict(eyebrow="Tell us what you need", h="One sentence. <em>A clear plan.</em>", lead="Describe it the way you would to a colleague. We reply within one working day with the plan and the cost.", q="I need a booking app that also builds the week's schedule by itself", chips=["Booking app","Bilingual website","Shift scheduling","Delivery routes"], plan=[("Week 1","understand the problem, data model"),("Weeks 2–4","app + scheduling algorithm"),("Week 5","tests on real data, handover")], cta="Describe your project"),
-  svc_head=("What we do", "Three disciplines. <em>One standard.</em>", "Every project is designed and engineered from first principles. No templates, no shortcuts."),
-  svcs=[("Premium websites","Bespoke websites with SEO, branding, hosting and care included, built to put your business at the top of its market."),("Business applications","Focused applications shaped around how your business works, from bookings to internal tools."),("Optimization software","Scheduling, routing and decision systems built on proven algorithms, measured against real benchmarks.")],
-  work_head=("Selected work", "A selection of <em>our work.</em>", "Applications and websites we have designed and engineered, in production and in development."),
+  hero=dict(tag="Websites, apps & software · Patras", h1=[("From chaos,",0),("the optimal",1),("solution.",1)], sub="We build websites, apps and optimization software for small businesses, with AI and algorithms in our work from day one.", cta="Start a conversation", link="View our work", aria="Animation: a real route optimizer arranges scattered stops into the PG monogram, then into the shortest route of a working day", hud=("stops","iterations","route"), proof=[("3","services"),("1","working day to reply"),("584","automated quality checks"),("4","languages in our apps")]),
+  ask=dict(eyebrow="Tell us what you need", h="One sentence. <em>A clear plan.</em>", lead="Write it the way you would say it to a colleague. Within one working day you have a reply with the next steps.", note="Example plan for a project like this", q="I need a booking app that also builds the week's schedule by itself", chips=["Booking app","Bilingual website","Shift scheduling","Delivery routes"], plan=[("Week 1","we learn how you work today"),("Weeks 2–4","we build the app and the automatic schedule"),("Week 5","testing with your own data, then handover")], cta="Describe your project"),
+  svc_head=("What we do", "Three services. <em>One standard of work.</em>", "Every project is designed for your business from scratch, with no off-the-shelf templates."),
+  svcs=[("Website design & development","Websites built for your business, fast on a phone and set up properly for Google. Hosting and maintenance included."),("Business app development","Apps for bookings, orders and the daily work of the office, which also open on a phone."),("Optimization software","Appointment schedules, shifts and delivery routes that plan themselves, using algorithms measured on known benchmark problems.")],
+  work_head=("Selected work", "Work we have <em>delivered.</em>", "Apps and websites we designed and built. Some are live, others are in development."),
   all_work="View more work",
-  proc_head=("How we work", "A process built like <em>an optimization loop.</em>", "Each stage feeds the next and is checked against the real problem before we move on."),
-  steps=[("Discover","Map the users, constraints, data and the actual goal, before any design or code."),("Architect","Design the data model, algorithm and interface together, so the build doesn't fight itself later."),("Build","Deliver in focused iterations, tested on real scenarios, not just the happy path."),("Launch & tune","Ship, watch real usage and keep improving. Software should get better after handover.")],
-  services_intro=("Services","What we <em>build.</em>","We take on a small number of projects at a time, so each one gets senior attention from the first conversation to launch and beyond."),
+  proc_head=("How we work", "Four steps, <em>each one checked.</em>", "Before we move to the next step, we check that the previous one solves your real problem."),
+  steps=[("Understand","We learn who will use it, what limits you have and what the real goal is, before any design or code."),("Design","We design the data, the logic and the screens together, so no expensive changes are needed later."),("Build","We deliver in small pieces and test with real scenarios, not only the ideal case."),("Launch & improve","We put it live, watch how it is used and keep improving it. The work does not stop at handover.")],
+  services_intro=("Services","What we <em>build.</em>","We take on a few projects at a time, so each one has our attention from the first conversation to launch and after."),
   svc_detail=[
-   ("Premium websites","Bespoke websites with SEO, branding, hosting and care included.",["Designed for your brand, no templates","Fast on every device, built to convert","SEO: technical audit, Google Business Profile, structured data, Search Console","Branding: logo, palette and typography when you need them","Hosting, backups, updates and monthly reporting","Greek and English when you need both; you own the domain and accounts"]),
-   ("Business applications","Focused applications shaped around how your business works, from bookings to internal tools.",["Bookings, quoting, ordering and internal tools","Installs on the phone like an app (PWA)","Works offline where it matters","Your data stays yours, with export and backup","Built to grow with the business"]),
-   ("Optimization software","Scheduling, routing and decision systems built on proven algorithms, measured against real benchmarks.",["Route and appointment planning with real travel times","Scheduling with constraints and time windows","Dashboards that turn numbers into decisions","Measured against known benchmarks, not guesses","Clear explanations of why the result is good"])],
-  work_intro=("Work","A selection of <em>our work.</em>","Each engagement begins with a real business problem. Below is what we delivered and how."),
+   ("Website design & development","Websites built for your business and set up properly for Google, with hosting and maintenance included.",["Designed for your business, no off-the-shelf templates","Fast on every device, built to bring you enquiries","SEO: technical audit, Google Business Profile, structured data, Search Console","Branding: logo, palette and typography when you need them","Hosting, backups, updates and monthly reporting","Greek and English when you need both; you own the domain and accounts"]),
+   ("Business app development","Apps built around the way your business works, from bookings to the tools your team uses every day.",["Booking systems, quoting, ordering and internal tools","Installs on the phone like an app (PWA)","Works offline where it matters","Your data stays yours, with export and backup","Built to grow with the business"]),
+   ("Optimization software","Software that plans appointments, shifts and routes for you, using proven algorithms measured against known benchmarks.",["Route and appointment planning with real travel times","Scheduling with constraints and time windows","Dashboards that show you what to decide, not just numbers","Measured against known benchmarks, not guesses","Clear explanations of why the result is good"])],
+  work_intro=("Work","What we have <em>built.</em>","Every project started from a real problem a business had. See what we delivered and how it works."),
   live="Visit live site",
-  studio_intro=("Studio","Software built to be <em>understood.</em>","PG AI Solutions is a studio in Patras, Greece. We model the problem properly before writing code, and build websites, apps and software that fit how our clients really work."),
-  spec=[("Based in","Patras, Greece"),("Focus","Web development & applied optimization"),("Areas","Web · Dashboards · Optimization"),("Clients","Local & remote"),("Approach","Model first, then build")],
-  contact=dict(eyebrow="Contact", h="Discuss <em>your project</em> with us.", lead="Tell us what you want to achieve. We reply within one working day with clear next steps and, when it fits, a proposal.", phone="Phone", email="Email", where="Studio", where_v="Patras, Greece", reply="Reply", reply_v="Within one working day",
+  studio_intro=("Studio","First we understand, <em>then we write code.</em>","PG AI Solutions is a software studio based in Patras, Greece. We build websites, apps and optimization software that fit the way each business really works."),
+  spec=[("Based in","Patras, Greece"),("What we build","Websites, apps, optimization software"),("Languages","Greek & English"),("Clients","In Patras and remote"),("Approach","Understand first, then build")],
+  contact=dict(eyebrow="Contact", h="Tell us about <em>your project.</em>", lead="Write to us with what you want to achieve. We reply within one working day with the next steps and, when it fits, a proposal.", phone="Phone", email="Email", where="Studio", where_v="Patras, Greece", reply="Reply", reply_v="Within one working day",
     consent='By sending this form you agree to our <a href="privacy.html">privacy policy</a>.', who1="New project", who2="Partnership", subj1="New project inquiry · PG AI Solutions", subj2="Collaboration inquiry · PG AI Solutions",
-    name="Name", mail="Email", msg="Message", ph_msg="Briefly describe your project", send="Send message",
+    name="Name", mail="Email", msg="Message", ph_msg="What do you need, in a few words?", send="Send message",
     t=dict(sending="Sending…", sent="Sent ✓", send="Send message", thanks="Thank you. We will reply to your email soon.", fail="The message could not be sent. Please email pangeo57@yahoo.gr or call +30 697 191 9078.")),
-  band=("Limited availability","We accept a limited number of <em>engagements.</em>","Each project receives senior attention from the initial consultation through to delivery. We welcome the opportunity to discuss yours.","Schedule a consultation"),
-  start_head=("How we start", "From first call <em>to proposal.</em>", "Every engagement begins with understanding the business. Pricing follows the scope, never the other way around."),
-  start=[("Conversation","A call or meeting to understand your goals, your users and what success looks like."),("Proposal","A written proposal with clear scope, timeline and investment. No surprises later."),("Delivery","Design and build in focused stages, with a working version in your hands early.")],
-  budget=dict(label="Investment range", opts=["Not sure yet","€2,000 – €5,000","€5,000 – €15,000","€15,000+"]),
+  band=("A few projects at a time","We work with <em>a few clients</em> at once.","That way every project has our attention from the first meeting to delivery. Tell us about yours.","Book a meeting"),
+  start_head=("How we start", "From first call <em>to proposal.</em>", "First we understand your business. The price comes from what the project needs, not the other way around."),
+  start=[("Conversation","A call or a meeting to understand what you want to achieve and who will use it."),("Proposal","A written proposal with what the project includes, the timeline and the cost. No surprises later."),("Delivery","Design and build in stages, with a working version in your hands early.")],
+  budget=dict(label="Budget", opts=["Not sure yet","€2,000 – €5,000","€5,000 – €15,000","€15,000+"]),
   privacy="Privacy policy", privacy_href="privacy.html",
  ),
  "el": dict(
   lang="el", locale="el_GR", theme="Εναλλαγή ανοιχτού / σκούρου θέματος", other="en", other_label="EN",
   nav=dict(index="Αρχική", services="Υπηρεσίες", work="Έργα", studio="Studio", contact="Επικοινωνία"),
-  titles=dict(index="Premium Websites, SEO, Mini Apps & Λογισμικό Βελτιστοποίησης στην Πάτρα | PG AI Solutions", services="Υπηρεσίες | PG AI Solutions", work="Έργα | PG AI Solutions", studio="Studio & Διαδικασία | PG AI Solutions", privacy="Πολιτική Απορρήτου | PG AI Solutions", terms="Όροι Χρήσης | PG AI Solutions"),
-  descs=dict(index="Ιστοσελίδες κατά παραγγελία, premium mini apps, SEO και λογισμικό βελτιστοποίησης από studio στην Πάτρα.", services="Ιστοσελίδες κατά παραγγελία, επιχειρησιακές εφαρμογές και λογισμικό βελτιστοποίησης, φτιαγμένα γύρω από την επιχείρησή σας.", work="RoutePal, Surplo, Cash Flow, Cooking Made with Love και MathDecoded: τι φτιάξαμε και γιατί.", studio="Studio στην Πάτρα που μοντελοποιεί το πρόβλημα πριν γράψει κώδικα. Πώς δουλεύουμε, σε τέσσερα βήματα.", privacy="Πώς ο ιστότοπος της PG AI Solutions διαχειρίζεται προσωπικά δεδομένα: τι συλλέγουμε, γιατί, ποιος τα λαμβάνει, για πόσο τα κρατάμε και τα δικαιώματά σας.", terms="Όροι χρήσης του ιστότοπου της PG AI Solutions."),
+  titles=dict(index="Κατασκευή Ιστοσελίδων & Εφαρμογών στην Πάτρα | PG AI Solutions", services="Κατασκευή Ιστοσελίδων, Εφαρμογές & Λογισμικό | PG AI Solutions", work="Έργα: Ιστοσελίδες & Εφαρμογές που Φτιάξαμε | PG AI Solutions", studio="Studio Ανάπτυξης Λογισμικού στην Πάτρα | PG AI Solutions", privacy="Πολιτική Απορρήτου | PG AI Solutions", terms="Όροι Χρήσης | PG AI Solutions"),
+  descs=dict(index="Studio λογισμικού στην Πάτρα. Κατασκευή ιστοσελίδων, ανάπτυξη εφαρμογών και λογισμικό βελτιστοποίησης για μικρές επιχειρήσεις. Απάντηση σε μία εργάσιμη.", services="Κατασκευή ιστοσελίδων με SEO, εφαρμογές κρατήσεων και παραγγελιών, λογισμικό για πρόγραμμα και δρομολόγια, φτιαγμένα γύρω από την επιχείρησή σας.", work="Ιστοσελίδες και εφαρμογές που φτιάξαμε: RoutePal για βελτιστοποίηση διαδρομών, η αγορά B2B Surplo, Cash Flow, Cooking Made with Love και MathDecoded.", studio="Η PG AI Solutions είναι studio ανάπτυξης λογισμικού στην Πάτρα. Μοντελοποιούμε το πρόβλημα πριν γράψουμε κώδικα. Πώς δουλεύουμε, σε τέσσερα βήματα.", privacy="Πώς ο ιστότοπος της PG AI Solutions διαχειρίζεται προσωπικά δεδομένα: τι συλλέγουμε, γιατί, ποιος τα λαμβάνει, για πόσο τα κρατάμε και τα δικαιώματά σας.", terms="Όροι χρήσης του ιστότοπου της PG AI Solutions."),
+  crumb="Αρχική", og_alt="PG AI Solutions: ιστοσελίδες, εφαρμογές και λογισμικό βελτιστοποίησης από την Πάτρα",
+  faq_head=("Ερωτήσεις", "Συχνές <em>ερωτήσεις.</em>", "Σύντομες απαντήσεις σε όσα μας ρωτούν πρώτα οι επιχειρήσεις."),
+  faq=[("Πόσο κοστίζει η κατασκευή ιστοσελίδας ή εφαρμογής;","Η τιμή βγαίνει από το τι χρειάζεται το έργο, όχι το αντίστροφο. Μετά την πρώτη κουβέντα στέλνουμε γραπτή πρόταση με το τι περιλαμβάνει, το χρονοδιάγραμμα και το κόστος, χωρίς εκπλήξεις αργότερα."),
+       ("Σε πόσο χρόνο απαντάτε;","Μέσα σε μία εργάσιμη, με σαφή επόμενα βήματα και, όπου ταιριάζει, πρόταση συνεργασίας."),
+       ("Δουλεύετε με επιχειρήσεις εκτός Πάτρας;","Ναι. Η έδρα μας είναι στην Πάτρα και δουλεύουμε με τοπικούς και απομακρυσμένους πελάτες, στα ελληνικά και στα αγγλικά."),
+       ("Σε ποιον ανήκουν η ιστοσελίδα, το domain και τα δεδομένα;","Σε εσάς. Το domain και οι λογαριασμοί είναι δικά σας, και τα δεδομένα μένουν δικά σας, με εξαγωγή και αντίγραφο."),
+       ("Μπορεί η εφαρμογή να εγκατασταθεί στο κινητό;","Ναι. Οι εφαρμογές μας εγκαθίστανται στο κινητό σαν εφαρμογή (PWA) και λειτουργούν offline όπου χρειάζεται."),
+       ("Αναλαμβάνετε SEO, φιλοξενία και συντήρηση;","Ναι. Οι ιστοσελίδες περιλαμβάνουν τεχνικό έλεγχο SEO, Google Business Profile, δομημένα δεδομένα και Search Console, μαζί με φιλοξενία, αντίγραφα, ενημερώσεις και μηνιαία αναφορά.")],
   skip="Μετάβαση στο περιεχόμενο",
-  hero=dict(tag="Studio λογισμικού · Πάτρα", h1=[("Από το χάος,",0),("η βέλτιστη",1),("λύση.",1)], sub="Ιστοσελίδες, εφαρμογές και λογισμικό βελτιστοποίησης, χτισμένα με AI και αλγορίθμους από την πρώτη μέρα.", cta="Ξεκινήστε μια συζήτηση", link="Δείτε τα έργα μας", aria="Κινούμενη εικόνα: ένας πραγματικός αλγόριθμος βελτιστοποίησης τακτοποιεί σκόρπιες στάσεις στο μονόγραμμα PG και μετά στη συντομότερη διαδρομή μιας εργάσιμης μέρας", hud=("στάσεις","επαναλήψεις","διαδρομή"), proof=[("3","κύριες ειδικότητες"),("1","εργάσιμη χρόνος απόκρισης"),("584","αυτοματοποιημένοι έλεγχοι ποιότητας"),("4","υποστηριζόμενες γλώσσες")]),
-  ask=dict(eyebrow="Πείτε μας τι χρειάζεστε", h="Μια πρόταση. <em>Ένα καθαρό πλάνο.</em>", lead="Περιγράψτε το όπως θα το λέγατε σε συνεργάτη. Απαντάμε σε μία εργάσιμη με το πλάνο και το κόστος.", q="Θέλω εφαρμογή για ραντεβού που βγάζει μόνη της το πρόγραμμα της εβδομάδας", chips=["Εφαρμογή κρατήσεων","Δίγλωσση ιστοσελίδα","Πρόγραμμα βαρδιών","Δρομολόγια"], plan=[("Εβδ. 1","κατανόηση προβλήματος, μοντέλο δεδομένων"),("Εβδ. 2–4","εφαρμογή + αλγόριθμος προγράμματος"),("Εβδ. 5","δοκιμές σε πραγματικά δεδομένα, παράδοση")], cta="Περιγράψτε το έργο σας"),
-  svc_head=("Τι κάνουμε", "Τρεις ειδικότητες. <em>Ένα επίπεδο.</em>", "Κάθε έργο σχεδιάζεται και χτίζεται από την αρχή. Χωρίς templates, χωρίς εκπτώσεις στην ποιότητα."),
-  svcs=[("Ιστοσελίδες","Ιστοσελίδες κατά παραγγελία, με SEO, branding, φιλοξενία και συντήρηση, που τοποθετούν την επιχείρησή σας στην κορυφή της αγοράς της."),("Εφαρμογές","Στοχευμένες εφαρμογές φτιαγμένες γύρω από την επιχείρησή σας, από κρατήσεις μέχρι εσωτερικά εργαλεία."),("Λογισμικό βελτιστοποίησης","Συστήματα προγραμματισμού, δρομολόγησης και αποφάσεων, με αποδεδειγμένους αλγορίθμους και μετρήσιμα αποτελέσματα.")],
-  work_head=("Επιλεγμένα έργα", "Δείτε κάποια από <em>τα έργα μας.</em>", "Εφαρμογές και ιστοσελίδες που έχουμε σχεδιάσει και αναπτύξει, σε λειτουργία και σε εξέλιξη."),
+  hero=dict(tag="Ιστοσελίδες, εφαρμογές & λογισμικό · Πάτρα", h1=[("Από το χάος,",0),("η βέλτιστη",1),("λύση.",1)], sub="Φτιάχνουμε ιστοσελίδες, εφαρμογές και λογισμικό βελτιστοποίησης για μικρές επιχειρήσεις, με AI και αλγορίθμους στη δουλειά μας από την πρώτη μέρα.", cta="Ξεκινήστε μια συζήτηση", link="Δείτε τα έργα μας", aria="Κινούμενη εικόνα: ένας πραγματικός αλγόριθμος βελτιστοποίησης τακτοποιεί σκόρπιες στάσεις στο μονόγραμμα PG και μετά στη συντομότερη διαδρομή μιας εργάσιμης μέρας", hud=("στάσεις","επαναλήψεις","διαδρομή"), proof=[("3","υπηρεσίες"),("1","εργάσιμη για να απαντήσουμε"),("584","αυτόματοι έλεγχοι ποιότητας"),("4","γλώσσες στις εφαρμογές μας")]),
+  ask=dict(eyebrow="Πείτε μας τι χρειάζεστε", h="Μια πρόταση. <em>Ένα καθαρό πλάνο.</em>", lead="Γράψτε το όπως θα το λέγατε σε έναν συνεργάτη. Μέσα σε μία εργάσιμη έχετε απάντηση με τα επόμενα βήματα.", note="Ενδεικτικό πλάνο για ένα τέτοιο έργο", q="Θέλω εφαρμογή για ραντεβού που βγάζει μόνη της το πρόγραμμα της εβδομάδας", chips=["Εφαρμογή κρατήσεων","Δίγλωσση ιστοσελίδα","Πρόγραμμα βαρδιών","Δρομολόγια"], plan=[("Εβδ. 1","μαθαίνουμε πώς δουλεύετε σήμερα"),("Εβδ. 2–4","φτιάχνουμε την εφαρμογή και το αυτόματο πρόγραμμα"),("Εβδ. 5","δοκιμή με τα δικά σας δεδομένα και παράδοση")], cta="Περιγράψτε το έργο σας"),
+  svc_head=("Τι κάνουμε", "Τρεις υπηρεσίες. <em>Ένα επίπεδο δουλειάς.</em>", "Κάθε έργο σχεδιάζεται για τη δική σας επιχείρηση από την αρχή, χωρίς έτοιμα templates."),
+  svcs=[("Κατασκευή ιστοσελίδων","Ιστοσελίδες φτιαγμένες για την επιχείρησή σας, γρήγορες στο κινητό και στημένες σωστά για το Google. Με φιλοξενία και συντήρηση."),("Ανάπτυξη εφαρμογών","Εφαρμογές για κρατήσεις, παραγγελίες και την καθημερινή δουλειά του γραφείου, που ανοίγουν και στο κινητό."),("Λογισμικό βελτιστοποίησης","Πρόγραμμα ραντεβού, βάρδιες και δρομολόγια που βγαίνουν αυτόματα, με αλγορίθμους μετρημένους σε γνωστά προβλήματα.")],
+  work_head=("Επιλεγμένα έργα", "Δουλειές που <em>έχουμε παραδώσει.</em>", "Εφαρμογές και ιστοσελίδες που σχεδιάσαμε και φτιάξαμε. Άλλες είναι σε λειτουργία, άλλες σε ανάπτυξη."),
   all_work="Δείτε περισσότερα",
-  proc_head=("Πώς δουλεύουμε", "Μια διαδικασία σαν <em>βρόχος βελτιστοποίησης.</em>", "Κάθε στάδιο τροφοδοτεί το επόμενο και ελέγχεται απέναντι στο πραγματικό πρόβλημα πριν προχωρήσουμε."),
-  steps=[("Ανακάλυψη","Χαρτογραφούμε τους χρήστες, τους περιορισμούς, τα δεδομένα και τον πραγματικό στόχο, πριν από σχεδιασμό ή κώδικα."),("Αρχιτεκτονική","Σχεδιάζουμε μαζί το μοντέλο δεδομένων, τον αλγόριθμο και τη διεπαφή, ώστε η υλοποίηση να μην παλεύει με τον εαυτό της αργότερα."),("Υλοποίηση","Παραδίδουμε σε εστιασμένες επαναλήψεις, δοκιμάζοντας σε πραγματικά σενάρια, όχι μόνο στην ιδανική περίπτωση."),("Έναρξη & βελτίωση","Δημοσιεύουμε, παρακολουθούμε την πραγματική χρήση και βελτιώνουμε. Το λογισμικό πρέπει να βελτιώνεται και μετά την παράδοση.")],
-  services_intro=("Υπηρεσίες","Τι <em>φτιάχνουμε.</em>","Αναλαμβάνουμε λίγα έργα κάθε φορά, ώστε το καθένα να έχει πλήρη προσοχή από την πρώτη συζήτηση μέχρι την παράδοση και μετά."),
+  proc_head=("Πώς δουλεύουμε", "Τέσσερα βήματα, <em>με έλεγχο σε καθένα.</em>", "Πριν προχωρήσουμε στο επόμενο βήμα, ελέγχουμε ότι το προηγούμενο λύνει το πραγματικό σας πρόβλημα."),
+  steps=[("Κατανόηση","Μαθαίνουμε ποιοι θα το χρησιμοποιούν, τι περιορισμούς έχετε και ποιος είναι ο πραγματικός στόχος, πριν από σχέδιο ή κώδικα."),("Σχεδιασμός","Σχεδιάζουμε μαζί τα δεδομένα, τη λογική και τις οθόνες, ώστε να μη χρειαστούν ακριβές αλλαγές αργότερα."),("Υλοποίηση","Παραδίδουμε σε μικρά κομμάτια και δοκιμάζουμε με πραγματικά σενάρια, όχι μόνο με την ιδανική περίπτωση."),("Παράδοση & βελτίωση","Το βγάζουμε στον αέρα, βλέπουμε πώς χρησιμοποιείται και το βελτιώνουμε. Η δουλειά δεν σταματά στην παράδοση.")],
+  services_intro=("Υπηρεσίες","Τι <em>φτιάχνουμε.</em>","Αναλαμβάνουμε λίγα έργα κάθε φορά, ώστε το καθένα να έχει την προσοχή μας από την πρώτη κουβέντα μέχρι την παράδοση και μετά."),
   svc_detail=[
-   ("Ιστοσελίδες","Ιστοσελίδες κατά παραγγελία, με SEO, branding, φιλοξενία και συντήρηση.",["Σχεδιασμένες για το brand σας, χωρίς έτοιμα templates","Γρήγορες σε κάθε συσκευή, φτιαγμένες να φέρνουν επαφές","SEO: τεχνικός έλεγχος, Google Business Profile, δομημένα δεδομένα, Search Console","Branding: λογότυπο, παλέτα και τυπογραφία όταν χρειάζονται","Φιλοξενία, αντίγραφα, ενημερώσεις και μηνιαία αναφορά","Ελληνικά και αγγλικά όταν χρειάζονται· το domain και οι λογαριασμοί είναι δικά σας"]),
-   ("Εφαρμογές","Στοχευμένες εφαρμογές φτιαγμένες γύρω από την επιχείρησή σας, από κρατήσεις μέχρι εσωτερικά εργαλεία.",["Κρατήσεις, προσφορές, παραγγελίες και εσωτερικά εργαλεία","Εγκαθίστανται στο κινητό σαν εφαρμογή (PWA)","Λειτουργούν offline όπου χρειάζεται","Τα δεδομένα μένουν δικά σας, με εξαγωγή και αντίγραφο","Φτιαγμένες για να μεγαλώνουν μαζί με την επιχείρηση"]),
-   ("Λογισμικό βελτιστοποίησης","Συστήματα προγραμματισμού, δρομολόγησης και αποφάσεων, με αποδεδειγμένους αλγορίθμους και μετρήσιμα αποτελέσματα.",["Σχεδιασμός διαδρομών και ραντεβού με πραγματικούς χρόνους δρόμου","Προγραμματισμός με περιορισμούς και χρονικά παράθυρα","Dashboards που κάνουν τους αριθμούς αποφάσεις","Μετρημένα απέναντι σε γνωστά benchmarks, όχι στο περίπου","Καθαρή εξήγηση για το γιατί το αποτέλεσμα είναι καλό"])],
-  work_intro=("Έργα","Μια επιλογή από <em>τα έργα μας.</em>","Κάθε συνεργασία ξεκινά από ένα πραγματικό επιχειρησιακό πρόβλημα. Παρακάτω παρουσιάζεται τι παραδώσαμε και πώς."),
+   ("Κατασκευή ιστοσελίδων","Ιστοσελίδες φτιαγμένες για την επιχείρησή σας και στημένες σωστά για το Google, με φιλοξενία και συντήρηση.",["Σχεδιασμένες για το brand σας, χωρίς έτοιμα templates","Γρήγορες σε κάθε συσκευή, φτιαγμένες να φέρνουν επαφές","SEO: τεχνικός έλεγχος, Google Business Profile, δομημένα δεδομένα, Search Console","Branding: λογότυπο, παλέτα και τυπογραφία όταν χρειάζονται","Φιλοξενία, αντίγραφα, ενημερώσεις και μηνιαία αναφορά","Ελληνικά και αγγλικά όταν χρειάζονται· το domain και οι λογαριασμοί είναι δικά σας"]),
+   ("Ανάπτυξη εφαρμογών","Εφαρμογές φτιαγμένες γύρω από τον τρόπο που δουλεύει η επιχείρησή σας, από κρατήσεις μέχρι τα εργαλεία που χρησιμοποιεί κάθε μέρα η ομάδα σας.",["Συστήματα κρατήσεων, προσφορές, παραγγελίες και εσωτερικά εργαλεία","Εγκαθίστανται στο κινητό σαν εφαρμογή (PWA)","Λειτουργούν offline όπου χρειάζεται","Τα δεδομένα μένουν δικά σας, με εξαγωγή και αντίγραφο","Φτιαγμένες για να μεγαλώνουν μαζί με την επιχείρηση"]),
+   ("Λογισμικό βελτιστοποίησης","Λογισμικό που βγάζει για εσάς το πρόγραμμα ραντεβού, τις βάρδιες και τα δρομολόγια, με δοκιμασμένους αλγορίθμους μετρημένους σε γνωστά προβλήματα.",["Σχεδιασμός διαδρομών και ραντεβού με πραγματικούς χρόνους δρόμου","Προγραμματισμός με περιορισμούς και χρονικά παράθυρα","Dashboards που σας δείχνουν τι να αποφασίσετε, όχι μόνο αριθμούς","Μετρημένα απέναντι σε γνωστά benchmarks, όχι στο περίπου","Καθαρή εξήγηση για το γιατί το αποτέλεσμα είναι καλό"])],
+  work_intro=("Έργα","Τι έχουμε <em>φτιάξει.</em>","Κάθε έργο ξεκίνησε από ένα πραγματικό πρόβλημα μιας επιχείρησης. Δείτε τι παραδώσαμε και πώς δουλεύει."),
   live="Δείτε το live",
-  studio_intro=("Studio","Λογισμικό φτιαγμένο για να <em>γίνεται κατανοητό.</em>","Η PG AI Solutions είναι studio με έδρα την Πάτρα. Μοντελοποιούμε σωστά το πρόβλημα πριν γράψουμε κώδικα και φτιάχνουμε ιστοσελίδες, εφαρμογές και λογισμικό που ταιριάζουν στον τρόπο που δουλεύουν πραγματικά οι πελάτες μας."),
-  spec=[("Έδρα","Πάτρα, Ελλάδα"),("Εστίαση","Ανάπτυξη web & εφαρμοσμένη βελτιστοποίηση"),("Τομείς","Web · Dashboards · Βελτιστοποίηση"),("Πελάτες","Τοπικοί & απομακρυσμένοι"),("Προσέγγιση","Πρώτα μοντελοποίηση, μετά υλοποίηση")],
-  contact=dict(eyebrow="Επικοινωνία", h="Συζητήστε μαζί μας <em>το έργο σας.</em>", lead="Περιγράψτε μας τους στόχους σας. Θα σας απαντήσουμε εντός μίας εργάσιμης με σαφή επόμενα βήματα και, όπου ενδείκνυται, πρόταση συνεργασίας.", phone="Τηλέφωνο", email="Email", where="Studio", where_v="Πάτρα, Ελλάδα", reply="Απάντηση", reply_v="Μέσα σε μία εργάσιμη",
+  studio_intro=("Studio","Πρώτα καταλαβαίνουμε, <em>μετά γράφουμε κώδικα.</em>","Η PG AI Solutions είναι studio λογισμικού με έδρα την Πάτρα. Φτιάχνουμε ιστοσελίδες, εφαρμογές και λογισμικό βελτιστοποίησης που ταιριάζουν στον τρόπο που δουλεύει πραγματικά κάθε επιχείρηση."),
+  spec=[("Έδρα","Πάτρα, Ελλάδα"),("Τι φτιάχνουμε","Ιστοσελίδες, εφαρμογές, λογισμικό βελτιστοποίησης"),("Γλώσσες","Ελληνικά & αγγλικά"),("Πελάτες","Στην Πάτρα και εξ αποστάσεως"),("Προσέγγιση","Πρώτα κατανόηση, μετά υλοποίηση")],
+  contact=dict(eyebrow="Επικοινωνία", h="Πείτε μας για <em>το έργο σας.</em>", lead="Γράψτε μας τι θέλετε να πετύχετε. Απαντάμε μέσα σε μία εργάσιμη με τα επόμενα βήματα και, όταν ταιριάζει, με πρόταση συνεργασίας.", phone="Τηλέφωνο", email="Email", where="Studio", where_v="Πάτρα, Ελλάδα", reply="Απάντηση", reply_v="Μέσα σε μία εργάσιμη",
     consent='Με την αποστολή συμφωνείτε με την <a href="privacy.html">πολιτική απορρήτου</a>.', who1="Νέο έργο", who2="Συνεργασία", subj1="Νέο αίτημα έργου · PG AI Solutions", subj2="Πρόταση συνεργασίας · PG AI Solutions",
-    name="Όνομα", mail="Email", msg="Μήνυμα", ph_msg="Περιγράψτε σύντομα το έργο σας", send="Αποστολή μηνύματος",
+    name="Όνομα", mail="Email", msg="Μήνυμα", ph_msg="Τι χρειάζεστε, με λίγα λόγια;", send="Αποστολή μηνύματος",
     t=dict(sending="Αποστολή…", sent="Εστάλη ✓", send="Αποστολή μηνύματος", thanks="Ευχαριστούμε. Θα σας απαντήσουμε σύντομα στο email σας.", fail="Το μήνυμα δεν στάλθηκε. Γράψτε μας στο pangeo57@yahoo.gr ή καλέστε στο +30 697 191 9078.")),
-  band=("Περιορισμένη διαθεσιμότητα","Αναλαμβάνουμε περιορισμένο αριθμό <em>συνεργασιών.</em>","Κάθε έργο έχει την πλήρη προσοχή μας, από την αρχική συνάντηση έως την παράδοση. Θα χαρούμε να συζητήσουμε το δικό σας.","Προγραμματίστε συνάντηση"),
-  start_head=("Πώς ξεκινάμε", "Από την πρώτη κουβέντα <em>στην πρόταση.</em>", "Κάθε συνεργασία ξεκινά από την κατανόηση της επιχείρησης. Η τιμή ακολουθεί το εύρος του έργου, ποτέ το αντίστροφο."),
-  start=[("Γνωριμία","Συζήτηση ή συνάντηση για να καταλάβουμε τους στόχους σας, τους χρήστες σας και τι σημαίνει επιτυχία."),("Πρόταση","Γραπτή πρόταση με σαφές εύρος, χρονοδιάγραμμα και επένδυση. Χωρίς εκπλήξεις αργότερα."),("Υλοποίηση","Σχεδιασμός και ανάπτυξη σε εστιασμένα στάδια, με λειτουργική έκδοση στα χέρια σας από νωρίς.")],
-  budget=dict(label="Εύρος επένδυσης", opts=["Δεν ξέρω ακόμα","2.000 – 5.000 €","5.000 – 15.000 €","15.000 € +"]),
+  band=("Λίγα έργα κάθε φορά","Δουλεύουμε με <em>λίγους πελάτες</em> ταυτόχρονα.","Έτσι κάθε έργο έχει την προσοχή μας από την πρώτη συνάντηση μέχρι την παράδοση. Πείτε μας για το δικό σας.","Κλείστε μια συνάντηση"),
+  start_head=("Πώς ξεκινάμε", "Από την πρώτη κουβέντα <em>στην πρόταση.</em>", "Πρώτα καταλαβαίνουμε την επιχείρησή σας. Η τιμή βγαίνει από το τι χρειάζεται το έργο, όχι το αντίστροφο."),
+  start=[("Γνωριμία","Μια κουβέντα, από κοντά ή online, για να καταλάβουμε τι θέλετε να πετύχετε και ποιοι θα το χρησιμοποιούν."),("Πρόταση","Γραπτή πρόταση με το τι περιλαμβάνει το έργο, το χρονοδιάγραμμα και το κόστος. Χωρίς εκπλήξεις αργότερα."),("Υλοποίηση","Σχεδιασμός και ανάπτυξη σε στάδια, με μια έκδοση που δουλεύει στα χέρια σας από νωρίς.")],
+  budget=dict(label="Προϋπολογισμός", opts=["Δεν ξέρω ακόμα","2.000 – 5.000 €","5.000 – 15.000 €","15.000 € +"]),
   privacy="Πολιτική απορρήτου", privacy_href="privacy.html",
  ),
 }
@@ -141,12 +158,40 @@ def url(lang, p):
     pre = BASE + ("/el/" if lang == "el" else "/")
     return pre if p == "index" else pre + f"{p}.html"
 
+def plain(x): return html.unescape(re.sub(r"<[^>]+>", "", x))
+
+def schema(L, p):
+    """One JSON-LD graph per page: the business, the site, the page, breadcrumbs, and page-specific items."""
+    t = T[L]; org = BASE + "/#org"; site = BASE + "/#site"; page = url(L, p)
+    g = [{"@type":"ProfessionalService","@id":org,"name":"PG AI Solutions","url":BASE+"/","logo":BASE+"/assets/logo-512.png","image":BASE+"/assets/og-image.png",
+          "description":T[L]["descs"]["index"],"telephone":"+306971919078","email":"pangeo57@yahoo.gr",
+          "address":{"@type":"PostalAddress","addressLocality":"Patras" if L=="en" else "Πάτρα","addressRegion":"Achaea" if L=="en" else "Αχαΐα","addressCountry":"GR"},
+          "areaServed":[{"@type":"City","name":"Patras" if L=="en" else "Πάτρα"},{"@type":"Country","name":"Greece" if L=="en" else "Ελλάδα"}],
+          "knowsLanguage":["el","en"],
+          "contactPoint":{"@type":"ContactPoint","contactType":"sales","telephone":"+306971919078","email":"pangeo57@yahoo.gr","availableLanguage":["Greek","English"]},
+          "hasOfferCatalog":{"@type":"OfferCatalog","name":t["nav"]["services"],"itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":a,"description":b,"url":url(L,"services")+f"#s{i+1}"}} for i,(a,b,_) in enumerate(t["svc_detail"])]}},
+         {"@type":"WebSite","@id":site,"url":BASE+"/","name":"PG AI Solutions","publisher":{"@id":org},"inLanguage":["en","el"]},
+         {"@type":"WebPage","@id":page+"#page","url":page,"name":t["titles"][p],"description":t["descs"][p],"inLanguage":t["lang"],"isPartOf":{"@id":site},"about":{"@id":org}}]
+    if p != "index":
+        g.append({"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":t["crumb"],"item":url(L,"index")},{"@type":"ListItem","position":2,"name":t["titles"][p].split(" | ")[0],"item":page}]})
+    if p == "services":
+        for i,(a,b,lst) in enumerate(t["svc_detail"]):
+            g.append({"@type":"Service","@id":page+f"#s{i+1}","name":a,"description":b,"serviceType":a,"provider":{"@id":org},"areaServed":{"@type":"Country","name":"Greece" if L=="en" else "Ελλάδα"},"url":page+f"#s{i+1}"})
+        g.append({"@type":"FAQPage","mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q,a in t["faq"]]})
+    if p == "work":
+        items = []
+        for i,pj in enumerate(PROJECTS):
+            d = pj[L]; it = {"@type":"CreativeWork","name":d["name"],"description":d["desc"],"genre":d["kind"],"image":f'{BASE}/assets/work/{pj["img"]}.webp',"creator":{"@id":org},"keywords":", ".join(d["tags"])}
+            if pj["live"]: it["url"] = pj["live"]
+            items.append({"@type":"ListItem","position":i+1,"item":it})
+        g.append({"@type":"ItemList","name":plain(t["work_intro"][1]),"itemListElement":items})
+    return {"@context":"https://schema.org","@graph":g}
+
 def head(L, p, pre):
     t = T[L]; title = t["titles"][p]; desc = t["descs"][p]
     alts = "".join(f'<link rel="alternate" hreflang="{l}" href="{url(l,p)}">\n' for l in ("en","el")) + f'<link rel="alternate" hreflang="x-default" href="{url("en",p)}">\n'
-    ld = ""
-    if p == "index":
-        ld = '<script type="application/ld+json">' + json.dumps({"@context":"https://schema.org","@type":"ProfessionalService","name":"PG AI Solutions","url":url(L,"index"),"logo":BASE+"/assets/logo-512.png","image":BASE+"/assets/og-image.png","telephone":"+306971919078","email":"pangeo57@yahoo.gr","address":{"@type":"PostalAddress","addressLocality":"Patras","addressCountry":"GR"},"areaServed":"GR"}, ensure_ascii=False) + '</script>\n'
+    ld = '<script type="application/ld+json">' + json.dumps(schema(L, p), ensure_ascii=False) + '</script>\n'
+    other = "el" if L == "en" else "en"
     return f'''<!DOCTYPE html>
 <html lang="{t["lang"]}">
 <head>
@@ -163,9 +208,16 @@ def head(L, p, pre):
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:url" content="{url(L,p)}">
-<meta property="og:image" content="{BASE}/assets/og-image.png">
+<meta property="og:image" content="{BASE}/assets/og-image.png?v={V}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{t["og_alt"]}">
 <meta property="og:locale" content="{t["locale"]}">
+<meta property="og:locale:alternate" content="{T[other]["locale"]}">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{title}">
+<meta name="twitter:description" content="{desc}">
+<meta name="twitter:image" content="{BASE}/assets/og-image.png?v={V}">
 {ld}<link rel="icon" type="image/svg+xml" href="{pre}logo/pg-icon.svg">
 <link rel="apple-touch-icon" href="{pre}assets/apple-touch-icon.png">
 <link rel="preload" href="{pre}assets/fonts/manrope-{"greek" if L=="el" else "latin"}-var.woff2" as="font" type="font/woff2" crossorigin>
@@ -219,12 +271,12 @@ def page_index(L, pre):
     h1 = lines[0] + "<br>" + " ".join(lines[1:])
     a = t["ask"]
     chips = "".join(f"<span>{c}</span>" for c in a["chips"])
-    plan = "".join(f"<div><b>{x}</b> · {y}</div>" for x, y in a["plan"])
+    plan = f'<small>{a["note"]}</small>' + "".join(f"<div><b>{x}</b> · {y}</div>" for x, y in a["plan"])
     return f'''<section class="hero" aria-labelledby="hero-h"><canvas role="img" aria-label="{h["aria"]}"></canvas>
 <div class="wrap"><div class="hero-txt"><span class="eyebrow live fade" style="--d:100ms">{h["tag"]}</span><h1 class="h1" id="hero-h">{h1}</h1><p class="lead fade" style="--d:700ms">{h["sub"]}</p>
-<div class="hero-act fade" style="--d:850ms"><a class="btn" href="#contact">{h["cta"]} <i aria-hidden="true">→</i></a><a class="txtlink" href="work.html">{h["link"]}</a></div></div>
+<div class="hero-act fade" style="--d:850ms"><a class="btn" href="#contact">{h["cta"]} <i aria-hidden="true">→</i></a><a class="txtlink" href="work.html">{h["link"]}</a></div>
+<div class="hud fade" style="--d:1100ms" aria-hidden="true"><div><span>{h["hud"][0]}</span><b data-n>0</b></div><div><span>{h["hud"][1]}</span><b data-it>0</b></div><div><span>{h["hud"][2]}</span><b data-km>…</b></div><i class="bar"><i data-bar></i></i></div></div>
 <div class="phones fade" style="--d:1300ms" aria-hidden="true"><figure class="phone p1"><img src="{pre}assets/work/routepal.webp?v={V}" width="480" height="1038" alt=""></figure><figure class="phone p2"><img src="{pre}assets/work/cashflow.webp?v={V}" width="480" height="1038" alt=""></figure></div></div>
-<div class="hud fade" style="--d:1100ms" aria-hidden="true"><div><span>{h["hud"][0]}</span><b data-n>0</b></div><div><span>{h["hud"][1]}</span><b data-it>0</b></div><div><span>{h["hud"][2]}</span><b data-km>…</b></div><i class="bar"><i data-bar></i></i></div>
 </section>
 <div class="proof"><div class="wrap">{proof}</div></div>
 <section class="sec ask"><div class="wrap"><div class="sec-head"><span class="eyebrow">{a["eyebrow"]}</span><h2 class="h2">{a["h"]}</h2><p class="lead">{a["lead"]}</p></div>
@@ -240,12 +292,17 @@ def start_sec(L, cls="sec"):
     st = '<div class="steps steps3">' + "".join(f'<div class="step"><span class="n">0{i+1}</span><h3 class="h3">{a}</h3><p>{b}</p></div>' for i,(a,b) in enumerate(t["start"])) + "</div>"
     return f'<section class="{cls}"><div class="wrap">{sec_head(t["start_head"])}{st}</div></section>'
 
+def faq_sec(L):
+    t = T[L]
+    items = "".join(f'<details class="qa"><summary><h3 class="h3">{q}</h3><i aria-hidden="true"></i></summary><p>{a}</p></details>' for q,a in t["faq"])
+    return f'<section class="sec alt" id="faq"><div class="wrap">{sec_head(t["faq_head"])}<div class="faq">{items}</div></div></section>'
+
 def page_services(L, pre):
     t = T[L]; out = []
     for i,(a,b,lst) in enumerate(t["svc_detail"]):
         li = "".join(f"<li>{x}</li>" for x in lst)
         out.append(f'<div class="svc" id="s{i+1}"><span class="n">0{i+1}</span><div class="body"><h2 class="h2">{a}</h2><p class="lead">{b}</p></div><ul class="plist">{li}</ul></div>')
-    return intro(t["services_intro"]) + f'<section class="sec" style="padding-top:0"><div class="wrap">{"".join(out)}</div></section><section class="sec alt"><div class="wrap">{sec_head(t["proc_head"])}{steps(L)}</div></section>' + start_sec(L)
+    return intro(t["services_intro"]) + f'<section class="sec" style="padding-top:0"><div class="wrap">{"".join(out)}</div></section><section class="sec alt"><div class="wrap">{sec_head(t["proc_head"])}{steps(L)}</div></section>' + start_sec(L) + faq_sec(L)
 
 def page_work(L, pre):
     t = T[L]; out = []
@@ -255,7 +312,7 @@ def page_work(L, pre):
         st = ('<div class="stats">' + "".join(f'<div><b>{a}</b><span>{b}</span></div>' for a,b in d["stats"]) + '</div>') if d["stats"] else ""
         li = "".join(f"<li>{x}</li>" for x in d["pts"]); tg = "".join(f"<span>{x}</span>" for x in d["tags"])
         cls = "status live" if d["status"] == "Live" else "status"
-        out.append(f'''<article class="proj" id="{pj["id"]}"><div class="pshot"><img src="{pre}assets/work/{pj["img"]}.webp?v={V}" width="480" height="1038" alt="{d["name"]}" loading="lazy" decoding="async"></div>
+        out.append(f'''<article class="proj" id="{pj["id"]}"><div class="pshot"><img src="{pre}assets/work/{pj["img"]}.webp?v={V}" width="480" height="1038" alt="{d["name"]}: {d["kind"].lower()}{" — screenshot" if L=="en" else " — στιγμιότυπο"}" loading="lazy" decoding="async"></div>
 <div class="pbody"><span class="eyebrow">{d["kind"]}</span><h2 class="h2">{d["name"]}</h2><span class="{cls}">{d["status"]}</span><p class="lead">{d["desc"]}</p>{st}<ul class="plist">{li}</ul><div class="tags">{tg}</div>{live}</div></article>''')
     return intro(t["work_intro"]) + f'<section><div class="wrap">{"".join(out)}</div></section>'
 
@@ -324,7 +381,7 @@ urls = []
 for p in PAGES + ["privacy", "terms"]:
     for L in ("en","el"):
         loc = url(L,p)
-        alt = "".join(f'\n    <xhtml:link rel="alternate" hreflang="{l}" href="{url(l,p)}"/>' for l in ("en","el"))
-        urls.append(f"  <url>\n    <loc>{loc}</loc>\n    <lastmod>2026-10-31</lastmod>{alt}\n  </url>")
+        alt = "".join(f'\n    <xhtml:link rel="alternate" hreflang="{l}" href="{url(l,p)}"/>' for l in ("en","el")) + f'\n    <xhtml:link rel="alternate" hreflang="x-default" href="{url("en",p)}"/>'
+        urls.append(f"  <url>\n    <loc>{loc}</loc>\n    <lastmod>{TODAY}</lastmod>{alt}\n  </url>")
 open(os.path.join(ROOT,"sitemap.xml"),"w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' + "\n".join(urls) + "\n</urlset>\n")
 print("wrote sitemap.xml")
