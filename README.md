@@ -26,3 +26,15 @@ PG_TURNSTILE_SITE_KEY=0x... python3 scripts/build.py
 ```
 
 The form also has a 45-second local cooldown, honeypot field, input limits and submission timeout protection. These are user-experience limits, not a substitute for server-side protection. Configure Cloudflare WAF rate limiting or the provider's server-side submission limits for real IP-based abuse protection.
+
+## Automated handover
+
+Every push to `main` and every pull request runs the build, SEO validator and client ZIP packaging workflow.
+
+Create the package locally:
+
+```sh
+python3 scripts/package_handover.py
+```
+
+The resulting file is `dist/pg-ai-solutions-client-handover.zip`.

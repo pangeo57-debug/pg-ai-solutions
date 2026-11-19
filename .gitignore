@@ -1,1 +1,4 @@
 .inhabited/
+dist/
+__pycache__/
+*.pyc
