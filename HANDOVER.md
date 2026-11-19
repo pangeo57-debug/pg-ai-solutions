@@ -17,6 +17,8 @@ GitHub Pages: Settings → Pages → Deploy from branch `main` / root. Εναλ�
 
 ## Φόρμα επικοινωνίας
 Η πρώτη δοκιμαστική αποστολή Formspree απαιτεί ενεργοποίηση του συνδεδεμένου email του ιδιοκτήτη στο formspree.io — στείλε δοκιμαστικό μήνυμα και επιβεβαίωσε την ενεργοποίηση.
+- Η φόρμα έχει honeypot, 45δευτερο local cooldown, όρια μήκους και προαιρετικό Cloudflare Turnstile. Το Turnstile ενεργοποιείται μόνο με `PG_TURNSTILE_SITE_KEY` κατά το build.
+- Το πραγματικό IP/rate limiting και spam blocking πρέπει να οριστεί στο Cloudflare WAF ή από τον πάροχο φόρμας· το frontend-only cooldown δεν είναι επαρκής προστασία.
 
 ## Google
 1. Search Console → προσθήκη ιδιοκτησίας (domain) → επαλήθευση DNS.

@@ -6,6 +6,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE = "https://pangeo57-debug.github.io/pg-ai-solutions"
 V = "20"
 GA4_ID = os.environ.get("PG_GA4_ID") or os.environ.get("GA4_MEASUREMENT_ID") or ""
+TURNSTILE_SITE_KEY = os.environ.get("PG_TURNSTILE_SITE_KEY") or ""
 TODAY = datetime.date.today().isoformat()
 LOGO = open(os.path.join(ROOT, "logo/pg-mark.svg"), encoding="utf-8").read().replace(' role="img" aria-label="PG"', ' aria-hidden="true"').replace('id="pgr"', 'id="pgr-h"').replace("url(#pgr)", "url(#pgr-h)")
 PAGES = ["index", "services", "work", "studio"]
@@ -159,6 +160,7 @@ def head(L, p, pre):
     alts = "".join(f'<link rel="alternate" hreflang="{l}" href="{url(l,p)}">\n' for l in ("en","el")) + f'<link rel="alternate" hreflang="x-default" href="{url("en",p)}">\n'
     ld = '<script type="application/ld+json">' + json.dumps(schema(L, p), ensure_ascii=False) + '</script>\n'
     analytics = f'<script>window.PG_ANALYTICS={{"id":{json.dumps(GA4_ID)}}};</script>\n' if GA4_ID else '<script>window.PG_ANALYTICS={"id":""};</script>\n'
+    protection = f'<script>window.PG_TURNSTILE_SITE_KEY={json.dumps(TURNSTILE_SITE_KEY)};</script>\n'
     other = "el" if L == "en" else "en"
     return f'''<!DOCTYPE html>
 <html lang="{t["lang"]}">
@@ -186,7 +188,7 @@ def head(L, p, pre):
 <meta name="twitter:title" content="{title}">
 <meta name="twitter:description" content="{desc}">
 <meta name="twitter:image" content="{BASE}/assets/og-image.png?v={V}">
-{ld}{analytics}<link rel="icon" type="image/svg+xml" href="{pre}logo/pg-icon.svg">
+{ld}{analytics}{protection}<link rel="icon" type="image/svg+xml" href="{pre}logo/pg-icon.svg">
 <link rel="apple-touch-icon" href="{pre}assets/apple-touch-icon.png">
 <link rel="preload" href="{pre}assets/fonts/manrope-{"greek" if L=="el" else "latin"}-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{pre}assets/site.css?v={V}">
@@ -305,11 +307,12 @@ def contact(L):
 <dl><div><dt>{c["phone"]}</dt><dd><a href="tel:+306971919078">+30 697 191 9078</a></dd></div><div><dt>{c["where"]}</dt><dd>{c["where_v"]}</dd></div><div><dt>{c["reply"]}</dt><dd>{c["reply_v"]}</dd></div></dl></div>
 <form class="cf" action="https://formspree.io/f/xyeyvzga" method="POST" data-t="{tj}">
 <input type="hidden" name="_subject" value="{c["subj1"]}"><input type="hidden" name="Πηγή" value="PG AI Solutions site">
+<input type="hidden" name="_form_started" value="">
 <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
 <fieldset class="who"><legend class="hp">{c["who1"]} / {c["who2"]}</legend><label><input type="radio" name="Interest" value="Project" data-subj="{c["subj1"]}" checked><span>{c["who1"]}</span></label><label><input type="radio" name="Interest" value="Collaboration" data-subj="{c["subj2"]}"><span>{c["who2"]}</span></label></fieldset>
-<div class="f2"><div class="fld"><label for="f-name">{c["name"]}</label><input id="f-name" name="Name" autocomplete="name" required></div><div class="fld"><label for="f-mail">{c["mail"]}</label><input id="f-mail" type="email" name="Email" autocomplete="email" required></div></div>
+<div class="f2"><div class="fld"><label for="f-name">{c["name"]}</label><input id="f-name" name="Name" autocomplete="name" maxlength="80" required></div><div class="fld"><label for="f-mail">{c["mail"]}</label><input id="f-mail" type="email" name="Email" autocomplete="email" maxlength="254" required></div></div>
 <div class="fld"><label for="f-budget">{T[L]["budget"]["label"]}</label><select id="f-budget" name="Budget">{"".join(f'<option>{o}</option>' for o in T[L]["budget"]["opts"])}</select></div>
-<div class="fld"><label for="f-msg">{c["msg"]}</label><textarea id="f-msg" name="Message" placeholder="{c["ph_msg"]}" required></textarea></div>
+<div class="fld"><label for="f-msg">{c["msg"]}</label><textarea id="f-msg" name="Message" placeholder="{c["ph_msg"]}" minlength="10" maxlength="3000" required></textarea></div>
 <p class="fnote">{c["consent"]}</p>
 <button class="btn" type="submit"><span>{c["send"]}</span> <i aria-hidden="true">→</i></button><p class="note" role="status" aria-live="polite"></p>
 </form></div></section>
