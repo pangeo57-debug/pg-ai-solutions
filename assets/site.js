@@ -2,6 +2,50 @@
 (function(){
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ---- privacy-conscious analytics: GA4 loads only after explicit consent and only when configured ---- */
+  var analytics=window.PG_ANALYTICS||{id:''}, consentKey='pg-analytics-consent';
+  var getConsent=function(){try{return localStorage.getItem(consentKey)}catch(e){return null}};
+  var track=function(name,params){if(getConsent()==='accepted'&&typeof gtag==='function')gtag('event',name,params||{})};
+  var enableAnalytics=function(){
+    if(!analytics.id||getConsent()!=='accepted'||document.querySelector('script[data-pg-ga]'))return;
+    window.dataLayer=window.dataLayer||[];
+    window.gtag=function(){window.dataLayer.push(arguments)};
+    gtag('js',new Date());gtag('config',analytics.id,{anonymize_ip:true});
+    var s=document.createElement('script');s.async=true;s.dataset.pgGa='';s.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(analytics.id);document.head.appendChild(s);
+  };
+  if(analytics.id){
+    enableAnalytics();
+    if(!getConsent()){
+      var el=document.createElement('aside'), lang=document.documentElement.lang==='el'?'el':'en';
+      el.className='analytics-consent';
+      el.setAttribute('role','region');
+      el.setAttribute('aria-label',lang==='el'?'Ρυθμίσεις στατιστικών':'Analytics consent');
+      el.innerHTML=lang==='el'
+        ?'<p>Χρησιμοποιούμε προαιρετικά στατιστικά Google Analytics για να βελτιώσουμε τον ιστότοπο.</p><button type="button" data-consent="accept">Αποδοχή</button><button type="button" data-consent="decline" class="line">Όχι</button><a href="privacy.html">Πολιτική απορρήτου</a>'
+        :'<p>We use optional Google Analytics to improve this website.</p><button type="button" data-consent="accept">Accept</button><button type="button" data-consent="decline" class="line">Decline</button><a href="privacy.html">Privacy policy</a>';
+      document.body.appendChild(el);
+      el.addEventListener('click',function(e){
+        var b=e.target.closest('[data-consent]');if(!b)return;
+        var value=b.getAttribute('data-consent')==='accept'?'accepted':'declined';
+        try{localStorage.setItem(consentKey,value)}catch(ex){}
+        el.remove();if(value==='accepted')enableAnalytics();
+      });
+    }
+  }
+
+  /* ---- consent-gated meaningful interaction events ---- */
+  document.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      var href=a.getAttribute('href')||'', text=(a.textContent||'').trim().replace(/\s+/g,' ').slice(0,80);
+      if(href.indexOf('tel:')===0)track('phone_click',{link_url:href});
+      else if(href.indexOf('mailto:')===0)track('email_click',{link_url:href});
+      else if(a.classList.contains('btn'))track('cta_click',{cta_text:text,link_url:href});
+      else if(href.indexOf('work.html')===0||href.indexOf('#')===0&&a.closest('.wcard'))track('project_link_click',{link_url:href,link_text:text});
+      else if(href.indexOf('services.html')===0)track('service_link_click',{link_url:href,link_text:text});
+      else if(a.closest('nav'))track('navigation_click',{link_url:href,link_text:text});
+    });
+  });
+
   /* ---- hero: scattered stops → real 2-opt solver → PG monogram → a day's route, then rest (see DESIGN.md · Motion) ---- */
   var s=document.querySelector('.hero');
   if(s){
@@ -109,8 +153,8 @@
         .then(function(r){if(!r.ok)throw 0;return r.json();})
         // Formspree answers {ok:true} when the message was accepted for delivery;
         // anything else (errors, limits) is shown as a failure, never as "sent".
-        .then(function(j){if(!j||j.ok!==true)throw 0;lbl.textContent=T.sent;note.className='note ok';note.textContent=T.thanks;f.reset();setTimeout(function(){btn.disabled=false;lbl.textContent=T.send;},4000);})
-        .catch(function(){btn.disabled=false;lbl.textContent=T.send;note.className='note err';note.textContent=T.fail;});
+        .then(function(j){if(!j||j.ok!==true)throw 0;track('form_submit_success',{form_name:'contact'});lbl.textContent=T.sent;note.className='note ok';note.textContent=T.thanks;f.reset();setTimeout(function(){btn.disabled=false;lbl.textContent=T.send;},4000);})
+        .catch(function(){track('form_submit_failure',{form_name:'contact'});btn.disabled=false;lbl.textContent=T.send;note.className='note err';note.textContent=T.fail;});
     });
   }
 })();
