@@ -51,6 +51,11 @@ p{margin:0}
 .logo span{color:var(--mute)}.logo span b{color:var(--ink);font-weight:700}
 .nav{display:flex;align-items:center;gap:28px;font-size:15px;font-weight:500}
 .nav a{text-decoration:none;color:var(--mute);padding:6px 0;position:relative;transition:color .2s ease}
+.logo{position:relative}
+/* invisible 44px-high hit area; the visible link stays the same size */
+.nav a::before,.logo::before,.theme::before{content:"";position:absolute;inset:-6px -8px}
+.theme{position:relative}
+.theme::before,.nav .lang::before{inset:-9px -8px}/* these two have a border, so they need a larger inset */
 .nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease-out)}
 .nav a[aria-current="page"]{color:var(--ink)}.nav a[aria-current="page"]::after{transform:scaleX(1)}
 .nav .lang{font:500 12px var(--mono);letter-spacing:.08em;border:1px solid var(--line2);padding:6px 10px;border-radius:var(--r-s);color:var(--ink)}
