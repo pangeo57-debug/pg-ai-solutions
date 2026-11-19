@@ -4,7 +4,7 @@
 import json, os, html, re, datetime
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE = "https://pangeo57-debug.github.io/pg-ai-solutions"
-V = "19"
+V = "20"
 TODAY = datetime.date.today().isoformat()
 LOGO = open(os.path.join(ROOT, "logo/pg-mark.svg"), encoding="utf-8").read().replace(' role="img" aria-label="PG"', ' aria-hidden="true"').replace('id="pgr"', 'id="pgr-h"').replace("url(#pgr)", "url(#pgr-h)")
 PAGES = ["index", "services", "work", "studio"]
@@ -83,7 +83,7 @@ T = {
        ("Can the app be installed on a phone?","Yes. Our apps install on the phone like a native app (PWA) and work offline where it matters."),
        ("Do you handle SEO, hosting and maintenance?","Yes. Websites include a technical SEO audit, Google Business Profile, structured data and Search Console, plus hosting, backups, updates and monthly reporting.")],
   skip="Skip to content",
-  hero=dict(tag="Websites, apps & software · Patras", h1=[("Websites and apps",0),("built around your business.",1)], sub="We build websites, apps and optimization software for small businesses, with AI and algorithms in our work from day one.", cta="Start a conversation", link="View our work", aria="Animation: a real route optimizer arranges scattered stops into the PG monogram, then into the shortest route of a working day", hud=("stops","iterations","route")),
+  hero=dict(tag="Websites, apps & software · Patras", h1=[("Websites and apps",0),("built around your business.",1)], sub="We build websites, apps and optimization software for small businesses, with AI and algorithms in our work from day one.", cta="Start a conversation", link="View our work", aria="Animation: a real route optimizer arranges scattered stops into the PG monogram, then into the shortest route of a working day"),
   ask=dict(eyebrow="Tell us what you need", h="One sentence. <em>A clear plan.</em>", lead="Write it the way you would say it to a colleague. Within one working day you have a reply with the next steps.", note="Example plan for a project like this", q="I need a booking app that also builds the week's schedule by itself", chips=["Booking app","Bilingual website","Shift scheduling","Delivery routes"], plan=[("Week 1","we learn how you work today"),("Weeks 2–4","we build the app and the automatic schedule"),("Week 5","testing with your own data, then handover")], cta="Describe your project"),
   svc_head=("What we do", "Three services. <em>One standard of work.</em>", "Every project is designed for your business from scratch, with no off-the-shelf templates."),
   svcs=[("Website design & development","Websites built for your business, fast on a phone and set up properly for Google. Hosting and maintenance included."),("Business app development","Apps for bookings, orders and the daily work of the office, which also open on a phone."),("Optimization software","Appointment schedules, shifts and delivery routes that plan themselves, using algorithms measured on known benchmark problems.")],
@@ -124,7 +124,7 @@ T = {
        ("Μπορεί η εφαρμογή να εγκατασταθεί στο κινητό;","Ναι. Οι εφαρμογές μας εγκαθίστανται στο κινητό σαν εφαρμογή (PWA) και λειτουργούν offline όπου χρειάζεται."),
        ("Αναλαμβάνετε SEO, φιλοξενία και συντήρηση;","Ναι. Οι ιστοσελίδες περιλαμβάνουν τεχνικό έλεγχο SEO, Google Business Profile, δομημένα δεδομένα και Search Console, μαζί με φιλοξενία, αντίγραφα, ενημερώσεις και μηνιαία αναφορά.")],
   skip="Μετάβαση στο περιεχόμενο",
-  hero=dict(tag="Ιστοσελίδες, εφαρμογές & λογισμικό · Πάτρα", h1=[("Ιστοσελίδες και εφαρμογές",0),("φτιαγμένες γύρω από την επιχείρησή σας.",1)], sub="Φτιάχνουμε ιστοσελίδες, εφαρμογές και λογισμικό βελτιστοποίησης για μικρές επιχειρήσεις, με AI και αλγορίθμους στη δουλειά μας από την πρώτη μέρα.", cta="Ξεκινήστε μια συζήτηση", link="Δείτε τα έργα μας", aria="Κινούμενη εικόνα: ένας πραγματικός αλγόριθμος βελτιστοποίησης τακτοποιεί σκόρπιες στάσεις στο μονόγραμμα PG και μετά στη συντομότερη διαδρομή μιας εργάσιμης μέρας", hud=("στάσεις","επαναλήψεις","διαδρομή")),
+  hero=dict(tag="Ιστοσελίδες, εφαρμογές & λογισμικό · Πάτρα", h1=[("Ιστοσελίδες και εφαρμογές",0),("φτιαγμένες γύρω από την επιχείρησή σας.",1)], sub="Φτιάχνουμε ιστοσελίδες, εφαρμογές και λογισμικό βελτιστοποίησης για μικρές επιχειρήσεις, με AI και αλγορίθμους στη δουλειά μας από την πρώτη μέρα.", cta="Ξεκινήστε μια συζήτηση", link="Δείτε τα έργα μας", aria="Κινούμενη εικόνα: ένας πραγματικός αλγόριθμος βελτιστοποίησης τακτοποιεί σκόρπιες στάσεις στο μονόγραμμα PG και μετά στη συντομότερη διαδρομή μιας εργάσιμης μέρας"),
   ask=dict(eyebrow="Πείτε μας τι χρειάζεστε", h="Μια πρόταση. <em>Ένα καθαρό πλάνο.</em>", lead="Γράψτε το όπως θα το λέγατε σε έναν συνεργάτη. Μέσα σε μία εργάσιμη έχετε απάντηση με τα επόμενα βήματα.", note="Ενδεικτικό πλάνο για ένα τέτοιο έργο", q="Θέλω εφαρμογή για ραντεβού που βγάζει μόνη της το πρόγραμμα της εβδομάδας", chips=["Εφαρμογή κρατήσεων","Δίγλωσση ιστοσελίδα","Πρόγραμμα βαρδιών","Δρομολόγια"], plan=[("Εβδ. 1","μαθαίνουμε πώς δουλεύετε σήμερα"),("Εβδ. 2–4","φτιάχνουμε την εφαρμογή και το αυτόματο πρόγραμμα"),("Εβδ. 5","δοκιμή με τα δικά σας δεδομένα και παράδοση")], cta="Περιγράψτε το έργο σας"),
   svc_head=("Τι κάνουμε", "Τρεις υπηρεσίες. <em>Ένα επίπεδο δουλειάς.</em>", "Κάθε έργο σχεδιάζεται για τη δική σας επιχείρηση από την αρχή, χωρίς έτοιμα templates."),
   svcs=[("Κατασκευή ιστοσελίδων","Ιστοσελίδες φτιαγμένες για την επιχείρησή σας, γρήγορες στο κινητό και στημένες σωστά για το Google. Με φιλοξενία και συντήρηση."),("Ανάπτυξη εφαρμογών","Εφαρμογές για κρατήσεις, παραγγελίες και την καθημερινή δουλειά του γραφείου, που ανοίγουν και στο κινητό."),("Λογισμικό βελτιστοποίησης","Πρόγραμμα ραντεβού, βάρδιες και δρομολόγια που βγαίνουν αυτόματα, με αλγορίθμους μετρημένους σε γνωστά προβλήματα.")],
@@ -273,7 +273,7 @@ def page_index(L, pre):
     plan = f'<small>{a["note"]}</small>' + "".join(f"<div><b>{x}</b> · {y}</div>" for x, y in a["plan"])
     return f'''<section class="hero" aria-labelledby="hero-h"><canvas role="img" aria-label="{h["aria"]}"></canvas>
 <div class="wrap"><div class="hero-txt"><span class="eyebrow live fade" style="--d:100ms">{h["tag"]}</span><h1 class="h1" id="hero-h">{h1}</h1></div>
-<div class="stage"><div class="hud fade" style="--d:1100ms" aria-hidden="true"><div><span>{h["hud"][0]}</span><b data-n>0</b></div><div><span>{h["hud"][1]}</span><b data-it>0</b></div><div><span>{h["hud"][2]}</span><b data-km>…</b></div><i class="bar"><i data-bar></i></i></div></div>
+<div class="stage"></div>
 <div class="hero-txt hero-sub"><p class="lead fade" style="--d:850ms">{h["sub"]}</p>
 <div class="hero-act fade" style="--d:1000ms"><a class="btn" href="#contact">{h["cta"]} <i aria-hidden="true">→</i></a><a class="txtlink" href="work.html">{h["link"]}</a></div></div>
 <div class="phones fade" style="--d:1300ms" aria-hidden="true"><figure class="phone p1"><img src="{pre}assets/work/routepal.webp?v={V}" width="480" height="1038" alt=""></figure><figure class="phone p2"><img src="{pre}assets/work/cashflow.webp?v={V}" width="480" height="1038" alt=""></figure></div></div>

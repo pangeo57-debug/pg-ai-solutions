@@ -6,7 +6,7 @@
   var s=document.querySelector('.hero');
   if(s){
     var c=s.querySelector('canvas'),x=c.getContext('2d'),hud=s.querySelector('.hud');
-    var $=function(k){return hud.querySelector('[data-'+k+']');},nEl=$('n'),itEl=$('it'),kmEl=$('km'),barEl=$('bar');
+    var $=function(k){return (hud&&hud.querySelector('[data-'+k+']'))||{style:{}};},nEl=$('n'),itEl=$('it'),kmEl=$('km'),barEl=$('bar');
     var css=function(k,d){return getComputedStyle(document.documentElement).getPropertyValue(k).trim()||d;};
     var fmt=new Intl.NumberFormat(document.documentElement.lang||'en');
     var PATH='M12 54 V10 H30 A11 11 0 0 1 30 32 H12 M48 32 C48 44 54 54 66 54 C75 54 82 47 84 36 H68 M48 32 C48 20 54 10 66 10 C74 10 80 14 83 20';
