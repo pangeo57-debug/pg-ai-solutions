@@ -4,7 +4,7 @@
 - Πολυσέλιδο site: `index`, `services`, `work`, `studio` (EN στη ρίζα, ΕΛ στο `el/`), `privacy.html`, `el/privacy.html`, `404.html`
 - Κοινά αρχεία: `assets/site.css`, `assets/site.js`, `logo/pg-mark.svg` (έμβλημα PG), `logo/pg-icon.svg` (favicon)
 - `robots.txt`, `sitemap.xml`, `assets/` (γραμματοσειρές OFL, εικόνες έργων και κοινοποίησης)
-- Δεν φορτώνεται τίποτα από τρίτους στη φόρτωση σελίδας (χωρίς cookies/analytics). Μόνο η αποστολή φόρμας πηγαίνει στο formsubmit.co.
+- Από προεπιλογή δεν φορτώνεται τίποτα από τρίτους στη φόρτωση σελίδας (χωρίς cookies/analytics). Η αποστολή φόρμας πηγαίνει στο Formspree.
 
 ## Αλλαγή κειμένων
 Όλα τα κείμενα (και στις δύο γλώσσες) και τα έργα είναι στο `scripts/build.py`. Αλλάζεις εκεί και τρέχεις `python3 scripts/build.py`· ξαναγράφει όλες τις σελίδες και το `sitemap.xml`. Μην αλλάζεις τα .html με το χέρι.

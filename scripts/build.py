@@ -4,7 +4,8 @@
 import json, os, html, re, datetime
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE = "https://pangeo57-debug.github.io/pg-ai-solutions"
-V = "19"
+V = "20"
+GA4_ID = os.environ.get("PG_GA4_ID") or os.environ.get("GA4_MEASUREMENT_ID") or ""
 TODAY = datetime.date.today().isoformat()
 LOGO = open(os.path.join(ROOT, "logo/pg-mark.svg"), encoding="utf-8").read().replace(' role="img" aria-label="PG"', ' aria-hidden="true"').replace('id="pgr"', 'id="pgr-h"').replace("url(#pgr)", "url(#pgr-h)")
 PAGES = ["index", "services", "work", "studio"]
@@ -191,6 +192,7 @@ def head(L, p, pre):
     t = T[L]; title = t["titles"][p]; desc = t["descs"][p]
     alts = "".join(f'<link rel="alternate" hreflang="{l}" href="{url(l,p)}">\n' for l in ("en","el")) + f'<link rel="alternate" hreflang="x-default" href="{url("en",p)}">\n'
     ld = '<script type="application/ld+json">' + json.dumps(schema(L, p), ensure_ascii=False) + '</script>\n'
+    analytics = f'<script>window.PG_ANALYTICS={{"id":{json.dumps(GA4_ID)}}};</script>\n' if GA4_ID else '<script>window.PG_ANALYTICS={"id":""};</script>\n'
     other = "el" if L == "en" else "en"
     return f'''<!DOCTYPE html>
 <html lang="{t["lang"]}">
@@ -218,7 +220,7 @@ def head(L, p, pre):
 <meta name="twitter:title" content="{title}">
 <meta name="twitter:description" content="{desc}">
 <meta name="twitter:image" content="{BASE}/assets/og-image.png?v={V}">
-{ld}<link rel="icon" type="image/svg+xml" href="{pre}logo/pg-icon.svg">
+{ld}{analytics}<link rel="icon" type="image/svg+xml" href="{pre}logo/pg-icon.svg">
 <link rel="apple-touch-icon" href="{pre}assets/apple-touch-icon.png">
 <link rel="preload" href="{pre}assets/fonts/manrope-{"greek" if L=="el" else "latin"}-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{pre}assets/site.css?v={V}">
@@ -243,9 +245,16 @@ def sec_head(h, tag="h2"):
     e, title, lead = h
     return f'<div class="sec-head"><span class="eyebrow">{e}</span><{tag} class="h2">{title}</{tag}><p class="lead">{lead}</p></div>'
 
-def intro(h):
+def intro(h, L=None, p=None):
     e, title, lead = h
-    return f'<section class="intro"><div class="wrap"><span class="eyebrow">{e}</span><h1 class="h1">{title}</h1><p class="lead">{lead}</p></div></section>'
+    crumb = ""
+    if L and p and p != "index":
+        parent = plain(titles_for_breadcrumb(L, p))
+        crumb = f'<nav class="breadcrumb" aria-label="{"Breadcrumb" if L == "en" else "Διαδρομή"}"><ol><li><a href="{url(L, "index")}">{T[L]["crumb"]}</a></li><li aria-current="page">{html.escape(parent)}</li></ol></nav>'
+    return f'<section class="intro"><div class="wrap">{crumb}<span class="eyebrow">{e}</span><h1 class="h1">{title}</h1><p class="lead">{lead}</p></div></section>'
+
+def titles_for_breadcrumb(L, p):
+    return T[L]["titles"][p].split(" | ")[0]
 
 def strip(L, pre):
     out = []
@@ -302,7 +311,7 @@ def page_services(L, pre):
     for i,(a,b,lst) in enumerate(t["svc_detail"]):
         li = "".join(f"<li>{x}</li>" for x in lst)
         out.append(f'<div class="svc" id="s{i+1}"><span class="n">0{i+1}</span><div class="body"><h2 class="h2">{a}</h2><p class="lead">{b}</p></div><ul class="plist">{li}</ul></div>')
-    return intro(t["services_intro"]) + f'<section class="sec" style="padding-top:0"><div class="wrap">{"".join(out)}</div></section><section class="sec alt"><div class="wrap">{sec_head(t["proc_head"])}{steps(L)}</div></section>' + start_sec(L) + faq_sec(L)
+    return intro(t["services_intro"], L, "services") + f'<section class="sec" style="padding-top:0"><div class="wrap">{"".join(out)}</div></section><section class="sec alt"><div class="wrap">{sec_head(t["proc_head"])}{steps(L)}</div></section>' + start_sec(L) + faq_sec(L)
 
 def page_work(L, pre):
     t = T[L]; out = []
@@ -314,12 +323,12 @@ def page_work(L, pre):
         cls = "status live" if d["status"] == "Live" else "status"
         out.append(f'''<article class="proj" id="{pj["id"]}"><div class="pshot"><img src="{pre}assets/work/{pj["img"]}.webp?v={V}" width="480" height="1038" alt="{d["name"]}: {d["kind"].lower()}{" — screenshot" if L=="en" else " — στιγμιότυπο"}" loading="lazy" decoding="async"></div>
 <div class="pbody"><span class="eyebrow">{d["kind"]}</span><h2 class="h2">{d["name"]}</h2><span class="{cls}">{d["status"]}</span><p class="lead">{d["desc"]}</p>{st}<ul class="plist">{li}</ul><div class="tags">{tg}</div>{live}</div></article>''')
-    return intro(t["work_intro"]) + f'<section><div class="wrap">{"".join(out)}</div></section>'
+    return intro(t["work_intro"], L, "work") + f'<section><div class="wrap">{"".join(out)}</div></section>'
 
 def page_studio(L, pre):
     t = T[L]
     spec = "".join(f"<div><dt>{a}</dt><dd>{b}</dd></div>" for a,b in t["spec"])
-    return intro(t["studio_intro"]) + f'<section class="sec"><div class="wrap"><dl class="spec">{spec}</dl></div></section><section class="sec alt"><div class="wrap">{sec_head(t["proc_head"])}{steps(L)}</div></section>'
+    return intro(t["studio_intro"], L, "studio") + f'<section class="sec"><div class="wrap"><dl class="spec">{spec}</dl></div></section><section class="sec alt"><div class="wrap">{sec_head(t["proc_head"])}{steps(L)}</div></section>'
 
 def contact(L):
     c = T[L]["contact"]
@@ -351,12 +360,12 @@ def footer(L, pre):
 def page_privacy(L, pre):
     body = open(os.path.join(ROOT, f"scripts/content/privacy.{L}.html"), encoding="utf-8").read()
     h = ("Privacy","Privacy <em>policy.</em>","What this website collects, why, and your rights.") if L=="en" else ("Απόρρητο","Πολιτική <em>απορρήτου.</em>","Τι συλλέγει αυτός ο ιστότοπος, γιατί, και ποια είναι τα δικαιώματά σας.")
-    return intro(h) + f'<section class="sec" style="padding-top:clamp(48px,6vw,80px)"><div class="wrap"><article class="prose">{body}</article></div></section>'
+    return intro(h, L, "privacy") + f'<section class="sec" style="padding-top:clamp(48px,6vw,80px)"><div class="wrap"><article class="prose">{body}</article></div></section>'
 
 def page_terms(L, pre):
     body = open(os.path.join(ROOT, f"scripts/content/terms.{L}.html"), encoding="utf-8").read()
     h = ("Terms","Terms <em>of use.</em>","The rules for using this website.") if L=="en" else ("Όροι","Όροι <em>χρήσης.</em>","Οι κανόνες χρήσης αυτού του ιστότοπου.")
-    return intro(h) + f'<section class="sec" style="padding-top:clamp(48px,6vw,80px)"><div class="wrap"><article class="prose">{body}</article></div></section>'
+    return intro(h, L, "terms") + f'<section class="sec" style="padding-top:clamp(48px,6vw,80px)"><div class="wrap"><article class="prose">{body}</article></div></section>'
 
 BUILD = dict(index=page_index, services=page_services, work=page_work, studio=page_studio, privacy=page_privacy, terms=page_terms)
 for L in ("en", "el"):
