@@ -144,17 +144,49 @@
   var f=document.querySelector('form.cf');
   if(f&&window.fetch&&window.FormData){
     var T=JSON.parse(f.getAttribute('data-t')),btn=f.querySelector('button'),lbl=btn.querySelector('span'),note=f.querySelector('.note');
+    var submitKey='pg-form-submit-until', coolDown=45000;
+    f.querySelector('[name="_form_started"]').value=String(Date.now());
+    var lock=function(){
+      var until=0;try{until=Number(localStorage.getItem(submitKey)||0)}catch(e){}
+      if(until>Date.now()){
+        btn.disabled=true;lbl.textContent=T.send;
+        note.className='note err';note.textContent=document.documentElement.lang==='el'
+          ?'Περιμένετε λίγο πριν στείλετε νέο μήνυμα.'
+          :'Please wait before sending another message.';
+        setTimeout(lock,Math.max(1000,until-Date.now()));
+      }else{
+        btn.disabled=false;note.textContent='';
+      }
+    };lock();
+
+    var turnstileKey=window.PG_TURNSTILE_SITE_KEY||'';
+    if(turnstileKey&&!document.querySelector('script[data-pg-turnstile]')){
+      var ts=document.createElement('script');
+      ts.src='https://challenges.cloudflare.com/turnstile/v0/api.js';
+      ts.async=true;ts.defer=true;ts.dataset.pgTurnstile='';
+      var wrap=document.createElement('div');
+      wrap.className='cf-turnstile';wrap.dataset.turnstile=turnstileKey;f.insertBefore(wrap,btn);
+      ts.onload=function(){if(window.turnstile)window.turnstile.render(wrap,{sitekey:turnstileKey})};
+      document.head.appendChild(ts);
+    }
+
     f.querySelectorAll('.who input').forEach(function(r){r.addEventListener('change',function(){f.querySelector('[name=_subject]').value=r.getAttribute('data-subj');});});
     f.addEventListener('submit',function(e){
       e.preventDefault();if(btn.disabled)return;
       var fd=new FormData(f);if(fd.get('_gotcha'))return;
+      var started=Number(fd.get('_form_started')||0);
+      if(!started||Date.now()-started<1500){note.className='note err';note.textContent=document.documentElement.lang==='el'?'Το μήνυμα δεν στάλθηκε. Προσπαθήστε ξανά.':'The message was not sent. Please try again.';return;}
+      if(turnstileKey&&!fd.get('cf-turnstile-response')){note.className='note err';note.textContent=document.documentElement.lang==='el'?'Ολοκληρώστε τον έλεγχο ασφαλείας και δοκιμάστε ξανά.':'Complete the security check and try again.';return;}
+      try{localStorage.setItem(submitKey,String(Date.now()+coolDown))}catch(ex){}
       btn.disabled=true;lbl.textContent=T.sending;note.className='note';note.textContent='';
-      fetch(f.action,{method:'POST',headers:{Accept:'application/json'},body:fd})
+      var controller=new AbortController(),timeout=setTimeout(function(){controller.abort()},15000);
+      fetch(f.action,{method:'POST',headers:{Accept:'application/json'},body:fd,signal:controller.signal})
+        .then(function(r){clearTimeout(timeout);return r})
         .then(function(r){if(!r.ok)throw 0;return r.json();})
         // Formspree answers {ok:true} when the message was accepted for delivery;
         // anything else (errors, limits) is shown as a failure, never as "sent".
-        .then(function(j){if(!j||j.ok!==true)throw 0;track('form_submit_success',{form_name:'contact'});lbl.textContent=T.sent;note.className='note ok';note.textContent=T.thanks;f.reset();setTimeout(function(){btn.disabled=false;lbl.textContent=T.send;},4000);})
-        .catch(function(){track('form_submit_failure',{form_name:'contact'});btn.disabled=false;lbl.textContent=T.send;note.className='note err';note.textContent=T.fail;});
+        .then(function(j){if(!j||j.ok!==true)throw 0;track('form_submit_success',{form_name:'contact'});lbl.textContent=T.sent;note.className='note ok';note.textContent=T.thanks;f.reset();setTimeout(lock,coolDown);})
+        .catch(function(){clearTimeout(timeout);track('form_submit_failure',{form_name:'contact'});lbl.textContent=T.send;note.className='note err';note.textContent=T.fail;setTimeout(lock,coolDown);});
     });
   }
 })();

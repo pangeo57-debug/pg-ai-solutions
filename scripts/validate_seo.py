@@ -174,6 +174,14 @@ if "PG_GA4_ID" not in build or "GA4_MEASUREMENT_ID" not in build:
 if "PG_ANALYTICS" not in build:
     errors.append("analytics: page configuration missing")
 
+for secret_name in ("API_KEY", "CLIENT_SECRET", "PRIVATE_KEY", "PASSWORD", "ACCESS_TOKEN"):
+    if re.search(r"\b" + secret_name + r"\b\s*[:=]\s*[\"'][^\"']+[\"']", build + "\n" + js):
+        errors.append(f"security: possible exposed secret {secret_name}")
+if "PG_TURNSTILE_SITE_KEY" not in build:
+    errors.append("security: Turnstile build configuration missing")
+if "submitKey='pg-form-submit-until'" not in js:
+    errors.append("security: form submission cooldown missing")
+
 if errors:
     print("\n".join("ERROR " + error for error in errors))
     sys.exit(1)
