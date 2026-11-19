@@ -51,6 +51,11 @@ p{margin:0}
 .logo span{color:var(--mute)}.logo span b{color:var(--ink);font-weight:700}
 .nav{display:flex;align-items:center;gap:28px;font-size:15px;font-weight:500}
 .nav a{text-decoration:none;color:var(--mute);padding:6px 0;position:relative;transition:color .2s ease}
+.logo{position:relative}
+/* invisible 44px-high hit area; the visible link stays the same size */
+.nav a::before,.logo::before,.theme::before{content:"";position:absolute;inset:-6px -8px}
+.theme{position:relative}
+.theme::before,.nav .lang::before{inset:-9px -8px}/* these two have a border, so they need a larger inset */
 .nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease-out)}
 .nav a[aria-current="page"]{color:var(--ink)}.nav a[aria-current="page"]::after{transform:scaleX(1)}
 .nav .lang{font:500 12px var(--mono);letter-spacing:.08em;border:1px solid var(--line2);padding:6px 10px;border-radius:var(--r-s);color:var(--ink)}
@@ -91,10 +96,14 @@ p{margin:0}
 /* home hero */
 .hero{position:relative;min-height:calc(100svh - 68px);display:flex;align-items:center;overflow:hidden;isolation:isolate}
 .hero canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
-.hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(60% 70% at 15% 55%,var(--bg) 30%,transparent 75%)}
 .hero .wrap{position:relative;z-index:2;width:100%;padding-block:64px}
-.hero-txt{max-width:620px;display:flex;flex-direction:column;align-items:flex-start;gap:24px}
-.hero .h1{font-size:clamp(2.9rem,6.8vw,5.8rem)}
+.hero-txt{max-width:980px;display:flex;flex-direction:column;align-items:flex-start;gap:24px}
+.hero .h1{font-size:clamp(2.1rem,5.2vw,4.5rem)}
+html[lang="el"] .hero .h1{font-size:clamp(1.9rem,4.1vw,3.6rem)}
+.hero-sub{margin-top:28px;max-width:min(620px,calc(100% - 2*clamp(150px,13vw,188px) - 56px))}
+/* route canvas draws inside .stage, directly under the title; right edge leaves room for the phones */
+.stage{position:relative;height:clamp(240px,32vh,340px);margin-top:28px;width:calc(100% - 2*clamp(150px,13vw,188px) - 56px)}
+.stage .hud{position:absolute;left:0;bottom:0;margin:0}
 .hero-act{display:flex;gap:24px;align-items:center;flex-wrap:wrap;margin-top:6px}
 .wd{display:inline-block;opacity:0;filter:blur(10px);transform:translateY(12px);animation:wd 900ms var(--ease-out) var(--d,0ms) forwards}
 .fade{opacity:0;transform:translateY(8px);animation:wd 700ms var(--ease-out) var(--d,0ms) forwards}
@@ -257,10 +266,11 @@ form.cf{display:grid;gap:16px;align-content:start;background:var(--bg2);border:1
   .nav{gap:18px}
   .sec-head{grid-template-columns:1fr;gap:14px;margin-bottom:32px}
   .hero{min-height:calc(100svh - 68px);align-items:flex-start}
-  .hero::after{background:linear-gradient(180deg,transparent 18%,var(--bg) 50%)}
-  .hero .wrap{padding-top:max(300px,40svh);padding-bottom:48px}
+  .hero .wrap{padding-top:40px;padding-bottom:48px}
+  .stage{width:100%;height:clamp(220px,62vw,320px);margin-top:24px}
+  .hero-sub{max-width:none}
+  .stage .hud{width:auto;min-width:200px}
   .hero-act{gap:18px}
-  .hud{width:100%;min-width:0}
   .hero .wrap>.phones{position:static;margin-top:40px;justify-content:flex-start}
   .phone{width:44%;max-width:200px}.phone.p1{transform:none}
   .hero .wrap{padding-bottom:48px}
