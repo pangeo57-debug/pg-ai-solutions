@@ -251,6 +251,7 @@ form.cf{display:grid;gap:16px;align-content:start;background:var(--bg2);border:1
 /* footer */
 .ft{border-top:1px solid var(--line);font-size:14px;color:var(--mute)}
 .ft .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:24px}
+.ft small{display:block;margin-top:4px;font-size:12px}
 .ft nav{display:flex;gap:20px;flex-wrap:wrap}
 .ft a{text-decoration:none;transition:color .2s ease}
 @media (hover:hover) and (pointer:fine){.ft a:hover{color:var(--ink)}}

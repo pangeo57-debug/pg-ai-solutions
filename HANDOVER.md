@@ -16,7 +16,7 @@
 GitHub Pages: Settings → Pages → Deploy from branch `main` / root. Εναλλακτικά Netlify/Cloudflare Pages (drag & drop του φακέλου).
 
 ## Φόρμα επικοινωνίας
-Την πρώτη φορά το formsubmit.co στέλνει email ενεργοποίησης στο pangeo57@yahoo.gr — στείλε ένα δοκιμαστικό μήνυμα και επιβεβαίωσε (έλεγξε και τα spam).
+Η πρώτη δοκιμαστική αποστολή Formspree απαιτεί ενεργοποίηση του συνδεδεμένου email του ιδιοκτήτη στο formspree.io — στείλε δοκιμαστικό μήνυμα και επιβεβαίωσε την ενεργοποίηση.
 
 ## Google
 1. Search Console → προσθήκη ιδιοκτησίας (domain) → επαλήθευση DNS.
