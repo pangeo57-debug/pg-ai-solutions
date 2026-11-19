@@ -12,25 +12,25 @@ PAGES = ["index", "services", "work", "studio"]
 
 PROJECTS = [
  dict(id="routepal", img="routepal", live="https://pangeo57-debug.github.io/routiq/routiq.html",
-  en=dict(kind="Route optimization", name="RoutePal", status="Live",
-   desc="Plans a whole week of appointments and visits: who, when and in what order, using real travel times. Underneath runs a multi-phase optimization engine for routing with time windows (VRPTW).",
-   stats=[("9","optimization phases"),("175","automated tests"),("4","languages")],
-   pts=["Weekly or single-day plans, built from each client's available slots and split shifts","Multi-phase engine: constraint backtracking, simulated annealing and large neighbourhood search (LNS)","Real distances and drive times (OSRM/HERE), with rush-hour traffic per appointment","Benchmarked on Solomon VRPTW instances against best published and exact (Held-Karp) optima","Group and paired visits, map with navigation, PDF export, installs on the phone"],
-   tags=["VRPTW","Simulated annealing","LNS","PWA"]),
-  el=dict(kind="Βελτιστοποίηση διαδρομών", name="RoutePal", status="Live",
-   desc="Οργανώνει μια ολόκληρη εβδομάδα ραντεβού και επισκέψεων: ποιος, πότε, με ποια σειρά, με πραγματικούς χρόνους δρόμου. Από κάτω τρέχει μηχανή βελτιστοποίησης πολλών φάσεων για δρομολόγηση με χρονικά παράθυρα (VRPTW).",
-   stats=[("9","φάσεις βελτιστοποίησης"),("175","αυτόματα τεστ"),("4","γλώσσες")],
-   pts=["Εβδομαδιαίο πρόγραμμα ή μία μέρα, με βάση τα διαθέσιμα διαστήματα κάθε πελάτη και σπαστά ωράρια","Μηχανή πολλών φάσεων: backtracking αναζήτηση περιορισμών, simulated annealing και large neighborhood search (LNS)","Πραγματικές αποστάσεις και χρόνοι δρόμου (OSRM/HERE), με κίνηση ώρας αιχμής ανά ραντεβού","Μετρημένο στα VRPTW προβλήματα του Solomon απέναντι στις καλύτερες δημοσιευμένες λύσεις και σε ακριβή βέλτιστα (Held-Karp)","Ομαδικά ραντεβού και ζευγάρια, χάρτης με πλοήγηση, εξαγωγή PDF, εγκατάσταση στο κινητό"],
-   tags=["VRPTW","Simulated annealing","LNS","PWA"])),
+  en=dict(kind="Route optimization", name="Routepal", status="Live",
+   desc="A complete weekly planning app for appointments and visits, with the schedule arranged around people, locations and availability.",
+   stats=[],
+   pts=["A clear daily and weekly plan","Maps and navigation for each stop","Appointments organised by group or paired visit","Easy PDF handover and phone use"],
+   tags=["Planning","Appointments","Mobile"]),
+  el=dict(kind="Βελτιστοποίηση διαδρομών", name="Routepal", status="Live",
+   desc="Μία πλήρης εφαρμογή εβδομαδιαίου προγραμματισμού για ραντεβού και επισκέψεις, με πρόγραμμα οργανωμένο γύρω από ανθρώπους, τοποθεσίες και διαθεσιμότητα.",
+   stats=[],
+   pts=["Καθαρό ημερήσιο και εβδομαδιαίο πρόγραμμα","Χάρτης και πλοήγηση για κάθε στάση","Ομαδοποίηση και συνδυασμός ραντεβού","Εύκολη εξαγωγή PDF και χρήση στο κινητό"],
+   tags=["Προγραμματισμός","Ραντεβού","Κινητό"])),
  dict(id="cashflow", img="cashflow", live=None,
   en=dict(kind="Finance app", name="Cash Flow", status="Private app · demo on request",
    desc="A personal finance app: income and expenses in two taps, clear statistics, and data that stays on the phone, even offline.",
-   stats=[], pts=["Income and expenses in two taps, by category","Recurring payments, monthly goals and budgets","Statistics and smart insights","Works offline; data stays on the device, with a JSON backup","Optional sync through Supabase"],
-   tags=["React","TypeScript","PWA"]),
+   stats=[], pts=["Income and expenses in a few taps","Recurring payments and monthly budgets","Clear personal statistics","Works on the phone, even offline","Private data with an easy backup"],
+   tags=["Personal finance","Mobile","Privacy"]),
   el=dict(kind="Εφαρμογή οικονομικών", name="Cash Flow", status="Ιδιωτική εφαρμογή · demo κατόπιν αιτήματος",
    desc="Εφαρμογή προσωπικών οικονομικών: έσοδα και έξοδα με δύο πατήματα, καθαρά στατιστικά και δεδομένα που μένουν στο κινητό, ακόμα και offline.",
-   stats=[], pts=["Έσοδα και έξοδα με δύο πατήματα, ανά κατηγορία","Επαναλαμβανόμενες πληρωμές, μηνιαίοι στόχοι και budgets","Στατιστικά και έξυπνες παρατηρήσεις","Λειτουργεί offline· τα δεδομένα μένουν στη συσκευή, με αντίγραφο JSON","Προαιρετικός συγχρονισμός μέσω Supabase"],
-   tags=["React","TypeScript","PWA"])),
+   stats=[], pts=["Έσοδα και έξοδα σε λίγα πατήματα","Επαναλαμβανόμενες πληρωμές και μηνιαίοι στόχοι","Καθαρά προσωπικά στατιστικά","Λειτουργεί στο κινητό, ακόμα και χωρίς internet","Ιδιωτικά δεδομένα με εύκολο αντίγραφο"],
+   tags=["Προσωπικά οικονομικά","Κινητό","Ιδιωτικότητα"])),
 ]
 
 T = {
@@ -38,41 +38,41 @@ T = {
   lang="en", locale="en_GB", theme="Switch light / dark theme", other="el", other_label="ΕΛ",
   nav=dict(index="Home", services="Services", work="Work", studio="Studio", contact="Contact"),
   titles=dict(index="Web Design & Apps in Patras, Greece | PG AI Solutions", services="Websites, Apps & Optimization Software | PG AI Solutions", work="Our Work: Websites, Apps & Optimization | PG AI Solutions", studio="Software Studio in Patras, Greece | PG AI Solutions", privacy="Privacy Policy | PG AI Solutions", terms="Terms of Use | PG AI Solutions"),
-  descs=dict(index="Custom websites and mini apps for small businesses in Patras and remotely across Greece. Clear scope, clean design and a working result.", services="Custom website, mini app and optimization packages, built around how your business works. Clear scope and direct handover.", work="Selected work from PG AI Solutions: RoutePal route optimization and Cash Flow personal finance.", studio="PG AI Solutions is a small software studio in Patras, Greece. We build custom websites and mini apps with a simple, direct process.", privacy="How the PG AI Solutions website handles personal data: what we collect, why, who receives it, how long we keep it and your rights.", terms="Terms of use for the PG AI Solutions website: content, accuracy of information, links to other sites and governing law."),
+  descs=dict(index="Custom websites and mini apps for small businesses in Patras and remotely across Greece. Clear scope, clean design and a working result.", services="Professional websites and e-shops, AI business automations and custom web applications. Clear scope and direct handover.", work="Selected work from PG AI Solutions: Routepal route optimization and Cash Flow personal finance.", studio="PG AI Solutions is a small software studio in Patras, Greece. We build websites and custom business tools.", privacy="How the PG AI Solutions website handles personal data: what we collect, why, who receives it, how long we keep it and your rights.", terms="Terms of use for the PG AI Solutions website: content, accuracy of information, links to other sites and governing law."),
   crumb="Home", og_alt="PG AI Solutions: websites, apps and optimization software from Patras, Greece",
   faq_head=("Questions", "Common <em>questions.</em>", "Short answers to what businesses ask us first."),
   faq=[("How much does a website or an app cost?","The price comes from what the project needs, not the other way around. After a first conversation we send a written proposal with clear scope, timeline and cost, so there are no surprises later."),
        ("How quickly do you reply?","Within one working day, with clear next steps and, when it fits, a proposal."),
        ("Do you work with businesses outside Patras?","Yes. We are based in Patras, Greece, and work with both local and remote clients, in Greek and English."),
        ("Who owns the website, the domain and the data?","You do. The domain and the accounts are yours, and your data stays yours, with export and backup."),
-       ("Can the app be installed on a phone?","Yes. Our apps install on the phone like a native app (PWA) and work offline where it matters."),
-       ("Do you handle SEO, hosting and maintenance?","Yes. Websites include a technical SEO audit, Google Business Profile, structured data and Search Console, plus hosting, backups, updates and monthly reporting.")],
+       ("Can the app be used on a phone?","Yes. Custom apps can be designed for a clean phone and desktop experience."),
+       ("Do you handle launch and maintenance?","Yes. We include the agreed launch, handover and follow-up support.")],
   skip="Skip to content",
   hero=dict(tag="Custom websites & mini apps · Patras", h1=[("Websites and apps",0),("built around your business.",1)], sub="Simple, premium websites and focused mini apps for small businesses. Built clearly, handover cleanly, and used by real people.", cta="Discuss a project", link="See selected work", aria="Animation: a real route optimizer arranges scattered stops into the PG monogram, then into the shortest route of a working day", proof=[("1","clear scope"),("1","working day to reply"),("Custom","built for your workflow"),("EN / EL","bilingual delivery")]),
   ask=dict(eyebrow="Tell us what you need", h="One sentence. <em>A clear plan.</em>", lead="Write it the way you would say it to a colleague. Within one working day you have a reply with the next steps.", note="Example plan for a project like this", q="I need a booking app that also builds the week's schedule by itself", chips=["Booking app","Bilingual website","Shift scheduling","Delivery routes"], plan=[("Week 1","we learn how you work today"),("Weeks 2–4","we build the app and the automatic schedule"),("Week 5","testing with your own data, then handover")], cta="Describe your project"),
-  svc_head=("What we do", "Three focused <em>services.</em>", "Choose the result you need. We shape the scope around your business."),
-  svcs=[("Website design","Premium, responsive websites that clearly explain your offer and make enquiries easy."),("Custom mini apps","Focused apps for bookings, orders, schedules or the one process that wastes your time."),("Optimization software","Practical scheduling and routing tools that solve a specific operational problem.")],
+  svc_head=("What we do", "Three clear <em>services.</em>", "Choose the practical result your business needs."),
+  svcs=[("Professional websites & e-shops","Modern, fast websites and online stores built to present your offer clearly and generate sales."),("AI automation & digital assistants","Automations for bookings, requests and orders, plus AI assistants trained around your business."),("Custom web apps & optimization","Focused tools for routing, planning and management, built around your real workflow.")],
   work_head=("Selected work", "A small selection. <em>Built properly.</em>", "Two examples of custom software, with the detail kept where it matters."),
   all_work="View more work",
   proc_head=("How we work", "Four steps, <em>each one checked.</em>", "Before we move to the next step, we check that the previous one solves your real problem."),
   steps=[("Understand","We learn who will use it, what limits you have and what the real goal is, before any design or code."),("Design","We design the data, the logic and the screens together, so no expensive changes are needed later."),("Build","We deliver in small pieces and test with real scenarios, not only the ideal case."),("Launch & improve","We put it live, watch how it is used and keep improving it. The work does not stop at handover.")],
   services_intro=("Services","What we <em>build.</em>","We take on a few projects at a time, so each one has our attention from the first conversation to launch and after."),
   svc_detail=[
-   ("Website design & development","Websites built for your business and set up properly for Google, with hosting and maintenance included.",["Designed for your business, no off-the-shelf templates","Fast on every device, built to bring you enquiries","SEO: technical audit, Google Business Profile, structured data, Search Console","Branding: logo, palette and typography when you need them","Hosting, backups, updates and monthly reporting","Greek and English when you need both; you own the domain and accounts"]),
-   ("Business app development","Apps built around the way your business works, from bookings to the tools your team uses every day.",["Booking systems, quoting, ordering and internal tools","Installs on the phone like an app (PWA)","Works offline where it matters","Your data stays yours, with export and backup","Built to grow with the business"]),
-   ("Optimization software","Software that plans appointments, shifts and routes for you, using proven algorithms measured against known benchmarks.",["Route and appointment planning with real travel times","Scheduling with constraints and time windows","Dashboards that show you what to decide, not just numbers","Measured against known benchmarks, not guesses","Clear explanations of why the result is good"])],
+   ("Professional websites & e-shops","Fast, modern websites and online stores that turn visitors into enquiries and customers.",["A focused website or e-shop built for your offer","Clear product, service and contact pages","Mobile-first responsive design","SEO-ready structure and analytics setup","Launch support and practical maintenance"]),
+   ("AI automation & digital assistants","AI and simple automations that reduce repetitive work and keep requests moving.",["Booking and appointment automation","Order and enquiry management","AI assistants for common customer questions","Connections to your existing tools","Clear handover and staff guidance"]),
+   ("Custom web apps & optimization","Custom tools for field work, planning and team management.",["Route and schedule planning","Customer or booking management","Operational dashboards","Tools tailored to your daily workflow","Maintenance and future improvements"])],
   work_intro=("Work","What we have <em>built.</em>","Every project started from a real problem a business had. See what we delivered and how it works."),
   live="Visit live site",
-  studio_intro=("Studio","First we understand, <em>then we write code.</em>","PG AI Solutions is a software studio based in Patras, Greece. We build websites, apps and optimization software that fit the way each business really works."),
-  spec=[("Based in","Patras, Greece"),("What we build","Websites, apps, optimization software"),("Languages","Greek & English"),("Clients","In Patras and remote"),("Approach","Understand first, then build")],
+  studio_intro=("Studio","First we understand, <em>then we build.</em>","PG AI Solutions is a small studio based in Patras, Greece. We build premium websites and focused mini apps that fit the way each business really works."),
+  spec=[("Based in","Patras, Greece"),("What we build","Premium websites and focused mini apps"),("Languages","Greek & English"),("Clients","Local and remote"),("Approach","Understand first, then build")],
   contact=dict(eyebrow="Contact", h="Tell us about <em>your project.</em>", lead="Write to us with what you want to achieve. We reply within one working day with the next steps and, when it fits, a proposal.", phone="Phone", email="Email", where="Studio", where_v="Patras, Greece", reply="Reply", reply_v="Within one working day",
     consent='By sending this form you agree to our <a href="privacy.html">privacy policy</a>.', who1="New project", who2="Partnership", subj1="New project inquiry · PG AI Solutions", subj2="Collaboration inquiry · PG AI Solutions",
     name="Name", mail="Email", msg="Message", ph_msg="What do you need, in a few words?", send="Send message",
-    t=dict(sending="Sending…", sent="Sent ✓", send="Send message", thanks="Thank you. We will reply to your email soon.", fail="The message could not be sent. Please email pangeo57@yahoo.gr or call +30 697 191 9078.")),
+    t=dict(sending="Sending…", sent="Sent ✓", send="Send message", thanks="Thank you. We will reply to you soon.", fail="The message could not be sent. Please use the form again or call +30 697 191 9078.")),
   band=("A few projects at a time","We work with <em>a few clients</em> at once.","That way every project has our attention from the first meeting to delivery. Tell us about yours.","Book a meeting"),
   start_head=("How we start", "From first call <em>to proposal.</em>", "First we understand your business. The price comes from what the project needs, not the other way around."),
   start=[("Conversation","A call or a meeting to understand what you want to achieve and who will use it."),("Proposal","A written proposal with what the project includes, the timeline and the cost. No surprises later."),("Delivery","Design and build in stages, with a working version in your hands early.")],
-  packages=dict(head=("Ways to start","Choose the smallest useful <em>scope.</em>","A starting point, shaped into a clear written proposal."), items=[("1","Website launch","A clear, premium website for a real business: essential pages, mobile layout, SEO and launch."),("2","Custom mini app","One focused workflow, designed and built around the way you work."),("3","Custom system","A larger website or app scope, with integrations, reporting or optimization where needed.")]),
+  packages=dict(head=("Ways to start","Choose the smallest useful <em>scope.</em>","A starting point, shaped into a clear written proposal."), items=[("1","Professional website or e-shop","Essential pages, mobile-first design, SEO setup and launch.","Request a quote"),("2","AI automation","One focused workflow, AI assistant or request-management process.","Discuss your workflow"),("3","Custom web solution","A tailored application with integrations, reporting or optimization.","Book a free assessment")]),
   budget=dict(label="Budget", opts=["Not sure yet","€2,000 – €5,000","€5,000 – €15,000","€15,000+"]),
   privacy="Privacy policy", privacy_href="privacy.html",
  ),
@@ -80,41 +80,41 @@ T = {
   lang="el", locale="el_GR", theme="Εναλλαγή ανοιχτού / σκούρου θέματος", other="en", other_label="EN",
   nav=dict(index="Αρχική", services="Υπηρεσίες", work="Έργα", studio="Studio", contact="Επικοινωνία"),
   titles=dict(index="Κατασκευή Ιστοσελίδων & Εφαρμογών, Πάτρα | PG AI Solutions", services="Ιστοσελίδες, Εφαρμογές & Λογισμικό | PG AI Solutions", work="Έργα: Ιστοσελίδες & Εφαρμογές | PG AI Solutions", studio="Studio Ανάπτυξης Λογισμικού στην Πάτρα | PG AI Solutions", privacy="Πολιτική Απορρήτου | PG AI Solutions", terms="Όροι Χρήσης | PG AI Solutions"),
-  descs=dict(index="Custom ιστοσελίδες και mini εφαρμογές για μικρές επιχειρήσεις στην Πάτρα και εξ αποστάσεως. Καθαρό πλάνο, premium σχεδιασμό και λειτουργικό αποτέλεσμα.", services="Πακέτα για custom ιστοσελίδα, mini εφαρμογή και βελτιστοποίηση, φτιαγμένα γύρω από την επιχείρησή σας. Καθαρό πεδίο και σαφή παράδοση.", work="Επιλεγμένα έργα της PG AI Solutions: RoutePal για βελτιστοποίηση διαδρομών και Cash Flow.", studio="Η PG AI Solutions είναι μικρό studio λογισμικού στην Πάτρα. Φτιάχνουμε custom ιστοσελίδες και mini εφαρμογές με απλή, σαφή διαδικασία.", privacy="Πώς ο ιστότοπος της PG AI Solutions διαχειρίζεται προσωπικά δεδομένα: τι συλλέγουμε, γιατί, ποιος τα λαμβάνει, για πόσο τα κρατάμε και τα δικαιώματά σας.", terms="Όροι χρήσης του ιστότοπου της PG AI Solutions: περιεχόμενο, ακρίβεια πληροφοριών, σύνδεσμοι προς άλλους ιστότοπους και εφαρμοστέο δίκαιο."),
+  descs=dict(index="Επαγγελματικές ιστοσελίδες και custom αυτοματισμοί για μικρές επιχειρήσεις στην Πάτρα και εξ αποστάσεως. Καθαρό πλάνο και λειτουργικό αποτέλεσμα.", services="Επαγγελματικές ιστοσελίδες και e-shops, AI αυτοματισμοί και custom web εφαρμογές. Καθαρό πεδίο και σαφή παράδοση.", work="Επιλεγμένα έργα της PG AI Solutions: Routepal για βελτιστοποίηση διαδρομών και Cash Flow.", studio="Η PG AI Solutions είναι μικρό studio στην Πάτρα. Φτιάχνουμε επαγγελματικές ιστοσελίδες και custom εργαλεία για επιχειρήσεις.", privacy="Πώς ο ιστότοπος της PG AI Solutions διαχειρίζεται προσωπικά δεδομένα: τι συλλέγουμε, γιατί, ποιος τα λαμβάνει, για πόσο τα κρατάμε και τα δικαιώματά σας.", terms="Όροι χρήσης του ιστότοπου της PG AI Solutions: περιεχόμενο, ακρίβεια πληροφοριών, σύνδεσμοι προς άλλους ιστότοπους και εφαρμοστέο δίκαιο."),
   crumb="Αρχική", og_alt="PG AI Solutions: ιστοσελίδες, εφαρμογές και λογισμικό βελτιστοποίησης από την Πάτρα",
   faq_head=("Ερωτήσεις", "Συχνές <em>ερωτήσεις.</em>", "Σύντομες απαντήσεις σε όσα μας ρωτούν πρώτα οι επιχειρήσεις."),
   faq=[("Πόσο κοστίζει η κατασκευή ιστοσελίδας ή εφαρμογής;","Η τιμή βγαίνει από το τι χρειάζεται το έργο, όχι το αντίστροφο. Μετά την πρώτη κουβέντα στέλνουμε γραπτή πρόταση με το τι περιλαμβάνει, το χρονοδιάγραμμα και το κόστος, χωρίς εκπλήξεις αργότερα."),
        ("Σε πόσο χρόνο απαντάτε;","Μέσα σε μία εργάσιμη, με σαφή επόμενα βήματα και, όπου ταιριάζει, πρόταση συνεργασίας."),
        ("Δουλεύετε με επιχειρήσεις εκτός Πάτρας;","Ναι. Η έδρα μας είναι στην Πάτρα και δουλεύουμε με τοπικούς και απομακρυσμένους πελάτες, στα ελληνικά και στα αγγλικά."),
        ("Σε ποιον ανήκουν η ιστοσελίδα, το domain και τα δεδομένα;","Σε εσάς. Το domain και οι λογαριασμοί είναι δικά σας, και τα δεδομένα μένουν δικά σας, με εξαγωγή και αντίγραφο."),
-       ("Μπορεί η εφαρμογή να εγκατασταθεί στο κινητό;","Ναι. Οι εφαρμογές μας εγκαθίστανται στο κινητό σαν εφαρμογή (PWA) και λειτουργούν offline όπου χρειάζεται."),
-       ("Αναλαμβάνετε SEO, φιλοξενία και συντήρηση;","Ναι. Οι ιστοσελίδες περιλαμβάνουν τεχνικό έλεγχο SEO, Google Business Profile, δομημένα δεδομένα και Search Console, μαζί με φιλοξενία, αντίγραφα, ενημερώσεις και μηνιαία αναφορά.")],
+       ("Μπορεί η εφαρμογή να χρησιμοποιηθεί στο κινητό;","Ναι. Οι custom εφαρμογές μπορούν να σχεδιαστούν καθαρά για κινητό και υπολογιστή."),
+       ("Αναλαμβάνετε δημοσίευση και συντήρηση;","Ναι. Περιλαμβάνουμε την συμφωνημένη δημοσίευση, παράδοση και μετέπειτα υποστήριξη.")],
   skip="Μετάβαση στο περιεχόμενο",
   hero=dict(tag="Custom ιστοσελίδες & mini εφαρμογές · Πάτρα", h1=[("Ιστοσελίδες και εφαρμογές",0),("φτιαγμένες για την επιχείρησή σας.",1)], sub="Απλές, premium ιστοσελίδες και στοχευμένες mini εφαρμογές για μικρές επιχειρήσεις. Καθαρή υλοποίηση και σαφής παράδοση.", cta="Συζητήστε το έργο σας", link="Δείτε επιλεγμένα έργα", aria="Κινούμενη εικόνα: ένας πραγματικός αλγόριθμος βελτιστοποίησης τακτοποιεί σκόρπιες στάσεις στο μονόγραμμα PG και μετά στη συντομότερη διαδρομή μιας εργάσιμης μέρας", proof=[("1","καθαρό πεδίο"),("1","εργάσιμη για απάντηση"),("Custom","για τη δική σας ροή"),("EL / EN","δίγλωσση παράδοση")]),
   ask=dict(eyebrow="Πείτε μας τι χρειάζεστε", h="Μια πρόταση. <em>Ένα καθαρό πλάνο.</em>", lead="Γράψτε το όπως θα το λέγατε σε έναν συνεργάτη. Μέσα σε μία εργάσιμη έχετε απάντηση με τα επόμενα βήματα.", note="Ενδεικτικό πλάνο για ένα τέτοιο έργο", q="Θέλω εφαρμογή για ραντεβού που βγάζει μόνη της το πρόγραμμα της εβδομάδας", chips=["Εφαρμογή κρατήσεων","Δίγλωσση ιστοσελίδα","Πρόγραμμα βαρδιών","Δρομολόγια"], plan=[("Εβδ. 1","μαθαίνουμε πώς δουλεύετε σήμερα"),("Εβδ. 2–4","φτιάχνουμε την εφαρμογή και το αυτόματο πρόγραμμα"),("Εβδ. 5","δοκιμή με τα δικά σας δεδομένα και παράδοση")], cta="Περιγράψτε το έργο σας"),
-  svc_head=("Τι κάνουμε", "Τρεις στοχευμένες <em>υπηρεσίες.</em>", "Επιλέγουμε το αποτέλεσμα που χρειάζεστε και διαμορφώνουμε το πεδίο γύρω από την επιχείρησή σας."),
-  svcs=[("Κατασκευή ιστοσελίδων","Premium, responsive ιστοσελίδες που εξηγούν καθαρά την προσφορά και διευκολύνουν την επαφή."),("Custom mini εφαρμογές","Στοχευμένες εφαρμογές για κρατήσεις, παραγγελίες, προγράμματα ή τη διαδικασία που σας κοστίζει χρόνο."),("Λογισμικό βελτιστοποίησης","Πρακτικά εργαλεία για συγκεκριμένα προβλήματα προγραμματισμού και δρομολογίων.")],
+  svc_head=("Τι κάνουμε", "Τρεις σαφείς <em>υπηρεσίες.</em>", "Επιλέγουμε το πρακτικό αποτέλεσμα που χρειάζεται η επιχείρησή σας."),
+  svcs=[("Επαγγελματικές ιστοσελίδες & e-shop","Modern, γρήγορες ιστοσελίδες και ηλεκτρονικά καταστήματα που παρουσιάζουν καθαρά την προσφορά και διευκολύνουν τις πωλήσεις."),("AI αυτοματισμοί & ψηφιακοί βοηθοί","Αυτοματισμοί για κρατήσεις, αιτήματα και παραγγελίες, με AI βοηθούς προσαρμοσμένους στην επιχείρησή σας."),("Custom web εφαρμογές & βελτιστοποίηση","Εξειδικευμένα εργαλεία για δρομολόγηση, προγραμματισμό και διαχείριση, χτισμένα γύρω από τη δική σας δουλειά.")],
   work_head=("Επιλεγμένα έργα", "Μικρή επιλογή. <em>Σωστή υλοποίηση.</em>", "Δύο παραδείγματα custom λογισμικού, με τη λεπτομέρεια εκεί που πραγματικά χρειάζεται."),
   all_work="Δείτε περισσότερα",
   proc_head=("Πώς δουλεύουμε", "Τέσσερα βήματα, <em>με έλεγχο σε καθένα.</em>", "Πριν προχωρήσουμε στο επόμενο βήμα, ελέγχουμε ότι το προηγούμενο λύνει το πραγματικό σας πρόβλημα."),
   steps=[("Κατανόηση","Μαθαίνουμε ποιοι θα το χρησιμοποιούν, τι περιορισμούς έχετε και ποιος είναι ο πραγματικός στόχος, πριν από σχέδιο ή κώδικα."),("Σχεδιασμός","Σχεδιάζουμε μαζί τα δεδομένα, τη λογική και τις οθόνες, ώστε να μη χρειαστούν ακριβές αλλαγές αργότερα."),("Υλοποίηση","Παραδίδουμε σε μικρά κομμάτια και δοκιμάζουμε με πραγματικά σενάρια, όχι μόνο με την ιδανική περίπτωση."),("Παράδοση & βελτίωση","Το βγάζουμε στον αέρα, βλέπουμε πώς χρησιμοποιείται και το βελτιώνουμε. Η δουλειά δεν σταματά στην παράδοση.")],
   services_intro=("Υπηρεσίες","Τι <em>φτιάχνουμε.</em>","Αναλαμβάνουμε λίγα έργα κάθε φορά, ώστε το καθένα να έχει την προσοχή μας από την πρώτη κουβέντα μέχρι την παράδοση και μετά."),
   svc_detail=[
-   ("Κατασκευή ιστοσελίδων","Ιστοσελίδες φτιαγμένες για την επιχείρησή σας και στημένες σωστά για το Google, με φιλοξενία και συντήρηση.",["Σχεδιασμένες για το brand σας, χωρίς έτοιμα templates","Γρήγορες σε κάθε συσκευή, φτιαγμένες να φέρνουν επαφές","SEO: τεχνικός έλεγχος, Google Business Profile, δομημένα δεδομένα, Search Console","Branding: λογότυπο, παλέτα και τυπογραφία όταν χρειάζονται","Φιλοξενία, αντίγραφα, ενημερώσεις και μηνιαία αναφορά","Ελληνικά και αγγλικά όταν χρειάζονται· το domain και οι λογαριασμοί είναι δικά σας"]),
-   ("Ανάπτυξη εφαρμογών","Εφαρμογές φτιαγμένες γύρω από τον τρόπο που δουλεύει η επιχείρησή σας, από κρατήσεις μέχρι τα εργαλεία που χρησιμοποιεί κάθε μέρα η ομάδα σας.",["Συστήματα κρατήσεων, προσφορές, παραγγελίες και εσωτερικά εργαλεία","Εγκαθίστανται στο κινητό σαν εφαρμογή (PWA)","Λειτουργούν offline όπου χρειάζεται","Τα δεδομένα μένουν δικά σας, με εξαγωγή και αντίγραφο","Φτιαγμένες για να μεγαλώνουν μαζί με την επιχείρηση"]),
-   ("Λογισμικό βελτιστοποίησης","Λογισμικό που βγάζει για εσάς το πρόγραμμα ραντεβού, τις βάρδιες και τα δρομολόγια, με δοκιμασμένους αλγορίθμους μετρημένους σε γνωστά προβλήματα.",["Σχεδιασμός διαδρομών και ραντεβού με πραγματικούς χρόνους δρόμου","Προγραμματισμός με περιορισμούς και χρονικά παράθυρα","Dashboards που σας δείχνουν τι να αποφασίσετε, όχι μόνο αριθμούς","Μετρημένα απέναντι σε γνωστά benchmarks, όχι στο περίπου","Καθαρή εξήγηση για το γιατί το αποτέλεσμα είναι καλό"])],
+   ("Επαγγελματικές ιστοσελίδες & e-shops","Γρήγορες, modern ιστοσελίδες και ηλεκτρονικά καταστήματα που παρουσιάζουν καθαρά την προσφορά και διευκολύνουν την αγορά.",["Website ή e-shop χτισμένο γύρω από την επιχείρησή σας","Καθαρά σελίδες προϊόντων, υπηρεσιών και επικοινωνίας","Responsive σχεδιασμό για κάθε συσκευή","SEO-ready δομή και analytics setup","Δημοσίευση και πρακτική συντήρηση"]),
+   ("AI αυτοματισμοί & ψηφιακοί βοηθοί","Εργαλεία που μειώνουν την επαναλαμβανόμενη δουλειά και κρατούν τα αιτήματα σε ροή.",["Αυτοματοποίηση κρατήσεων και ραντεβού","Διαχείριση παραγγελιών και αιτημάτων","AI βοηθοί για συχνές ερωτήσεις πελατών","Σύνδεση με τα εργαλεία που ήδη χρησιμοποιείτε","Σαφής παράδοση και καθοδήγηση προσωπικού"]),
+   ("Custom web εφαρμογές & λύσεις βελτιστοποίησης","Εξειδικευμένα εργαλεία για πεδία δουλειάς, προγραμματισμό και διαχείριση.",["Δρομολόγηση και προγράμματα","Διαχείριση πελατών ή κρατήσεων","Πίνακες για καθημερινές λειτουργίες","Εργαλεία φτιαγμένα γύρω από τη δική σας δουλειά","Συντήρηση και μελλοντικές βελτιώσεις"])],
   work_intro=("Έργα","Τι έχουμε <em>φτιάξει.</em>","Κάθε έργο ξεκίνησε από ένα πραγματικό πρόβλημα μιας επιχείρησης. Δείτε τι παραδώσαμε και πώς δουλεύει."),
   live="Δείτε το live",
-  studio_intro=("Studio","Πρώτα καταλαβαίνουμε, <em>μετά γράφουμε κώδικα.</em>","Η PG AI Solutions είναι studio λογισμικού με έδρα την Πάτρα. Φτιάχνουμε ιστοσελίδες, εφαρμογές και λογισμικό βελτιστοποίησης που ταιριάζουν στον τρόπο που δουλεύει πραγματικά κάθε επιχείρηση."),
+  studio_intro=("Studio","Πρώτα καταλαβαίνουμε, <em>μετά υλοποιούμε.</em>","Η PG AI Solutions είναι μικρό studio με έδρα την Πάτρα. Φτιάχνουμε premium ιστοσελίδες και στοχευμένες mini εφαρμογές που ταιριάζουν στον τρόπο που δουλεύει πραγματικά κάθε επιχείρηση."),
   spec=[("Έδρα","Πάτρα, Ελλάδα"),("Τι φτιάχνουμε","Ιστοσελίδες, εφαρμογές, λογισμικό βελτιστοποίησης"),("Γλώσσες","Ελληνικά & αγγλικά"),("Πελάτες","Στην Πάτρα και εξ αποστάσεως"),("Προσέγγιση","Πρώτα κατανόηση, μετά υλοποίηση")],
   contact=dict(eyebrow="Επικοινωνία", h="Πείτε μας για <em>το έργο σας.</em>", lead="Γράψτε μας τι θέλετε να πετύχετε. Απαντάμε μέσα σε μία εργάσιμη με τα επόμενα βήματα και, όταν ταιριάζει, με πρόταση συνεργασίας.", phone="Τηλέφωνο", email="Email", where="Studio", where_v="Πάτρα, Ελλάδα", reply="Απάντηση", reply_v="Μέσα σε μία εργάσιμη",
     consent='Με την αποστολή συμφωνείτε με την <a href="privacy.html">πολιτική απορρήτου</a>.', who1="Νέο έργο", who2="Συνεργασία", subj1="Νέο αίτημα έργου · PG AI Solutions", subj2="Πρόταση συνεργασίας · PG AI Solutions",
     name="Όνομα", mail="Email", msg="Μήνυμα", ph_msg="Τι χρειάζεστε, με λίγα λόγια;", send="Αποστολή μηνύματος",
-    t=dict(sending="Αποστολή…", sent="Εστάλη ✓", send="Αποστολή μηνύματος", thanks="Ευχαριστούμε. Θα σας απαντήσουμε σύντομα στο email σας.", fail="Το μήνυμα δεν στάλθηκε. Γράψτε μας στο pangeo57@yahoo.gr ή καλέστε στο +30 697 191 9078.")),
+    t=dict(sending="Αποστολή…", sent="Εστάλη ✓", send="Αποστολή μηνύματος", thanks="Ευχαριστούμε. Θα σας απαντήσουμε σύντομα.", fail="Το μήνυμα δεν στάλθηκε. Δοκιμάστε ξανά τη φόρμα ή καλέστε στο +30 697 191 9078.")),
   band=("Λίγα έργα κάθε φορά","Δουλεύουμε με <em>λίγους πελάτες</em> ταυτόχρονα.","Έτσι κάθε έργο έχει την προσοχή μας από την πρώτη συνάντηση μέχρι την παράδοση. Πείτε μας για το δικό σας.","Κλείστε μια συνάντηση"),
   start_head=("Πώς ξεκινάμε", "Από την πρώτη κουβέντα <em>στην πρόταση.</em>", "Πρώτα καταλαβαίνουμε την επιχείρησή σας. Η τιμή βγαίνει από το τι χρειάζεται το έργο, όχι το αντίστροφο."),
   start=[("Γνωριμία","Μια κουβέντα, από κοντά ή online, για να καταλάβουμε τι θέλετε να πετύχετε και ποιοι θα το χρησιμοποιούν."),("Πρόταση","Γραπτή πρόταση με το τι περιλαμβάνει το έργο, το χρονοδιάγραμμα και το κόστος. Χωρίς εκπλήξεις αργότερα."),("Υλοποίηση","Σχεδιασμός και ανάπτυξη σε στάδια, με μια έκδοση που δουλεύει στα χέρια σας από νωρίς.")],
-  packages=dict(head=("Τρόποι να ξεκινήσετε","Επιλέξτε το μικρότερο χρήσιμο <em>πεδίο.</em>","Ένα σημείο εκκίνησης που γίνεται σαφή γραπτή πρόταση."), items=[("1","Εκκίνηση ιστοσελίδας","Μια καθαρή, premium ιστοσελίδα: βασικές σελίδες, mobile σχεδιασμός, SEO και παράδοση."),("2","Custom mini εφαρμογή","Μία στοχευμένη διαδικασία, σχεδιασμένη και φτιαγμένη γύρω από τον τρόπο που δουλεύετε."),("3","Custom σύστημα","Μεγαλύτερη ιστοσελίδα ή εφαρμογή, με integrations, αναφορές ή βελτιστοποίηση όπου χρειάζεται.")]),
+  packages=dict(head=("Τρόποι να ξεκινήσετε","Επιλέξτε το μικρότερο χρήσιμο <em>πεδίο.</em>","Ένα σημείο εκκίνησης που γίνεται σαφή γραπτή πρόταση."), items=[("1","Επαγγελματική ιστοσελίδα ή e-shop","Βασικές σελίδες, mobile-first σχεδιασμός, SEO setup και δημοσίευση.","Ζητήστε προσφορά"),("2","AI αυτοματισμός","Μία στοχευμένη ροή εργασίας, AI βοηθός ή διαχείριση αιτημάτων.","Συζητήστε τη ροή σας"),("3","Custom web λύση","Εξειδικευμένη εφαρμογή με integrations, αναφορές ή βελτιστοποίηση.","Κλείστε δωρεάν αξιολόγηση")]),
   budget=dict(label="Προϋπολογισμός", opts=["Δεν ξέρω ακόμα","2.000 – 5.000 €","5.000 – 15.000 €","15.000 € +"]),
   privacy="Πολιτική απορρήτου", privacy_href="privacy.html",
  ),
@@ -131,11 +131,11 @@ def schema(L, p):
     """One JSON-LD graph per page: the business, the site, the page, breadcrumbs, and page-specific items."""
     t = T[L]; org = BASE + "/#org"; site = BASE + "/#site"; page = url(L, p)
     g = [{"@type":"ProfessionalService","@id":org,"name":"PG AI Solutions","url":BASE+"/","logo":BASE+"/assets/logo-512.png","image":BASE+"/assets/og-image.png",
-          "description":T[L]["descs"]["index"],"telephone":"+306971919078","email":"pangeo57@yahoo.gr",
+          "description":T[L]["descs"]["index"],"telephone":"+306971919078",
           "address":{"@type":"PostalAddress","addressLocality":"Patras" if L=="en" else "Πάτρα","addressRegion":"Achaea" if L=="en" else "Αχαΐα","addressCountry":"GR"},
           "areaServed":[{"@type":"City","name":"Patras" if L=="en" else "Πάτρα"},{"@type":"Country","name":"Greece" if L=="en" else "Ελλάδα"}],
           "knowsLanguage":["el","en"],
-          "contactPoint":{"@type":"ContactPoint","contactType":"sales","telephone":"+306971919078","email":"pangeo57@yahoo.gr","availableLanguage":["Greek","English"]},
+          "contactPoint":{"@type":"ContactPoint","contactType":"sales","telephone":"+306971919078","availableLanguage":["Greek","English"]},
           "hasOfferCatalog":{"@type":"OfferCatalog","name":t["nav"]["services"],"itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":a,"description":b,"url":url(L,"services")+f"#s{i+1}"}} for i,(a,b,_) in enumerate(t["svc_detail"])]}},
          {"@type":"WebSite","@id":site,"url":BASE+"/","name":"PG AI Solutions","publisher":{"@id":org},"inLanguage":["en","el"]},
          {"@type":"WebPage","@id":page+"#page","url":page,"name":t["titles"][p],"description":t["descs"][p],"inLanguage":t["lang"],"isPartOf":{"@id":site},"about":{"@id":org}}]
@@ -270,7 +270,7 @@ def faq_sec(L):
 
 def packages_sec(L):
     t = T[L]["packages"]
-    items = "".join(f'<div class="step"><span class="n">{n}</span><h3 class="h3">{name}</h3><p>{desc}</p></div>' for n,name,desc in t["items"])
+    items = "".join(f'<div class="step"><span class="n">{n}</span><h3 class="h3">{name}</h3><p>{desc}</p><p><a class="txtlink" href="#contact">{cta} <i aria-hidden="true">→</i></a></p></div>' for n,name,desc,cta in t["items"])
     return f'<section class="sec alt"><div class="wrap">{sec_head(t["head"])}<div class="steps steps3">{items}</div></div></section>'
 
 def page_services(L, pre):
@@ -302,7 +302,7 @@ def contact(L):
     tj = html.escape(json.dumps(c["t"], ensure_ascii=False), quote=True)
     return f'''<section class="contact" id="contact" aria-labelledby="c-h"><div class="wrap">
 <div class="cinfo"><span class="eyebrow">{c["eyebrow"]}</span><h2 class="h2" id="c-h">{c["h"]}</h2><p class="lead">{c["lead"]}</p>
-<dl><div><dt>{c["phone"]}</dt><dd><a href="tel:+306971919078">+30 697 191 9078</a></dd></div><div><dt>{c["email"]}</dt><dd><a href="mailto:pangeo57@yahoo.gr">pangeo57@yahoo.gr</a></dd></div><div><dt>{c["where"]}</dt><dd>{c["where_v"]}</dd></div><div><dt>{c["reply"]}</dt><dd>{c["reply_v"]}</dd></div></dl></div>
+<dl><div><dt>{c["phone"]}</dt><dd><a href="tel:+306971919078">+30 697 191 9078</a></dd></div><div><dt>{c["where"]}</dt><dd>{c["where_v"]}</dd></div><div><dt>{c["reply"]}</dt><dd>{c["reply_v"]}</dd></div></dl></div>
 <form class="cf" action="https://formspree.io/f/xyeyvzga" method="POST" data-t="{tj}">
 <input type="hidden" name="_subject" value="{c["subj1"]}"><input type="hidden" name="Πηγή" value="PG AI Solutions site">
 <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -318,7 +318,8 @@ def contact(L):
 def footer(L, pre):
     t = T[L]; n = t["nav"]
     links = "".join(f'<a href="{fn(k)}">{n[k]}</a>' for k in PAGES[1:])
-    return f'''<footer class="ft"><div class="wrap"><span>© 2026 PG AI Solutions · {T[L]["contact"]["where_v"]}</span><nav aria-label="Footer">{links}<a href="{t["privacy_href"]}">{t["privacy"]}</a><a href="terms.html">{"Terms of use" if L=="en" else "Όροι χρήσης"}</a></nav></div></footer>
+    legal = ("Legal details: Business name — Pending / VAT: — / GEMI: — / Headquarters: Patras, Greece" if L=="en" else "Νομικά στοιχεία: Επωνυμία — σε προσδιορισμό / ΑΦΜ: — / ΓΕΜΗ: — / Έδρα: Πάτρα, Ελλάδα")
+    return f'''<footer class="ft"><div class="wrap"><div><span>© 2026 PG AI Solutions · {T[L]["contact"]["where_v"]}</span><small>{legal}</small></div><nav aria-label="Footer">{links}<a href="{t["privacy_href"]}">{t["privacy"]}</a><a href="terms.html">{"Terms of use" if L=="en" else "Όροι χρήσης"}</a></nav></div></footer>
 <script src="{pre}assets/site.js?v={V}" defer></script>
 </body>
 </html>
