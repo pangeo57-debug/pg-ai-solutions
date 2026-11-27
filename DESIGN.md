@@ -5,8 +5,7 @@ A dark, quiet site that shows it knows AI and algorithms by what it *does*, not 
 The hero runs a real 2-opt solver on screen. The stops start out scattered, the solver arranges them into the PG monogram,
 and then they settle into a day's optimal route. Everything else stays calm so that moment carries the page.
 
-We do **not** sell AI agents. AI is how we build, so it shows in how the site behaves: live computation,
-text that types itself, numbers that converge. It does not show up as chatbots or stock photos.
+AI is also something we sell, as one of three services ("AI assistants & automation": answering customer messages, booking appointments). The site still shows it by how it behaves, with live computation, text that types itself and numbers that converge, not with chatbot mock-ups or stock photos. Any example conversation or number on the site must be labelled as an example until we have a real client one.
 
 Chosen from three rounds of directions (see `.inhabited/sampling.md`, which is local and ignored by git). No UXKIN reference sites were used,
 because the connection failed. The decisions come from the existing brand (PG monogram, sky→pink route) and the owner's feedback:
